@@ -28,12 +28,27 @@ class Eleves{
 
     public function EleveConnexion (Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM client WHERE email = :email  AND mot_de_passe = :mot_de_passe');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
 
         $req->execute(array(
-            'nom' => $this->nom,
-            'mot_de_passe' => $this->motdepasse
+            'email' => $this->email,
+            'motdepasse' => $this->motdepasse
         ));
+
+        $res = $req->fetch();
+
+        var_dump($res);
+        $req->debugDumpParams();
+
+
+        if ($res) {
+            //echo "session start";
+            header('Location: ../index.html');
+
+        }
+        else {
+            echo ('vtf');
+        }
 
         $res = $req->fetch();
     }
@@ -177,5 +192,7 @@ class Eleves{
     {
         $this->motdepasse = $motdepasse;
     }
+
+
 
 }

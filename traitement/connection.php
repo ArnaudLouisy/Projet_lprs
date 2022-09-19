@@ -8,3 +8,5 @@ $eleves = new Eleves (array(
     'email'=>$_POST['email'],
     'motdepasse'=>$_POST['motdepasse']
 ));
+
+$eleves->EleveConnexion($bdd);

@@ -2,6 +2,14 @@
 
 class Entreprise{
 
+    private $id_representant ;
+    private $nom_entreprise ;
+    private $adresse;
+    private $email;
+    private $Role_représentant;
+    private $valider;
+
+
     public function __construct(array $donnees){
         $this->hydrate($donnees);
     }

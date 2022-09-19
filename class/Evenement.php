@@ -2,13 +2,13 @@
 
 class Evenement{
 
-    private $id;
-    private $nom;
+    private $id_event;
+    private $nom_event;
     private $description;
     private $date;
     private $heure;
     private $duree;
-    private $inscrit;
+    private $nombre_inscrit;
     private $autorise;
 
     public function __construct(array $donnees){

@@ -2,10 +2,13 @@
 
 class Offre{
 
-    private $id;
-    private $titre;
+    private $id_offre;
+    private $titre_offre;
     private $description;
-    private $email;
+    private $date_publication;
+    private $type_contrat;
+    private $duree_contrat;
+    private $pourvue;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

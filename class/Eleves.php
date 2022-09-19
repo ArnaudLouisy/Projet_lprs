@@ -6,6 +6,7 @@ class Eleves{
     private $nom;
     private $prenom;
     private $email;
+    private $motdepasse;
     private $adresse;
     private $valider;
     private $domaine_etude;
@@ -25,8 +26,16 @@ class Eleves{
         }
     }
 
-    public function EleveConnexion (){
+    public function EleveConnexion (Bdd $base){
 
+        $req = $base->getBdd()->prepare('SELECT * FROM client WHERE email = :email  AND mot_de_passe = :mot_de_passe');
+
+        $req->execute(array(
+            'nom' => $this->nom,
+            'mot_de_passe' => $this->motdepasse
+        ));
+
+        $res = $req->fetch();
     }
 
     public function EleveInscription (){
@@ -153,6 +162,20 @@ class Eleves{
         $this->niveau_etude = $niveau_etude;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMotdepasse()
+    {
+        return $this->motdepasse;
+    }
 
+    /**
+     * @param mixed $motdepasse
+     */
+    public function setMotdepasse($motdepasse)
+    {
+        $this->motdepasse = $motdepasse;
+    }
 
 }

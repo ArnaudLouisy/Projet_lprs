@@ -2,6 +2,13 @@
 
 class RendezVous{
 
+    private $id_rdv;
+    private $date;
+    private $heure;
+
+
+
+
     public function __construct(array $donnees){
         $this->hydrate($donnees);
     }

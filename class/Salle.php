@@ -2,9 +2,9 @@
 
 class Salle{
 
-    private $id;
-    private $type;
-    private $place;
+    private $id_salle;
+    private $type_salle;
+    private $nombre_place;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

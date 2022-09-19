@@ -2,10 +2,10 @@
 
 class Logs{
 
-    private $idcompte;
+    private $id_compte;
     private $date;
     private $heure;
-    private $adresseip;
+    private $adresse_ip;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

@@ -1,17 +1,15 @@
 <?php
 
-class Eleve{
+class Eleves{
 
-    private $id;
+    private $id_eleves;
     private $nom;
     private $prenom;
     private $email;
-    private $rue;
-    private $ville;
-    private $cp;
+    private $adresse;
     private $valider;
-    private $domaine;
-    private $niveau;
+    private $domaine_etude;
+    private $niveau_etude;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

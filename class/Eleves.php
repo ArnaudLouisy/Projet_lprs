@@ -37,20 +37,17 @@ class Eleves{
 
         $res = $req->fetch();
 
-        var_dump($res);
-        $req->debugDumpParams();
-
-
         if ($res) {
-            //echo "session start";
-            header('Location: ../index.html');
-
+            $_SESSION['id_eleves'] = $res['id_eleves'];
+            $_SESSION['nom'] = $res['nom'];
+            $_SESSION['prenom'] = $res['prenom'];
+            header('Location: ../index.php');
+            return $res;
         }
         else {
-            echo ('vtf');
+            echo ("fghg");
         }
 
-        $res = $req->fetch();
     }
 
     public function EleveInscription (){

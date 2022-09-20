@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -58,6 +61,8 @@
                                             <li><a href="index.html">Home</a></li>
                                             <li><a href="job_listing.html">Find a Jobs </a></li>
                                             <li><a href="about.html">About</a></li>
+                                            <?php session_start(); echo($_SESSION['id_eleves']);
+                                            var_dump(session_start());?>
                                             <li><a href="#">Page</a>
                                                 <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>
@@ -71,11 +76,14 @@
                                     </nav>
                                 </div>          
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a><img src="assets/img/icon/Profile.jpg" width="75">
-                                        Malcom MAXWELLE
-                                    </a>
-                                </div>
+                                <?php if ($_SESSION['id_eleves']){
+                                    echo ("<div class='header-btn d-none f-right d-lg-block'>
+                                    <a><img src='assets/img/icon/Profile.jpg' width='75'> </a></div>");
+
+
+
+                                }?>
+
 
                                 <div class="header-btn d-none f-right d-lg-block">
                                     <a href="" class="btn head-btn1">S'inscrire</a>

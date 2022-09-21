@@ -1,5 +1,5 @@
 <?php
-
+session_start()
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -49,7 +49,7 @@
                         <div class="col-lg-3 col-md-2">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="index.php"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>  
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -58,11 +58,9 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="index.php">Home</a></li>
                                             <li><a href="job_listing.html">Find a Jobs </a></li>
                                             <li><a href="about.html">About</a></li>
-                                            <?php session_start(); echo($_SESSION['id_eleves']);
-                                            var_dump(session_start());?>
                                             <li><a href="#">Page</a>
                                                 <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>
@@ -76,7 +74,7 @@
                                     </nav>
                                 </div>          
                                 <!-- Header-btn -->
-                                <?php if ($_SESSION['id_eleves']){
+                                <?php if (isset($_SESSION['id_eleves'])){
                                     echo ("<div class='header-btn d-none f-right d-lg-block'>
                                     <a><img src='assets/img/icon/Profile.jpg' width='75'> </a></div>");
 

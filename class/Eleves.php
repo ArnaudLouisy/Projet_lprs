@@ -28,7 +28,7 @@ class Eleves{
 
     public function EleveConnexion (Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse AND valider = 1 ');
 
         $req->execute(array(
             'email' => $this->email,
@@ -39,19 +39,21 @@ class Eleves{
 
         if ($res) {
             $_SESSION['id_eleves'] = $res['id_eleves'];
-            $_SESSION['nom'] = $res['nom'];
-            $_SESSION['prenom'] = $res['prenom'];
             header('Location: ../index.php');
-            return $res;
         }
-        else {
-            echo ("fghg");
+        if ($res['valide'] != 1) {
+            header('Location: ../Erreur/dist/validation.html');
         }
+        else{
+            echo ('mot de passe ou email incorrecte');
+        }
+
+        return $res;
 
     }
 
     public function EleveInscription (){
-
+        
     }
 
     /**

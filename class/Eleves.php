@@ -52,8 +52,34 @@ class Eleves{
 
     }
 
-    public function EleveInscription (){
-        
+    public function EleveInscription (Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email');
+
+        $req->execute(array(
+            'email' => $this->email,
+        ));
+
+        $res = $req->fetch();
+
+        if ($res) {
+            echo 'un compte est deja existant à se nom ' . $res['nom'] . '' . $res['prenom'] . '<br>';
+        }
+        else {
+            $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etude,niveau_etude) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
+
+            $req->execute(array(
+                'nom' => $this->nom,
+                'prenom' => $this->prenom,
+                'email' => $this->email,
+                'motdepasse' => $this->motdepasse,
+                'adresse' => $this->adresse,
+                'domaine_etude' => $this->domaine_etude,
+                'niveau_etude' => $this->niveau_etude,
+            ));
+            var_dump($this);
+            $req->debugDumpParams();
+            echo 'La personne a bien été inscrit !' . '<br>';
+        }
     }
 
     /**

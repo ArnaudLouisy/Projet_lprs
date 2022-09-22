@@ -20,4 +20,15 @@ class Logs{
             }
         }
     }
+
+    private function addlogs(Bdd $base){
+        $req = $base->getBdd()->prepare('INSERT INTO logs () values ()');
+
+        $req->execute(array(
+            'id_compte' => $this->id_compte ,
+            'date' => $this->date,
+            'heure' => $this->heure,
+            'adresse_ip' => $this->adresse_ip
+        ));
+    }
 }

@@ -44,7 +44,7 @@ class Eleves{
         if ($res['valide'] != 1) {
             header('Location: ../Erreur/dist/validation.html');
         }
-        else{
+        if (empty($res)){
             echo ('mot de passe ou email incorrecte');
         }
 
@@ -65,7 +65,7 @@ class Eleves{
             echo 'un compte est deja existant à se nom ' . $res['nom'] . '' . $res['prenom'] . '<br>';
         }
         else {
-            $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etude,niveau_etude) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
+            $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etudes,niveau_etudes) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
 
             $req->execute(array(
                 'nom' => $this->nom,

@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `nom` varchar(200) NOT NULL,
   `prenom` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
+  `motdepasse` varchar(200) NOT NULL,
   PRIMARY KEY (`id_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -178,6 +179,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur_eleves` (
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `motdepasse` varchar(50) NOT NULL,
   `valider` bit(1) DEFAULT b'0',
   `adresse` varchar(50) NOT NULL,
   `domaine_etudes` varchar(50) NOT NULL,
@@ -197,6 +199,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur_entreprise` (
   `id_representant` int(11) NOT NULL AUTO_INCREMENT,
   `nom_entreprise` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
+  `motdepasse` varchar(250) NOT NULL,
   `adresse` varchar(250) NOT NULL,
   `role_representant` varchar(250) NOT NULL,
   `valider` bit(1) DEFAULT b'0',

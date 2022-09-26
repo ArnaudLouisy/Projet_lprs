@@ -37,11 +37,10 @@ class Eleves{
 
         $res = $req->fetch();
 
-        if ($res) {
-            $_SESSION['id_eleves'] = $res['id_eleves'];
+        if ($res['id_eleves']) {
             header('Location: ../index.php');
         }
-        if ($res['valide'] != 1) {
+        if ($res['valide'] != O) {
             header('Location: ../Erreur/dist/validation.html');
         }
         if (empty($res)){

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../class/Eleves.php';
+require_once '../class/Entreprise.php';
 require_once '../class/Bdd.php';
 
 $bdd = new Bdd();
@@ -14,4 +15,16 @@ if ($res){
     $_SESSION['id_eleves'] = $res['id_eleves'];
     $_SESSION['nom'] = $res['nom'];
     $_SESSION['prenom'] = $res['prenom'];
+}
+elseif ($res = null){
+    $entreprise = new Entreprise(array(
+        'email'=>$_POST['email'],
+        'motdepasse'=>$_POST['motdepasse']
+    ));
+    $ent = $entreprise->EntrepriseConnexion($bdd);
+    if ($ent){
+        $_SESSION['id_eleves'] = $ent['id_eleves'];
+        $_SESSION['nom'] = $ent['nom'];
+        $_SESSION['prenom'] = $ent['prenom'];
+    }
 }

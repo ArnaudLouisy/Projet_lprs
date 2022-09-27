@@ -40,7 +40,7 @@ class Eleves{
         if ($res['id_eleves']) {
             header('Location: ../index.php');
         }
-        if ($res['valide'] != O) {
+        if ($res['valide'] == 1) {
             header('Location: ../Erreur/dist/validation.html');
         }
         if (empty($res)){

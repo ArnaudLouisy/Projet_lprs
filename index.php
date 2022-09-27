@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -52,42 +52,90 @@ session_start()
                                 <a href="index.php"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>  
                         </div>
-                        <div class="col-lg-9 col-md-9">
-                            <div class="menu-wrapper">
+                        <!--session eleve-->
+                        <?php if (isset($_SESSION['id_eleves'])){
+                                    echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
                                 <!-- Main-menu -->
-                                <div class="main-menu">
-                                    <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="index.php">Home</a></li>
-                                            <li><a href="job_listing.html">Find a Jobs </a></li>
-                                            <li><a href="crea.html">Creation d'evenement</a></li>
-                                            <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Accueil</a></li>
+                                            <li><a href='job_listing.html'>Trouver un Jobs </a></li>
+                                            <li><a href='crea.html'>Evénements</a></li>
+                                            <li><a href='#'>Page</a>
+                                            <ul class='submenu'>
+                                                    <li><a href='blog.html'>Blog</a></li>
+                                                    <li><a href='single-blog.html'>Blog Details</a></li>
+                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='job_details.html'>job Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href='contact.html'>Contact</a></li>
                                         </ul>
                                     </nav>
-                                </div>          
-                                <!-- Header-btn -->
-                                <?php if (isset($_SESSION['id_eleves'])){
-                                    echo ("<div class='header-btn d-none f-right d-lg-block'>
-                                    <a><img src='assets/img/icon/Profile.jpg' width='75'> </a></div>");
-
-
-
-                                }?>
-
-
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="" class="btn head-btn1">S'inscrire</a>
-                                    <a href="form/dist/login.html" class="btn head-btn2">Se connecter</a>
                                 </div>
+                                <!--profile-->
+                                <div class='header-btn d-none f-right d-lg-block'>
+                                    <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['nom']." ".$_SESSION['prenom']." </a>
+                                </div>");}
+                                //session entreprise
+                              if (isset($_SESSION['id_representant'])){
+                                    echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
+                                <!-- Main-menu -->
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Accueil</a></li>
+                                            <li><a href='job_listing.html'>Nos offre</a></li>
+                                            <li><a href='crea.html'>Evénements</a></li>
+                                            <li><a href='#'>Prospect</a>
+                                            <ul class='submenu'>
+                                                    <li><a href='blog.html'>Blog</a></li>
+                                                    <li><a href='single-blog.html'>Blog Details</a></li>
+                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='job_details.html'>job Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href='contact.html'>Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!--profile-->
+                                <div class='header-btn d-none f-right d-lg-block'>
+                                    <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['id_eleves']." </a>
+                                </div>");}
 
+                              //aucune session
+                              elseif ($_SESSION == null){echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
+                                <!-- Main-menu -->
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Home</a></li>
+                                            <li><a href='job_listing.html'>Find a Jobs </a></li>
+                                            <li><a href='crea.html'>Creation </a></li>
+                                            <li><a href='#'>Page</a>
+                                <ul class='submenu'>
+                                                    <li><a href='blog.html'>Blog</a></li>
+                                                    <li><a href='single-blog.html'>Blog Details</a></li>
+                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='job_details.html'>job Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href='contact.html'>Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Header-btn -->
+                                <div class='header-btn d-none f-right d-lg-block'>
+                                    <a href='' class='btn head-btn1'>S'inscrire</a>
+                                    <a href='form/dist/login.html' class='btn head-btn2'>Se connecter</a>
+                                </div>");}
+
+                                ?>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
@@ -280,8 +328,8 @@ session_start()
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
-                            <span>Recent Job</span>
-                            <h2>Featured Jobs</h2>
+                            <span>Emplois Récent</span>
+                            <h2>Emplois en vedette</h2>
                         </div>
                     </div>
                 </div>
@@ -307,51 +355,23 @@ session_start()
                                 <span>7 hours ago</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center">
+                            <span>Evénement</span>
+                            <h2>Evénements à venir</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-10">
                         <!-- single-job-content -->
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="assets/img/icon/job-list2.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="assets/img/icon/job-list3.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="assets/img/icon/job-list4.png" alt=""></a>
+                                    <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
                                     <a href="job_details.html"><h4>Digital Marketer</h4></a>
@@ -379,8 +399,8 @@ session_start()
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle white-text text-center">
-                            <span>Apply process</span>
-                            <h2> How it works</h2>
+                            <span>Processus de candidature</span>
+                            <h2> Comment ça marche</h2>
                         </div>
                     </div>
                 </div>

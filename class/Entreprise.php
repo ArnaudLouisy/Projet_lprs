@@ -37,7 +37,6 @@ class Entreprise{
         $res = $req->fetch();
 
         if ($res) {
-            $_SESSION['id_representant'] = $res['id_representant'];
             header('Location: ../index.php');
         }
         if ($res['valide'] != 1) {

@@ -16,3 +16,4 @@ $eleves = new Eleves (array(
 ));
 
 $eleves->EleveInscription($bdd);
+

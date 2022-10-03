@@ -50,8 +50,8 @@ class Eleves{
                 'domaine_etude' => $this->domaine_etude,
                 'niveau_etude' => $this->niveau_etude,
             ));
-            var_dump($this);
-            $req->debugDumpParams();
+
+
             echo 'La personne a bien été inscrit !' . '<br>';
         }
     }

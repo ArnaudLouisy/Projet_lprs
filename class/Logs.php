@@ -28,7 +28,7 @@ class Logs{
             'id_compte' => $this->id_compte ,
             'date' => $this->date,
             'heure' => $this->heure,
-            'adresse_ip' => $this->adresse_ip
+            'adresse_ip' => $this->adresse_ip //$_SERVER['REMOTE_ADDR']
         ));
     }
 }

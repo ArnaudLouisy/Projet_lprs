@@ -1,12 +1,14 @@
 <?php
 
-class Admin{
-
-    private $id_admin;
+class Utilisateur{
     private $nom;
     private $prenom;
     private $email;
     private $motdepasse;
+    private $adresse;
+    private $valider;
+    private $domaine_etude;
+    private $niveau_etude;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -22,9 +24,9 @@ class Admin{
         }
     }
 
-    public function Adminconnexion(Bdd $base){
+    public function UtilisateurConnexion (Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse AND valider = 1 ');
 
         $req->execute(array(
             'email' => $this->email,
@@ -34,18 +36,21 @@ class Admin{
         $res = $req->fetch();
 
         if ($res) {
-            $_SESSION['id_admin'] = $res['id_admin'];
+
+            if ($res['valide'] == 1) {
+                header('Location: ../Erreur/dist/validation.html');
+            }
+            $_SESSION['id_eleves'] = $res['id_eleves'];
+            $_SESSION['nom'] = $res['nom'];
+            $_SESSION['prenom'] = $res['prenom'];
             header('Location: ../index.php');
         }
-        else{
+
+        if (!($res)){
             echo ('mot de passe ou email incorrecte');
         }
 
         return $res;
 
     }
-
-    public function Validercompte(Bdd $base){}
-    public function Valideroffre(Bdd $base){}
-    public function Affectersalle(Bdd $base){}
 }

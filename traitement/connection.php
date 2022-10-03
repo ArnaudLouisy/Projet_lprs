@@ -11,12 +11,13 @@ $eleves = new Eleves (array(
     'motdepasse'=>$_POST['motdepasse']
 ));
 $res=$eleves->EleveConnexion($bdd);
+var_dump($res);
+exit();
+die();
 if ($res){
-    $_SESSION['id_eleves'] = $res['id_eleves'];
-    $_SESSION['nom'] = $res['nom'];
-    $_SESSION['prenom'] = $res['prenom'];
+
 }
-elseif ($res = null){
+elseif ($res == null){
     $entreprise = new Entreprise(array(
         'email'=>$_POST['email'],
         'motdepasse'=>$_POST['motdepasse']

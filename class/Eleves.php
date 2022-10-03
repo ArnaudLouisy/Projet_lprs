@@ -26,31 +26,6 @@ class Eleves{
         }
     }
 
-    public function EleveConnexion (Bdd $base){
-
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse AND valider = 1 ');
-
-        $req->execute(array(
-            'email' => $this->email,
-            'motdepasse' => $this->motdepasse
-        ));
-
-        $res = $req->fetch();
-
-        if ($res['id_eleves']) {
-            header('Location: ../index.php');
-        }
-        if ($res['valide'] == 1) {
-            header('Location: ../Erreur/dist/validation.html');
-        }
-        if (empty($res)){
-            echo ('mot de passe ou email incorrecte');
-        }
-
-        return $res;
-
-    }
-
     public function EleveInscription (Bdd $base){
         $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email');
 

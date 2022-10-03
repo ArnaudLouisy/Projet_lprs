@@ -5,8 +5,8 @@ require_once '../class/Bdd.php';
 $bdd = new Bdd();
 
 $eleves = new Eleves (array(
-    'nom'=>$_POST['nom'],
-    'prenom'=>$_POST['prenom'],
+    'nom'=>ucfirst(strtoupper($_POST['nom'])),
+    'prenom'=>ucfirst($_POST['prenom']),
     'email'=>$_POST['email'],
     'motdepasse'=>$_POST['motdepasse'],
     'adresse'=>$_POST['adresse'],

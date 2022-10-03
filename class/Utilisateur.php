@@ -43,7 +43,7 @@ class Utilisateur{
             $_SESSION['id_eleves'] = $res['id_eleves'];
             $_SESSION['nom'] = $res['nom'];
             $_SESSION['prenom'] = $res['prenom'];
-            header('Location: ../index.php');
+            //header('Location: ../index.php');
         }
 
         if (!($res)){
@@ -53,4 +53,134 @@ class Utilisateur{
         return $res;
 
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param mixed $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMotdepasse()
+    {
+        return $this->motdepasse;
+    }
+
+    /**
+     * @param mixed $motdepasse
+     */
+    public function setMotdepasse($motdepasse)
+    {
+        $this->motdepasse = $motdepasse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValider()
+    {
+        return $this->valider;
+    }
+
+    /**
+     * @param mixed $valider
+     */
+    public function setValider($valider)
+    {
+        $this->valider = $valider;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDomaineEtude()
+    {
+        return $this->domaine_etude;
+    }
+
+    /**
+     * @param mixed $domaine_etude
+     */
+    public function setDomaineEtude($domaine_etude)
+    {
+        $this->domaine_etude = $domaine_etude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNiveauEtude()
+    {
+        return $this->niveau_etude;
+    }
+
+    /**
+     * @param mixed $niveau_etude
+     */
+    public function setNiveauEtude($niveau_etude)
+    {
+        $this->niveau_etude = $niveau_etude;
+    }
+
+
 }

@@ -78,6 +78,7 @@ session_start();
                                 <!--profile-->
                                 <div class='header-btn d-none f-right d-lg-block'>
                                     <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['nom']." ".$_SESSION['prenom']." </a>
+                                    <a href='traitement/deco.php' ><img src='assets/logout.jpg' width='40'></a>
                                 </div>");}
                                 //session entreprise
                               if (isset($_SESSION['id_representant'])){

@@ -21,14 +21,48 @@ class Logs{
         }
     }
 
-    private function addlogs(Bdd $base){
-        $req = $base->getBdd()->prepare('INSERT INTO logs () values ()');
+    public function logs(Bdd $base){
+        $req = $base->getBdd()->prepare('INSERT INTO logs (id_compte,date,heure,adresse_ip) values (:id_compte,:date,:heure,:adresse_ip)');
 
         $req->execute(array(
             'id_compte' => $this->id_compte ,
             'date' => $this->date,
             'heure' => $this->heure,
-            'adresse_ip' => $this->adresse_ip //$_SERVER['REMOTE_ADDR']
+            'adresse_ip' => $this->adresse_ip
         ));
+
     }
+
+    /**
+     * @param mixed $id_compte
+     */
+    public function setIdCompte($id_compte)
+    {
+        $this->id_compte = $id_compte;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @param mixed $heure
+     */
+    public function setHeure($heure)
+    {
+        $this->heure = $heure;
+    }
+
+    /**
+     * @param mixed $adresse_ip
+     */
+    public function setAdresseIp($adresse_ip)
+    {
+        $this->adresse_ip = $adresse_ip;
+    }
+
 }

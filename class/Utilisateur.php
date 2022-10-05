@@ -9,6 +9,7 @@ class Utilisateur{
     private $valider;
     private $domaine_etude;
     private $niveau_etude;
+    private $erreur;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -26,7 +27,7 @@ class Utilisateur{
 
     public function UtilisateurConnexion (Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse AND valider = 1 ');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE email = :email  AND motdepasse = :motdepasse');
 
         $req->execute(array(
             'email' => $this->email,
@@ -35,23 +36,69 @@ class Utilisateur{
 
         $res = $req->fetch();
 
-        if ($res) {
+        if ($res['valider'] == 0 && isset($res['id_representant'])) {
+            header('Location: ../Erreur/dist/validation.html');
+        }
 
-            if ($res['valide'] == 1) {
-                header('Location: ../Erreur/dist/validation.html');
-            }
-            $_SESSION['id_eleves'] = $res['id_eleves'];
-            $_SESSION['nom'] = $res['nom'];
-            $_SESSION['prenom'] = $res['prenom'];
-            //header('Location: ../index.php');
+        elseif ($res) {
+
+            $_SESSION['id_representant'] = $res['id_representant'];
+            $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
+            $_SESSION['role_representant'] = $res['role_representant'];
+            header('Location: ../index.php');
+
         }
 
         if (!($res)){
-            echo ('mot de passe ou email incorrecte');
+
+            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
+
+            $req->execute(array(
+                'email' => $this->email,
+                'motdepasse' => $this->motdepasse
+            ));
+
+            $res = $req->fetch();
+
+            if ($res['valider'] == 0 && isset($res['id_eleves'])) {
+                header('Location: ../Erreur/dist/validation.html');
+            }
+
+            elseif ($res) {
+
+                $_SESSION['id_eleves'] = $res['id_eleves'];
+                $_SESSION['nom'] = $res['nom'];
+                $_SESSION['prenom'] = $res['prenom'];
+                header('Location: ../index.php');
+
+            }
         }
 
-        return $res;
+        if (!($res)) {
 
+            $req = $base->getBdd()->prepare('SELECT * FROM admin WHERE email = :email  AND motdepasse = :motdepasse');
+
+            $req->execute(array(
+                'email' => $this->email,
+                'motdepasse' => $this->motdepasse
+            ));
+
+            $res = $req->fetch();
+
+            if ($res) {
+                $_SESSION['id_admin'] = $res['id_admin'];
+                $_SESSION['nom'] = $res['nom'];
+                $_SESSION['prenom'] = $res['prenom'];
+                header('Location: ../index.php');
+            }
+            elseif (!($res)){
+                $this->erreur = "mot de passe ou adresse email incorrecte";
+                return $this->erreur;
+            };
+        }
+        //var_dump($res);
+        //$req->debugDumpParams();
+        return $res;
     }
 
     /**
@@ -180,6 +227,15 @@ class Utilisateur{
     public function setNiveauEtude($niveau_etude)
     {
         $this->niveau_etude = $niveau_etude;
+    }
+
+    /**
+     * @param $res
+     * @return void
+     */
+    public function extracted($res)
+    {
+
     }
 
 

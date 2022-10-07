@@ -91,14 +91,45 @@ class Utilisateur{
                 $_SESSION['prenom'] = $res['prenom'];
                 header('Location: ../index.php');
             }
-            elseif (!($res)){
-                $this->erreur = "mot de passe ou adresse email incorrecte";
-                return $this->erreur;
+            else{
+                header('Location: ../form/dist/login.php/#a-container');
+                $_SESSION['erreurconnexion'] = "mot de passe ou adresse email incorrecte";
             };
         }
         //var_dump($res);
         //$req->debugDumpParams();
         return $res;
+    }
+
+    public function UtilisateurInscription(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email');
+
+        $req->execute(array(
+            'email' => $this->email,
+        ));
+
+        $res = $req->fetch();
+
+        if ($res) {
+            header('Location: ../form/dist/login.php');
+            $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
+        }
+        else {
+            $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etudes,niveau_etudes) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
+
+            $req->execute(array(
+                'nom' => $this->nom,
+                'prenom' => $this->prenom,
+                'email' => $this->email,
+                'motdepasse' => $this->motdepasse,
+                'adresse' => $this->adresse,
+                'domaine_etude' => $this->domaine_etude,
+                'niveau_etude' => $this->niveau_etude,
+            ));
+
+
+            echo 'La personne a bien été inscrit !' . '<br>';
+        }
     }
 
     /**
@@ -237,6 +268,4 @@ class Utilisateur{
     {
 
     }
-
-
 }

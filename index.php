@@ -81,7 +81,7 @@ session_start();
                                     <a href='traitement/deco.php' ><img src='assets/logout.jpg' width='40'></a>
                                 </div>");}
                                 //session entreprise
-                              if (isset($_SESSION['id_representant'])){
+                              elseif (isset($_SESSION['id_representant'])){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -109,7 +109,7 @@ session_start();
                                 </div>");}
 
                               //aucune session
-                              elseif ($_SESSION == null){echo ("<div class='col-lg-9 col-md-9'>
+                        elseif (empty($_SESSION['id_representant']) || empty($_SESSION['id_eleves'])){echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
                                 <div class='main-menu'>
@@ -133,7 +133,7 @@ session_start();
                                 <!-- Header-btn -->
                                 <div class='header-btn d-none f-right d-lg-block'>
                                     <a href='' class='btn head-btn1'>S'inscrire</a>
-                                    <a href='form/dist/login.html' class='btn head-btn2'>Se connecter</a>
+                                    <a href='form/dist/login.php' class='btn head-btn2'>Se connecter</a>
                                 </div>");}
 
                                 ?>

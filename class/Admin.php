@@ -45,7 +45,9 @@ class Admin{
 
     }
 
-    public function Validercompte(Bdd $base){}
+    public function Validercompte(Bdd $base){
+
+    }
     public function Valideroffre(Bdd $base){}
     public function Affectersalle(Bdd $base){}
 }

@@ -39,10 +39,9 @@ session_start()
           <input class="form__input" name="domaine" type="text" placeholder="Domaine d'etude">
           <input class="form__input" name="niveau" type="text" placeholder="Niveau d'etude">
           <input class="form__input" name="email" type="text" placeholder="Email">
-          <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe">
-          <input class="form__input" type="password" name="mdpconfirme" placeholder="Confirmation">
-
-          <button type="submit" class="">S'inscrire</button>
+          <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
+          <input class="form__input" type="password" name="mdpconfirme" placeholder="Confirmation"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
+          <button type="submit" class=" b">S'inscrire</button>
         </form>
       </div>
       <div class="container b-container" id="b-container">
@@ -58,7 +57,8 @@ session_start()
             ?>
           <input class="form__input" name="email" type="text" placeholder="Email">
           <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe">
-            <H1 style='background-color: red'></H1>
+          <H1 style='background-color: red'></H1>
+          <h4> <input class="form-check-input" type="checkbox"> Se souvenir de moi</h4>
 
           <a class="form__link">Mot de passe oubliée ?</a>
           <button class="">Se connecter</button>

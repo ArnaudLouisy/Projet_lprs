@@ -72,13 +72,14 @@ session_start();
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
+                                            <ul class='submenu'>
+                                                    <li><a href='profile.php'>Profil</a></li>
+                                                    <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </nav>
-                                </div>
-                                <!--profile-->
-                                <div class='header-btn d-none f-right d-lg-block'>
-                                    <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['nom']." ".$_SESSION['prenom']." </a>
-                                    <a href='traitement/deco.php' ><img src='assets/logout.jpg' width='40'></a>
                                 </div>");}
                                 //session entreprise
                               elseif (isset($_SESSION['id_representant'])){
@@ -143,8 +144,6 @@ session_start();
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
-                    </div>
-                </div>
            </div>
        </div>
         <!-- Header End -->

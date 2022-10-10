@@ -69,6 +69,9 @@ class Utilisateur{
                 $_SESSION['id_eleves'] = $res['id_eleves'];
                 $_SESSION['nom'] = $res['nom'];
                 $_SESSION['prenom'] = $res['prenom'];
+                $_SESSION['email'] = $res['email'];
+                $_SESSION['adresse'] = $res['adresse'];
+                $_SESSION['domaine'] = $res['domaine_etudes'];
                 header('Location: ../index.php');
 
             }

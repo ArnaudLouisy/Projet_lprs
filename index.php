@@ -110,7 +110,7 @@ session_start();
                                 </div>");}
 
                               //aucune session
-                        elseif (empty($_SESSION['id_representant']) || empty($_SESSION['id_eleves'])){echo ("<div class='col-lg-9 col-md-9'>
+                        else{echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
                                 <div class='main-menu'>

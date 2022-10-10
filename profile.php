@@ -83,43 +83,19 @@ session_start()
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>
+                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." </a>
+                                            <ul class='submenu'>
+                                                <li><a href='profile.html'>Profil</a></li>
+                                                <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
                             <!--profile-->
                             <div class='header-btn d-none f-right d-lg-block'>
-                                <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['id_eleves']." </a>
-                            </div>");}
-
-                            //aucune session
-                            elseif (empty($_SESSION['id_representant']) || empty($_SESSION['id_eleves'])){echo ("<div class='col-lg-9 col-md-9'>
-                            <div class='menu-wrapper'>
-                                <!-- Main-menu -->
-                                <div class='main-menu'>
-                                    <nav class='d-none d-lg-block'>
-                                        <ul id='navigation'>
-                                            <li><a href='index.php'>Home</a></li>
-                                            <li><a href='job_listing.html'>Find a Jobs </a></li>
-                                            <li><a href='crea.html'>Creation </a></li>
-                                            <li><a href='#'>Page</a>
-                                                <ul class='submenu'>
-                                                    <li><a href='blog.html'>Blog</a></li>
-                                                    <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.html'>job Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href='contact.html'>Contact</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- Header-btn -->
-                                <div class='header-btn d-none f-right d-lg-block'>
-                                    <a href='' class='btn head-btn1'>S'inscrire</a>
-                                    <a href='form/dist/login.php' class='btn head-btn2'>Se connecter</a>
-                                </div>");}
-
-                                ?>
+                                <a><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." </a>
+                            </div>");}?>
                             </div>
                         </div>
                             <!-- Mobile Menu -->
@@ -140,9 +116,19 @@ session_start()
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="assets/img/icon/Profile.jpg" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4>John Doe</h4>
-                                <p class="text-secondary mb-1">Full Stack Developer</p>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                <?php
+                                if(isset($_SESSION['id_eleves'])):
+                                    echo ("<H4>".$_SESSION['nom']." ".$_SESSION['prenom']."</h4>
+                                           <p class='text-secondary mb-1'>Etudiant en ".$_SESSION['domaine']."</p>
+                                           <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
+                                            ");
+                                elseif(isset($_SESSION[''])):
+                                    echo ("<h4></h4>");
+                                endif;
+                                ?>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -177,7 +163,7 @@ session_start()
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
+                                <h6 class="mb-0">Nom</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 Kenneth Valdez
@@ -195,7 +181,7 @@ session_start()
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Phone</h6>
+                                <h6 class="mb-0">Adresse</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 (239) 816-9029
@@ -204,7 +190,7 @@ session_start()
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
+                                <h6 class="mb-0">Domaine Etudes</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 (320) 380-4539
@@ -213,7 +199,7 @@ session_start()
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Address</h6>
+                                <h6 class="mb-0">Niveau Etudes</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 Bay Area, San Francisco, CA

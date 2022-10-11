@@ -92,7 +92,7 @@ class Utilisateur{
                 $_SESSION['id_admin'] = $res['id_admin'];
                 $_SESSION['nom'] = $res['nom'];
                 $_SESSION['prenom'] = $res['prenom'];
-                header('Location: ../index.php');
+                header('Location: ../admin/index.php');
             }
             else{
                 header('Location: ../form/dist/login.php/#a-container');

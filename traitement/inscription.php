@@ -8,6 +8,7 @@ if ($_POST['motdepasse'] == $_POST['mdpconfirme'] ){
     $utilisateur = new Utilisateur (array(
     'nom'=>ucfirst(strtoupper($_POST['nom'])),
     'prenom'=>ucfirst($_POST['prenom']),
+    'role' => 'eleves',
     'email'=>$_POST['email'],
     'motdepasse'=>$_POST['motdepasse'],
     'adresse'=>$_POST['adresse'],

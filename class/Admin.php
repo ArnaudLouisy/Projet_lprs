@@ -22,7 +22,7 @@ class Admin{
         }
     }
 
-    public function Adminconnexion(Bdd $base){
+    public function ComptNonValide(Bdd $base){
 
         $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
 

@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Utilisateur{
     private $nom;
     private $prenom;
@@ -9,7 +11,7 @@ class Utilisateur{
     private $valider;
     private $domaine_etude;
     private $niveau_etude;
-    private $erreur;
+    private $role;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -105,34 +107,46 @@ class Utilisateur{
     }
 
     public function UtilisateurInscription(Bdd $base){
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email');
 
-        $req->execute(array(
-            'email' => $this->email,
-        ));
-
-        $res = $req->fetch();
-
-        if ($res) {
-            header('Location: ../form/dist/login.php');
-            $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
-        }
-        else {
-            $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etudes,niveau_etudes) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
+        if($this->role = "eleves"){
+            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email');
 
             $req->execute(array(
-                'nom' => $this->nom,
-                'prenom' => $this->prenom,
                 'email' => $this->email,
-                'motdepasse' => $this->motdepasse,
-                'adresse' => $this->adresse,
-                'domaine_etude' => $this->domaine_etude,
-                'niveau_etude' => $this->niveau_etude,
             ));
 
+            $res = $req->fetch();
 
-            echo 'La personne a bien été inscrit !' . '<br>';
+            if ($res) {
+                header('Location: ../form/dist/login.php');
+                $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
+            }
+            else {
+                $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etudes,niveau_etudes) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
+
+                $req->execute(array(
+                    'nom' => $this->nom,
+                    'prenom' => $this->prenom,
+                    'email' => $this->email,
+                    'motdepasse' => $this->motdepasse,
+                    'adresse' => $this->adresse,
+                    'domaine_etude' => $this->domaine_etude,
+                    'niveau_etude' => $this->niveau_etude,
+                ));
+
+
+                echo 'La personne a bien été inscrit !' . '<br>';
+            }
         }
+
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 
     /**

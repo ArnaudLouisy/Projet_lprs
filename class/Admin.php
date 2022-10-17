@@ -24,22 +24,11 @@ class Admin{
 
     public function ComptNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1');
 
-        $req->execute(array(
-            'email' => $this->email,
-            'motdepasse' => $this->motdepasse
-        ));
+        $req->execute(array());
 
         $res = $req->fetch();
-
-        if ($res) {
-            $_SESSION['id_admin'] = $res['id_admin'];
-            header('Location: ../index.php');
-        }
-        else{
-            echo ('mot de passe ou email incorrecte');
-        }
 
         return $res;
 

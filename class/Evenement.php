@@ -24,4 +24,164 @@ class Evenement{
             }
         }
     }
+    public function creeunevenement(Bdd $base){
+
+            $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit,salle) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit,:salle)');
+
+            $req->execute(array(
+                'nom_event' => $this->nom_event,
+                'description' => $this->description,
+                'date' => $this->date,
+                'heure' => $this->heure,
+                'duree' => $this->duree,
+                'nombre_inscrit' => $this->nombre_inscrit,
+                'salle' => $this->salle,
+            ));
+
+
+            echo 'levenement a bien été crée !' . '<br>';
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdEvent()
+    {
+        return $this->id_event;
+    }
+
+    /**
+     * @param mixed $id_event
+     */
+    public function setIdEvent($id_event)
+    {
+        $this->id_event = $id_event;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomEvent()
+    {
+        return $this->nom_event;
+    }
+
+    /**
+     * @param mixed $nom_event
+     */
+    public function setNomEvent($nom_event)
+    {
+        $this->nom_event = $nom_event;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeure()
+    {
+        return $this->heure;
+    }
+
+    /**
+     * @param mixed $heure
+     */
+    public function setHeure($heure)
+    {
+        $this->heure = $heure;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param mixed $duree
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombreInscrit()
+    {
+        return $this->nombre_inscrit;
+    }
+
+    /**
+     * @param mixed $nombre_inscrit
+     */
+    public function setNombreInscrit($nombre_inscrit)
+    {
+        $this->nombre_inscrit = $nombre_inscrit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAutorise()
+    {
+        return $this->autorise;
+    }
+
+    /**
+     * @param mixed $autorise
+     */
+    public function setAutorise($autorise)
+    {
+        $this->autorise = $autorise;
+    }
+
+
+
+
 }

@@ -134,7 +134,6 @@ class Utilisateur{
                     'niveau_etude' => $this->niveau_etude,
                 ));
 
-
                 echo 'La personne a bien été inscrit !' . '<br>';
             }
         }

@@ -1,8 +1,10 @@
 <?php
 session_start();
-require_once 'Admin.php';
-$compt = new Admin();
-$compteleve = $compt->ComptNonValide()
+require_once 'class/Admin.php';
+require_once 'class/Bdd.php';
+$bdd = new Bdd();
+$compt = new Admin(array());
+$compteleves = $compt->ComptNonValide($bdd);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,21 +25,17 @@ $compteleve = $compt->ComptNonValide()
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-<?php foreach ($compteleve as $value){
+<?php foreach ($compteleves as $value){
     echo "<tr>
-            <td>".$value['id_eleve']."</td>
+            <td>".$value['id_eleves']."</td>
             <td>".$value['nom']."</td>
             <td>".$value['prenom']."</td>
-            <td>".$value['heure_arrivee']."</td>
-            <td>".$value['ref_pilote']."</td>
-            <td>".$value['ref_avion']."</td>
-        </tr>";};?>
+            <td>".$value['email']."</td>
+            </tr>";};?>
             </tr>
             </tbody>
             <tfoot>
@@ -46,8 +44,6 @@ $compteleve = $compt->ComptNonValide()
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
             </tr>
             </tfoot>
         </table>

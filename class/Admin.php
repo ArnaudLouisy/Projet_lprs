@@ -28,10 +28,9 @@ class Admin{
 
         $req->execute(array());
 
-        $res = $req->fetch();
+        $res = $req->fetchAll();
 
         return $res;
-
     }
 
     public function Validercompte(Bdd $base){

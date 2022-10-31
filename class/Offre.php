@@ -31,6 +31,7 @@ class Offre
     {
 
 
+
         $req = $base->getBdd()->prepare('SELECT * FROM offre ');
         $req->execute(array(
             'offre' => $this->offre,
@@ -59,7 +60,9 @@ class Offre
 
 
     }
-    private function modifieroffre(Bdd $base){
+
+    private function modifieroffre(Bdd $base)
+    {
         $req = $base->getBdd()->prepare("UPDATE offre SET id_offre='id_offre',titre_offre='titre_offre',description='description',date_publication='date_publication',type_contrat='type_contrat',dure_contrat='dure_contrat',pourvue='pourvue',ref_representant='ref_representant'  WHERE offre=?");
 
         if (offre->query(sql) === TRUE) {
@@ -72,7 +75,8 @@ class Offre
 
     }
 
-    private function supprimeroffre(Bdd $base){
+    private function supprimeroffre(Bdd $base)
+    {
         $req = $base->getBdd()->prepare("DELETE FROM offre ");
 
         if (offre->query(sql) === TRUE) {

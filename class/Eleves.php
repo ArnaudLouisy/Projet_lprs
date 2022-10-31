@@ -28,7 +28,7 @@ class Eleves{
 
     public function ComptNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1 or valider is null');
 
         $req->execute(array());
 
@@ -36,7 +36,11 @@ class Eleves{
     }
 
     public function valider(Bdd $base){
-        $req = $base->getBdd()->prepare('Update utilisateur_eleves set valider =1 WHERE id_eleves = $this->id_eleves');
+        $req = $base->getBdd()->prepare('Update utilisateur_eleves set valider =1 WHERE id_eleves = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_eleves
+        ));
 
     }
 

@@ -23,5 +23,21 @@ class RendezVous{
         }
     }
 
-    
+    public function validerrendezvous(Bdd $base){
+        $req = $base->getBdd()->prepare('INSERT INTO rendezvous (nom_event,description,date,heure,duree,nombre_inscrit,salle) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit,:salle)');
+
+        $req->execute(array(
+            'nom_event' => $this->nom_event,
+            'description' => $this->description,
+            'date' => $this->date,
+            'heure' => $this->heure,
+            'duree' => $this->duree,
+            'nombre_inscrit' => $this->nombre_inscrit,
+            'salle' => $this->salle,
+        ));
+
+
+        echo 'levenement a bien ete inscrit !' . '<br>';
+    }
+    }
 }

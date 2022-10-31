@@ -22,17 +22,6 @@ class Admin{
         }
     }
 
-    public function ComptNonValide(Bdd $base){
-
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1');
-
-        $req->execute(array());
-
-        $res = $req->fetchAll();
-
-        return $res;
-    }
-
     public function Validercompte(Bdd $base){
 
     }

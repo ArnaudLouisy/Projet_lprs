@@ -1,5 +1,5 @@
 <?php
-
+include_once "./Bdd.php";
 class Evenement{
 
     private $id_event;
@@ -11,9 +11,7 @@ class Evenement{
     private $nombre_inscrit;
     private $autorise;
 
-    public function __construct(array $donnees){
-        $this->hydrate($donnees);
-    }
+
 
     private function hydrate(array $donnees){
         foreach ($donnees as $key => $value){
@@ -24,18 +22,18 @@ class Evenement{
             }
         }
     }
-    public function creeunevenement(Bdd $base){
-
+    public function creeunevenement(string $nom,string $description,string $date,string $heure,string $duree,string $nombre_inscrit,string $salle){
+    $base = Bdd::getBdd();
             $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit,salle) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit,:salle)');
 
             $req->execute(array(
-                'nom_event' => $this->nom_event,
-                'description' => $this->description,
-                'date' => $this->date,
-                'heure' => $this->heure,
-                'duree' => $this->duree,
-                'nombre_inscrit' => $this->nombre_inscrit,
-                'salle' => $this->salle,
+                'nom_event' => $nom,
+                'description' => $description,
+                'date' => $date,
+                'heure' => $heure,
+                'duree' => $duree,
+                'nombre_inscrit' => $nombre_inscrit,
+                'salle' => $salle,
             ));
 
 

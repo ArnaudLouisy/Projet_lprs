@@ -94,7 +94,7 @@ class Utilisateur{
                 $_SESSION['id_admin'] = $res['id_admin'];
                 $_SESSION['nom'] = $res['nom'];
                 $_SESSION['prenom'] = $res['prenom'];
-                header('Location: ../admin/index.php');
+                header('Location: ../admin.php');
             }
             else{
                 header('Location: ../form/dist/login.php/#a-container');
@@ -119,7 +119,7 @@ class Utilisateur{
 
             if ($res) {
                 header('Location: ../form/dist/login.php');
-                $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
+                $_SESSION['erreur'] = "Cette adresse e-mail est déja inscrit .";
             }
             else {
                 $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etudes,niveau_etudes) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');

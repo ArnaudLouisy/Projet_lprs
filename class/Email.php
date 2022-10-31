@@ -18,4 +18,17 @@ class Email{
             }
         }
     }
+
+    public function motDePasseOublier () {
+
+    }
+
+    public function compteCreer(){
+
+    }
+
+    public function compteValider(){
+
+    }
 }
+

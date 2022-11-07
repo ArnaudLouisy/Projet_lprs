@@ -1,7 +1,7 @@
 <?php
-require_once '../class/Entreprise.php';
-require_once '../class/Eleves.php';
 require_once '../class/Bdd.php';
+require_once '../class/RendezVous.php';
+
 
 $bdd = new Bdd();
 $rendezvous = new RendezVous (array(
@@ -9,3 +9,5 @@ $rendezvous = new RendezVous (array(
     'heure'=>$_POST['heure'],
     'ref_offre'=>$_POST['ref_offre']
 ));
+$rendezvous->creerendezvous($bdd);
+var_dump($_POST);

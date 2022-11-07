@@ -31,7 +31,6 @@ class Offre
     {
 
 
-
         $req = $base->getBdd()->prepare('SELECT * FROM offre ');
         $req->execute(array(
             'offre' => $this->offre,

@@ -61,7 +61,7 @@ session_start();
                                     <nav class='d-none d-lg-block'>
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Accueil</a></li>
-                                            <li><a href='job_listing.html'>Trouver un Jobs </a></li>
+                                            <li><a href='job_listing.html'>Trouver une offre </a></li>
                                             <li><a href='crea.html'>Evénements</a></li>
                                             <li><a href='#'>Page</a>
                                             <ul class='submenu'>
@@ -121,7 +121,7 @@ session_start();
                                             <li><a href='crea.html'>Creation </a></li>
                                             <li><a href='#'>Page</a>
                                 <ul class='submenu'>
-                                                    <li><a href='blog.html'>Blog</a></li>
+                                                    <li><a href='rendezvous.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
                                                     <li><a href='job_details.html'>job Details</a></li>

@@ -1,5 +1,12 @@
 <?php
-session_start()
+session_start();
+require_once 'class/Eleves.php';
+require_once 'class/Bdd.php';
+$bdd = new Bdd();
+$eleve = new Eleves(array(
+        'ideleves' => $_SESSION['id_eleves']
+));
+$profile=$eleve->profile($bdd)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +61,7 @@ session_start()
                                         </ul>
                                     </li>
                                     <li><a href='contact.html'>Contact</a></li>
-                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." ".$_SESSION['prenom']." </a>
+                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$profile['nom']." ".$profile['prenom']." </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.html'>Profil</a></li>
                                             <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
@@ -161,51 +168,103 @@ session_start()
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Nom</h6>
+                        <?PHP
+                        if($_SESSION['id_eleves']){
+                            echo ("
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Nom</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                Kenneth Valdez
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                fip@jukmuh.al
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['nom']."
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Adresse</h6>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>prenom</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                (239) 816-9029
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Domaine Etudes</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['prenom']."
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Niveau Etudes</h6>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Email</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['email']."
                             </div>
                         </div>
                         <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Adresse</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['adresse']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Domaine Etudes</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['domaine_etudes']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Niveau Etudes</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['niveau_etudes']."
+                            </div>
+                        </div>
+                        <hr>
+                        ");}
+                        elseif ($_SESSION['id_representant']){
+                            echo ("<div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Nom</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['nom']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>prenom</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['prenom']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Email</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['email']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Adresse</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['adresse']."
+                            </div>
+                        </div>
+                        <hr>");
+                        }
+                        ?>
                         <div class="row">
                             <div class="col-sm-12">
                                 <a class="btn head-btn1 " href="profile.edit.html">modifié</a>

@@ -44,6 +44,16 @@ class Eleves{
 
     }
 
+    public function profile(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE id_eleves = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_eleves
+        ));
+
+        return $req->fetch();
+    }
+
     /**
      * @return mixed
      */

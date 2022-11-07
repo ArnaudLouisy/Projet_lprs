@@ -267,7 +267,7 @@ $profile=$eleve->profile($bdd)
                         ?>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn head-btn1 " href="profile.edit.html">modifié</a>
+                                <a class="btn head-btn1 " href="profile.edit.php">modifié</a>
                             </div>
                         </div>
                     </div>

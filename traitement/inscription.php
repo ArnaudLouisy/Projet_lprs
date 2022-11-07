@@ -4,6 +4,7 @@ require_once '../class/Utilisateur.php';
 require_once '../class/Bdd.php';
 
 $bdd = new Bdd();
+
 if (!empty($_POST[''])){
 
     if ($_POST['motdepasse'] == $_POST['mdpconfirme'] ){
@@ -19,12 +20,12 @@ if (!empty($_POST[''])){
         ));
         $utilisateur->UtilisateurInscription($bdd);
     }else{
-        $_SESSION['erreur'] = "les mots de passe ne sont pas identiques .";
+        $_SESSION['erreurmotdepasse'] = "les mots de passe ne sont pas identiques .";
         header('Location: ../form/dist/login.php');
     }
 
 }else{
-    $_SESSION['erreur'] = "Un champ est vide .";
+    $_SESSION['erreurinscription'] = "Un champ est vide .";
     header('Location: ../form/dist/login.php');
 }
 

@@ -35,10 +35,34 @@ $compteleves = $compt->ComptNonValide($bdd);
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <head>
-    
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Eleve</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Entreprise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Evenement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Emploi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </head>
 <body>
 <div class="container">
+    <h1>Eleve</h1>
     <div class="row">
         <table id="example" class="table table-striped" style="width:100%">
             <thead>

@@ -133,7 +133,7 @@ session_start();
                                 </div>
                                 <!-- Header-btn -->
                                 <div class='header-btn d-none f-right d-lg-block'>
-                                    <a href='' class='btn head-btn1'>S'inscrire</a>
+                                    <a href='form/dist/inscription.php' class='btn head-btn1'>S'inscrire</a>
                                     <a href='form/dist/login.php' class='btn head-btn2'>Se connecter</a>
                                 </div>");}
 

@@ -7,6 +7,7 @@ class Utilisateur{
     private $prenom;
     private $email;
     private $motdepasse;
+    private $post;
     private $adresse;
     private $valider;
     private $domaine_etude;
@@ -118,7 +119,7 @@ class Utilisateur{
             $res = $req->fetch();
 
             if ($res) {
-                header('Location: ../form/dist/login.php');
+                header('Location: ../form/dist/inscription.php');
                 $_SESSION['erreur'] = "Cette adresse e-mail est déja inscrit .";
             }
             else {
@@ -134,6 +135,35 @@ class Utilisateur{
                     'niveau_etude' => $this->niveau_etude,
                 ));
 
+                echo 'La personne a bien été inscrit !' . '<br>';
+            }
+        }
+        if($this->role = "entreprise"){
+            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE email = :email');
+
+            $req->execute(array(
+                'email' => $this->email,
+            ));
+
+            $res = $req->fetch();
+
+            if ($res) {
+                header('Location: ../form/dist/inscription.php');
+                $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
+            }
+            else {
+                $req = $base->getBdd()->prepare('INSERT INTO utilisateur_entreprise (nom_entreprise,email,motdepasse,adresse,role_representant) values (:nom_entreprise,:email,:motdepasse,:adresse,:role_representant)');
+
+                $req->execute(array(
+                    'nom_entreprise' => $this->nom,
+                    'role_representant' => $this->post,
+                    'email' => $this->email,
+                    'motdepasse' => $this->motdepasse,
+                    'adresse' => $this->adresse,
+                ));
+                var_dump($this);
+                var_dump($req);
+                die();
                 echo 'La personne a bien été inscrit !' . '<br>';
             }
         }
@@ -277,11 +307,24 @@ class Utilisateur{
     }
 
     /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param mixed $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+    }
+
+    /**
      * @param $res
      * @return void
      */
-    public function extracted($res)
-    {
 
-    }
 }

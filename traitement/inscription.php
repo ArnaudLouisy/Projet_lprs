@@ -4,30 +4,38 @@ require_once '../class/Utilisateur.php';
 require_once '../class/Bdd.php';
 
 $bdd = new Bdd();
+var_dump($_POST);
 
-if (!empty($_POST[''])){
+if (!empty($_POST['']) || $_POST[''] != ' ') {
+    if ($_POST['motdepasse'] == $_POST['mdpconfirme']) {
+        if ($_POST['eleve']) {
+            $utilisateur = new Utilisateur (array(
+                'nom' => strtoupper($_POST['nom']),
+                'prenom' => ucfirst(strtolower($_POST['prenom'])),
+                'role' => 'eleves',
+                'email' => $_POST['email'],
+                'motdepasse' => $_POST['motdepasse'],
+                'adresse' => $_POST['adresse'],
+                'domaineetude' => $_POST['domaine'],
+                'niveauetude' => $_POST['niveau']
+            ));
 
-    if ($_POST['motdepasse'] == $_POST['mdpconfirme'] ){
-        $utilisateur = new Utilisateur (array(
-            'nom'=>strtoupper($_POST['nom']),
-            'prenom'=>ucfirst(strtolower($_POST['prenom'])),
-            'role' => 'eleves',
-            'email'=>$_POST['email'],
-            'motdepasse'=>$_POST['motdepasse'],
-            'adresse'=>$_POST['adresse'],
-            'domaineetude'=>$_POST['domaine'],
-            'niveauetude'=>$_POST['niveau']
-        ));
+        } elseif ($_POST['entreprise']) {
+            $utilisateur = new Utilisateur (array(
+                'nom' => strtoupper($_POST['nom']),
+                'post' => $_POST['post'],
+                'role' => 'entreprise',
+                'email' => $_POST['email'],
+                'motdepasse' => $_POST['motdepasse'],
+                'adresse' => $_POST['adresse'],
+
+            ));
+        }
         $utilisateur->UtilisateurInscription($bdd);
-    }else{
-        $_SESSION['erreurmotdepasse'] = "les mots de passe ne sont pas identiques .";
-        header('Location: ../form/dist/login.php');
-    }
 
-}else{
-    $_SESSION['erreurinscription'] = "Un champ est vide .";
-    header('Location: ../form/dist/login.php');
+    }
 }
+
 
 
 

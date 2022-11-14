@@ -106,7 +106,7 @@ session_start();
                                 </div>
                                 <!--profile-->
                                 <div class='header-btn d-none f-right d-lg-block'>
-                                    <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['id_eleves']." </a>
+                                    <a><img src='assets/img/icon/Profile.jpg' width='75'>".$_SESSION['nom_entreprise'].' '.$_SESSION['role_representant']." </a>
                                 </div>");}
 
                               //aucune session

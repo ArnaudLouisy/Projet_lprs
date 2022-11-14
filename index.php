@@ -63,7 +63,7 @@ session_start();
                                             <li><a href='index.php'>Accueil</a></li>
                                             <li><a href='job_listing.html'>Trouver une offre </a></li>
                                             <li><a href='crea.html'>Evénements</a></li>
-                                            <li><a href='#'>Page</a>
+                                           <li><a href='#'>Page</a>
                                             <ul class='submenu'>
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
@@ -119,7 +119,7 @@ session_start();
                                     <nav class='d-none d-lg-block'>
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Home</a></li>
-                                            <li><a href='job_listing.html'>Find a Jobs </a></li>
+                                            <li><a href='job_listing.html'> </a></li>
                                             <li><a href='crea.html'>Creation </a></li>
                                             <li><a href='#'>Page</a>
                                 <ul class='submenu'>
@@ -161,14 +161,14 @@ session_start();
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
                                 <div class="hero__caption">
-                                    <h1>Find the most exciting startup jobs</h1>
+                                    <h1> Trouvez le travail ou l'employer parfait </h1>
                                 </div>
                             </div>
                         </div>
                         <!-- Search Box -->
                         <div class="row">
                             <div class="col-xl-8">
-                                <!-- form -->
+                                <!-- form
                                 <form action="#" class="search-box">
                                     <div class="input-form">
                                         <input type="text" placeholder="Intitulé du poste mots clés">
@@ -186,7 +186,7 @@ session_start();
                                     <div class="search-form">
                                         <a href="#">Rechercher</a>
                                     </div>	
-                                </form>	
+                                </form>	-->
                             </div>
                         </div>
                     </div>
@@ -309,7 +309,7 @@ session_start();
         </div>
         <!-- Our Services End -->
         <!-- Online CV Area Start -->
-         <div class="online-cv cv-bg section-overly pt-90 pb-120"  data-background="assets/img/gallery/cv_bg.jpg">
+         <!--<div class="online-cv cv-bg section-overly pt-90 pb-120"  data-background="assets/img/gallery/cv_bg.jpg">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
@@ -321,7 +321,7 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Online CV Area End-->
         <!-- Featured_job_start -->
         <section class="featured-job-area feature-padding">
@@ -414,8 +414,8 @@ session_start();
                                 <span class="flaticon-search"></span>
                             </div>
                             <div class="process-cap">
-                               <h5>1. Search a job</h5>
-                               <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                               <h5>1.Rechercher un emploi </h5>
+                               <p>Trouver l'emploie qui vous convient parmis les centaines d'offre que l'on vous propose</p>
                             </div>
                         </div>
                     </div>
@@ -425,8 +425,8 @@ session_start();
                                 <span class="flaticon-curriculum-vitae"></span>
                             </div>
                             <div class="process-cap">
-                               <h5>2. Apply for job</h5>
-                               <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                               <h5>2. Crée des evenements</h5>
+                               <p>Que vous soyez une entreprise ou un etudiant crée un evenement pour vous mettre en avant ou encore pour decouvrir d'autre entreprise.</p>
                             </div>
                         </div>
                     </div>
@@ -436,27 +436,27 @@ session_start();
                                 <span class="flaticon-tour"></span>
                             </div>
                             <div class="process-cap">
-                               <h5>3. Get your job</h5>
-                               <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                               <h5>3. Trouvez le travail de vos rêves </h5>
+                               <!--<p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>-->
                             </div>
                         </div>
                     </div>
                 </div>
              </div>
         </div>
-        <!-- How  Apply Process End-->
-        <!-- Testimonial Start -->
+        <!-- How  Apply Process End
+
         <div class="testimonial-area testimonial-padding">
             <div class="container">
-                <!-- Testimonial contents -->
+
                 <div class="row d-flex justify-content-center">
                     <div class="col-xl-8 col-lg-8 col-md-10">
                         <div class="h1-testimonial-active dot-style">
-                            <!-- Single Testimonial -->
+                            <
                             <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
+                                <!
                                 <div class="testimonial-caption ">
-                                    <!-- founder -->
+                                    <!
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
                                             <img src="assets/img/testmonial/testimonial-founder.png" alt="">
@@ -469,11 +469,11 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                            <!-- Single Testimonial -->
+
                             <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
+                                <
                                 <div class="testimonial-caption ">
-                                    <!-- founder -->
+
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
                                             <img src="assets/img/testmonial/testimonial-founder.png" alt="">
@@ -486,11 +486,11 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                            <!-- Single Testimonial -->
+
                             <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
+
                                 <div class="testimonial-caption ">
-                                    <!-- founder -->
+
                                     <div class="testimonial-founder  ">
                                         <div class="founder-img mb-30">
                                             <img src="assets/img/testmonial/testimonial-founder.png" alt="">
@@ -507,7 +507,7 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Testimonial End -->
          <!-- Support Company Start-->
          <div class="support-company-area support-padding fix">
@@ -517,13 +517,13 @@ session_start();
                         <div class="right-caption">
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle2">
-                                <span>What we are doing</span>
-                                <h2>24k Talented people are getting Jobs</h2>
+                                <span>L'evenementiel</span>
+                                <h1> Vous etes un particulier ou une entreprise crée un evenement pour echanger </h1>
                             </div>
                             <div class="support-caption">
-                                <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
-                                <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
-                                <a href="crea.html" class="btn post-btn">Post a job</a>
+                                <p class="pera-top">Les evenements on pour but de rasemblé etudiantet entreprise autour d'un sujet dans le but d'echanger et de ce faire des contacts </p>
+
+                                <a href="crea.html" class="btn post-btn">Crée un evenement</a>
                             </div>
                         </div>
                     </div>
@@ -539,15 +539,13 @@ session_start();
                 </div>
             </div>
         </div>
-        <!-- Support Company End-->
-        <!-- Blog Area Start -->
+
         <div class="home-blog-area blog-h-padding">
             <div class="container">
-                <!-- Section Tittle -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
-                            <span>Our latest blog</span>
+                           <!-- <span>Our latest blog</span>
                             <h2>Our recent news</h2>
                         </div>
                     </div>
@@ -558,7 +556,7 @@ session_start();
                             <div class="blog-img-cap">
                                 <div class="blog-img">
                                     <img src="assets/img/blog/home-blog1.jpg" alt="">
-                                    <!-- Blog date -->
+
                                     <div class="blog-date text-center">
                                         <span>24</span>
                                         <p>Now</p>
@@ -577,7 +575,7 @@ session_start();
                             <div class="blog-img-cap">
                                 <div class="blog-img">
                                     <img src="assets/img/blog/home-blog2.jpg" alt="">
-                                    <!-- Blog date -->
+
                                     <div class="blog-date text-center">
                                         <span>24</span>
                                         <p>Now</p>
@@ -593,7 +591,7 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Blog Area End -->
 
     </main>
@@ -710,7 +708,7 @@ session_start();
                          <div class="col-xl-10 col-lg-10 ">
                              <div class="footer-copy-right">
                                  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!--Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                              </div>
                          </div>

@@ -8,7 +8,7 @@ require_once 'class/Bdd.php';
 <html>
 <body>
 
-<h2>Formulaire creation d'un evenemement</h2>
+<h2>Formulaire creation d'un Rendez-vous</h2>
 
 <form action="traitement/traitementrdv.php" method="post">
 

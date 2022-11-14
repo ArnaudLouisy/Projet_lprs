@@ -63,7 +63,7 @@ session_start()
             <input class="form__input" name="email" type="text" placeholder="Email">
             <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
             <input class="form__input" type="password" name="mdpconfirme" placeholder="Confirmation"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
-            <button name="entreprise" type="submit" class=" b">S'inscrire</button>
+            <button name="entreprise" value="entreprise" type="submit" class=" b">S'inscrire</button>
         </form>
     </div>
     <div class="switch" id="switch-cnt">

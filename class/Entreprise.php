@@ -25,29 +25,13 @@ class Entreprise{
         }
     }
 
-    public function EntrepriseConnexion (Bdd $base){
+    public function ComptNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE email = :email  AND motdepasse = :motdepasse AND valider = 1 ');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1 or valider is null');
 
-        $req->execute(array(
-            'email' => $this->email,
-            'motdepasse' => $this->motdepasse
-        ));
+        $req->execute(array());
 
-        $res = $req->fetch();
-
-        if ($res) {
-            header('Location: ../index.php');
-        }
-        if ($res['valide'] != 1) {
-            header('Location: ../Erreur/dist/validation.html');
-        }
-        else{
-            echo ('mot de passe ou email incorrecte');
-        }
-
-        return $res;
-
+        return $req->fetchAll();
     }
 
     /**

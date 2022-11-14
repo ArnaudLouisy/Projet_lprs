@@ -27,11 +27,20 @@ class Entreprise{
 
     public function ComptNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1 or valider is null');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE valider != 1 or valider is null');
 
         $req->execute(array());
 
         return $req->fetchAll();
+    }
+
+    public function valider(Bdd $base){
+        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_representant
+        ));
+
     }
 
     /**

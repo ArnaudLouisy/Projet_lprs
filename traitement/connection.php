@@ -14,7 +14,9 @@ $res=$eleves->UtilisateurConnexion($bdd);
 
 $loge = new Logs(array(
     'idcompte'=>$res['id_eleves'],
-    'date'=>setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR','fr','fr','fra','fr_FR@euro'),
+    date_default_timezone_set('Europe/Paris'),
+    'date'=>date("d-m-y" ),
+    date_default_timezone_set('Europe/Paris'),
     'heure'=>date("H:i:s"),
     'adresseip'=>$_SERVER['REMOTE_ADDR']
 ));

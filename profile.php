@@ -1,12 +1,21 @@
 <?php
 session_start();
-require_once 'class/Eleves.php';
 require_once 'class/Bdd.php';
 $bdd = new Bdd();
-$eleve = new Eleves(array(
+if ($_SESSION['id_representant']){
+    require_once 'class/Entreprise.php';
+    $entreprise = new Entreprise(array(
+        'idrepresentant' => $_SESSION['id_representant']
+    ));
+    $profile=$entreprise->profile($bdd);
+}
+if ($_SESSION['id_eleves']){
+    require_once 'class/Eleves.php';
+    $eleve = new Eleves(array(
         'ideleves' => $_SESSION['id_eleves']
-));
-$profile=$eleve->profile($bdd)
+    ));
+    $profile=$eleve->profile($bdd);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +139,10 @@ $profile=$eleve->profile($bdd)
                                            <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
                                             ");
                                 elseif(isset($_SESSION[''])):
-                                    echo ("<h4></h4>");
+                                    echo ("<H4>".$_SESSION['role_representant']." ".$_SESSION['nom_entreprise']."</h4>
+                                           <p class='text-secondary mb-1'>Etudiant en ".$_SESSION['domaine']."</p>
+                                           <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
+                                            ");
                                 endif;
                                 ?>
 
@@ -250,7 +262,7 @@ $profile=$eleve->profile($bdd)
                                 <h6 class='mb-0'>Nom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['nom']."
+                                ".$profile['nom_entreprise']."
                             </div>
                         </div>
                         <hr>
@@ -259,7 +271,7 @@ $profile=$eleve->profile($bdd)
                                 <h6 class='mb-0'>prenom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['prenom']."
+                                ".$profile['role_representant']."
                             </div>
                         </div>
                         <hr>

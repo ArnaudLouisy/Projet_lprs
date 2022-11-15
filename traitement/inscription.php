@@ -20,7 +20,7 @@ if (!empty($_POST['']) || $_POST[''] != ' ') {
                 'niveauetude' => $_POST['niveau']
             ));
             $utilisateur->UtilisateurInscription($bdd);
-        } elseif ($_POST['entreprise'] = 'entreprise') {
+        } elseif (isset($_POST['entreprise'])) {
             $entreprise = new Utilisateur (array(
                 'nom' => strtoupper($_POST['nom']),
                 'post' => $_POST['post'],

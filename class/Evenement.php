@@ -1,5 +1,5 @@
 <?php
-include_once "./Bdd.php";
+// include_once "./Bdd.php"; abd plus JAMAIS ça plus JAMAIS JAMAIS JAMAIS
 class Evenement{
 
     private $id_event;
@@ -11,7 +11,10 @@ class Evenement{
     private $nombre_inscrit;
     private $autorise;
 
-
+    public function __construct(array $donnees)
+    {
+        $this->hydrate($donnees);
+    }
 
     private function hydrate(array $donnees){
         foreach ($donnees as $key => $value){
@@ -22,18 +25,16 @@ class Evenement{
             }
         }
     }
-    public function creeunevenement(string $nom,string $description,string $date,string $heure,string $duree,string $nombre_inscrit,string $salle){
-    $base = Bdd::getBdd();
+    public function creeunevenement(Bdd $base){
             $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit,salle) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit,:salle)');
-
             $req->execute(array(
-                'nom_event' => $nom,
-                'description' => $description,
-                'date' => $date,
-                'heure' => $heure,
-                'duree' => $duree,
-                'nombre_inscrit' => $nombre_inscrit,
-                'salle' => $salle,
+                'nom_event' => $this->nom,
+                'description' => $this->description,
+                'date' => $this->date,
+                'heure' => $this->heure,
+                'duree' => $this->duree,
+                'nombre_inscrit' => $this->nombre_inscrit,
+                'salle' => $this->salle,
             ));
 
 
@@ -58,18 +59,22 @@ class Evenement{
         echo 'levenement a bien ete inscrit !' . '<br>';
     }
 
+    public function EvenementNonValide(Bdd $base){
 
+        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE valider != 1 or valider is null');
 
+        $req->execute(array());
 
+        return $req->fetchAll();
+    }
 
+    public function valider(Bdd $base){
+        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
 
-
-
-
-
-
-
-
+        $req ->execute(array(
+            'id'=>$this->id_representant
+        ));
+    }
 
     /**
      * @return mixed

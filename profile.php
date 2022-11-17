@@ -1,21 +1,5 @@
 <?php
 session_start();
-require_once 'class/Bdd.php';
-$bdd = new Bdd();
-if ($_SESSION['id_representant']){
-    require_once 'class/Entreprise.php';
-    $entreprise = new Entreprise(array(
-        'idrepresentant' => $_SESSION['id_representant']
-    ));
-    $profile=$entreprise->profile($bdd);
-}
-if ($_SESSION['id_eleves']){
-    require_once 'class/Eleves.php';
-    $eleve = new Eleves(array(
-        'ideleves' => $_SESSION['id_eleves']
-    ));
-    $profile=$eleve->profile($bdd);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +54,7 @@ if ($_SESSION['id_eleves']){
                                         </ul>
                                     </li>
                                     <li><a href='contact.html'>Contact</a></li>
-                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$profile['nom']." ".$profile['prenom']." </a>
+                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." ".$_SESSION['prenom']." </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.html'>Profil</a></li>
                                             <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
@@ -99,18 +83,14 @@ if ($_SESSION['id_eleves']){
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>
-                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." </a>
-                                            <ul class='submenu'>
-                                                <li><a href='profile.html'>Profil</a></li>
-                                                <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']." </a>
+                                        <ul class='submenu'>
+                                            <li><a href='profile.html'>Profil</a></li>
+                                            <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                        </ul>
+                                    </li>
                                     </ul>
                                 </nav>
-                            </div>
-                            <!--profile-->
-                            <div class='header-btn d-none f-right d-lg-block'>
-                                <a><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." </a>
                             </div>");}?>
                             </div>
                         </div>
@@ -134,13 +114,13 @@ if ($_SESSION['id_eleves']){
                             <div class="mt-3">
                                 <?php
                                 if(isset($_SESSION['id_eleves'])):
-                                    echo ("<H4>".$_SESSION['nom']." ".$_SESSION['prenom']."</h4>
+                                    echo ("<H4>".$_SESSION." ".$_SESSION['prenom']."</h4>
                                            <p class='text-secondary mb-1'>Etudiant en ".$_SESSION['domaine']."</p>
                                            <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
                                             ");
-                                elseif(isset($_SESSION[''])):
-                                    echo ("<H4>".$_SESSION['role_representant']." ".$_SESSION['nom_entreprise']."</h4>
-                                           <p class='text-secondary mb-1'>Etudiant en ".$_SESSION['domaine']."</p>
+                                elseif(isset($_SESSION['id_representant'])):
+                                    echo ("<H4>".$_SESSION['nom_entreprise']."</h4>
+                                           <p class='text-secondary mb-1'>".$_SESSION['role_representant']." chez ".$_SESSION['nom_entreprise']."</p>
                                            <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
                                             ");
                                 endif;
@@ -181,14 +161,14 @@ if ($_SESSION['id_eleves']){
                 <div class="card mb-3">
                     <div class="card-body">
                         <?PHP
-                        if($_SESSION['id_eleves']){
+                        if(isset($_SESSION['id_eleves'])){
                             echo ("
                         <div class='row'>
                             <div class='col-sm-3'>
                                 <h6 class='mb-0'>Nom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['nom']."
+                                ".$_SESSION['nom']."
                             </div>
                         </div>
                         <hr>
@@ -197,7 +177,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>prenom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['prenom']."
+                                ".$_SESSION['prenom']."
                             </div>
                         </div>
                         <hr>
@@ -206,7 +186,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Email</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['email']."
+                                ".$_SESSION['email']."
                             </div>
                         </div>
                         <hr>
@@ -215,7 +195,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>prenom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['prenom']."
+                                ".$_SESSION['prenom']."
                             </div>
                         </div>
                         <hr>
@@ -224,7 +204,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Email</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['email']."
+                                ".$_SESSION['email']."
                             </div>
                         </div>
                         <hr>
@@ -233,7 +213,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Adresse</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['adresse']."
+                                ".$_SESSION['adresse']."
                             </div>
                         </div>
                         <hr>
@@ -242,7 +222,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Domaine Etudes</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['domaine_etudes']."
+                                ".$_SESSION['domaine_etudes']."
                             </div>
                         </div>
                         <hr>
@@ -251,18 +231,18 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Niveau Etudes</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['niveau_etudes']."
+                                ".$_SESSION['niveau_etudes']."
                             </div>
                         </div>
                         <hr>
                         ");}
-                        elseif ($_SESSION['id_representant']){
+                        elseif (isset($_SESSION['id_representant'])){
                             echo ("<div class='row'>
                             <div class='col-sm-3'>
                                 <h6 class='mb-0'>Nom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['nom_entreprise']."
+                                ".$_SESSION['nom_entreprise']."
                             </div>
                         </div>
                         <hr>
@@ -271,7 +251,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>prenom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['role_representant']."
+                                ".$_SESSION['role_representant']."
                             </div>
                         </div>
                         <hr>
@@ -280,7 +260,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Email</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['email']."
+                                ".$_SESSION['email']."
                             </div>
                         </div>
                         <hr>
@@ -289,7 +269,7 @@ if ($_SESSION['id_eleves']){
                                 <h6 class='mb-0'>Adresse</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$profile['adresse']."
+                                ".$_SESSION['adresse']."
                             </div>
                         </div>
                         <hr>");

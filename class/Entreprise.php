@@ -34,6 +34,16 @@ class Entreprise{
         return $req->fetchAll();
     }
 
+    public function profile(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE id_representant = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_representant
+        ));
+
+        return $req->fetch();
+    }
+
     public function valider(Bdd $base){
         $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
 
@@ -57,6 +67,14 @@ class Entreprise{
     public function setNomEntreprise($nom_entreprise)
     {
         $this->nom_entreprise = $nom_entreprise;
+    }
+
+    /**
+     * @param mixed $id_representant
+     */
+    public function setIdRepresentant($id_representant)
+    {
+        $this->id_representant = $id_representant;
     }
 
     /**

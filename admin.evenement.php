@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once 'class/Entreprise.php';
+require_once 'class/Evenement.php';
 require_once 'class/Bdd.php';
 $bdd = new Bdd();
-$compt = new Entreprise(array());
-$comptentreprise = $compt->ComptNonValide($bdd);
+$even = new Evenement(array());
+$evenement = $even->EvenementNonValide($bdd);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,10 +78,10 @@ $comptentreprise = $compt->ComptNonValide($bdd);
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($comptentreprise as $value){
+            <?php foreach ($evenement as $value){
                 echo "<tr>
-            <td>".$value['id_representan']."</td>
-            <td>".$value['nom_entreprise']."</td>
+            <td>".$value['id_evenement']."</td>
+            <td>".$value['nom_evenement']."</td>
             <td>".$value['role_representant']."</td>
             <td>".$value['email']."</td>
             <td>

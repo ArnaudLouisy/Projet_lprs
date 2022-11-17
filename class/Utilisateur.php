@@ -48,6 +48,8 @@ class Utilisateur{
             $_SESSION['id_representant'] = $res['id_representant'];
             $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
             $_SESSION['role_representant'] = $res['role_representant'];
+            $_SESSION['adresse'] = $res['adresse'];
+            $_SESSION['email'] = $res['email'];
             header('Location: ../index.php');
 
         }

@@ -60,7 +60,7 @@ class Offre
 
     }
 
-    private function modifieroffre(Bdd $base)
+    /*private function modifieroffre(Bdd $base)
     {
         $req = $base->getBdd()->prepare("UPDATE offre SET id_offre='id_offre',titre_offre='titre_offre',description='description',date_publication='date_publication',type_contrat='type_contrat',dure_contrat='dure_contrat',pourvue='pourvue',ref_representant='ref_representant'  WHERE offre=?");
 
@@ -85,11 +85,24 @@ class Offre
         }
 
         offre->close();
+    }*/
 
+    public function OffreNonValide(Bdd $base){
 
+        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider != 1 or valider is null');
+
+        $req->execute(array());
+
+        return $req->fetchAll();
     }
 
+    public function valider(Bdd $base){
+        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
 
+        $req ->execute(array(
+            'id'=>$this->id_representant
+        ));
+    }
 
     /**
      * @return mixed

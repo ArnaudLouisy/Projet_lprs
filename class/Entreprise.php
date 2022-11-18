@@ -44,14 +44,15 @@ class Entreprise{
         return $req->fetch();
     }
 
-    public function valider(Bdd $base){
+    public function validerentreprise(Bdd $base){
         $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
 
         $req ->execute(array(
             'id'=>$this->id_representant
         ));
-
     }
+
+
 
     /**
      * @return mixed
@@ -67,6 +68,14 @@ class Entreprise{
     public function setNomEntreprise($nom_entreprise)
     {
         $this->nom_entreprise = $nom_entreprise;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdRepresentant()
+    {
+        return $this->id_representant;
     }
 
     /**

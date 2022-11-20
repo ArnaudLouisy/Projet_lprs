@@ -15,6 +15,18 @@ if ($_POST['action']){
             'idrepresentant'=>$res[0]
         ));
         $entreprise->validerentreprise($bdd);
+    }elseif ($res[1]=='offre'){
+        require_once '../../class/Offre.php';
+        $offre = new Offre(array(
+            'idoffre'=>$res[0]
+        ));
+        $offre->valider($bdd);
+    }elseif ($res[1]=='evenement'){
+        require_once '../../class/Evenement.php';
+        $evenement = new Evenement(array(
+            'idevent'=>$res[0]
+        ));
+        $evenement->valider($bdd);
     }
 }
 

@@ -47,16 +47,16 @@ $evenement = $even->EvenementNonValide($bdd);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Eleve</a>
+                        <a class="nav-link active" aria-current="page" href="admin.php">Eleve</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Entreprise</a>
+                        <a class="nav-link active" href="admin.entreprise.php">Entreprise</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Emploi</a>
+                        <a class="nav-link active" href="admin.offre.php">Emploi</a>
                     </li>
                 </ul>
             </div>
@@ -65,14 +65,14 @@ $evenement = $even->EvenementNonValide($bdd);
 </header>
 
 <div class="container">
-    <h1>Entreprise</h1>
+    <h1>Evenement</h1>
     <div class="row">
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
                 <th>Numérot</th>
-                <th>nom</th>
-                <th>Poste</th>
+                <th>Titre</th>
+                <th>Date</th>
                 <th>Email</th>
                 <th>Géré</th>
             </tr>
@@ -80,9 +80,9 @@ $evenement = $even->EvenementNonValide($bdd);
             <tbody>
             <?php foreach ($evenement as $value){
                 echo "<tr>
-            <td>".$value['id_evenement']."</td>
-            <td>".$value['nom_evenement']."</td>
-            <td>".$value['role_representant']."</td>
+            <td>".$value['id_event']."</td>
+            <td>".$value['nom_event']."</td>
+            <td>".$value['date']."</td>
             <td>".$value['email']."</td>
             <td>
                 <form action='traitement/action_admin/gestion' method='post'>

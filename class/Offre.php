@@ -97,10 +97,10 @@ class Offre
     }
 
     public function valider(Bdd $base){
-        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
+        $req = $base->getBdd()->prepare('Update offre set valider =1 WHERE id_offre = :id');
 
         $req ->execute(array(
-            'id'=>$this->id_representant
+            'id'=>$this->id_offre
         ));
     }
 

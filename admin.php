@@ -47,13 +47,13 @@ $compteleves = $compt->ComptNonValide($bdd);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Eleve</a>
+                        <a class="nav-link active" aria-current="page" href="admin.php">Eleve</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.entreprise.php">Entreprise</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Evenement</a>
+                        <a class="nav-link active" href="admin.evenement.php">Evenement</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.offre.php">Emploi</a>

@@ -1,5 +1,4 @@
 <?php
-// include_once "./Bdd.php"; abd plus JAMAIS ça plus JAMAIS JAMAIS JAMAIS
 class Evenement{
 
     private $id_event;
@@ -61,7 +60,7 @@ class Evenement{
 
     public function EvenementNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE valider != 1 or valider is null');
+        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autoriser != 1 or autoriser is null');
 
         $req->execute(array());
 
@@ -69,10 +68,10 @@ class Evenement{
     }
 
     public function valider(Bdd $base){
-        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
+        $req = $base->getBdd()->prepare('Update evenement set autoriser =1 WHERE id_event = :id');
 
         $req ->execute(array(
-            'id'=>$this->id_representant
+            'id'=>$this->id_event
         ));
     }
 

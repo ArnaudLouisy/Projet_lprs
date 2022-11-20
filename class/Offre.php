@@ -4,13 +4,12 @@ class Offre
 {
 
     private $id_offre;
-    private $titreoffre;
+    private $titre_offre;
     private $description;
-    private $datepublication;
-    private $typecontrat;
-    private $dureecontrat;
+    private $date_publication;
+    private $type_contrat;
+    private $duree_contrat;
     private $pourvue;
-    private $refrepresentant;
 
     public function __construct(array $donnees)
     {
@@ -34,7 +33,7 @@ class Offre
 
         $req = $base->getBdd()->prepare('SELECT * FROM offre ');
         $req->execute(array(
-            'offre' => $this->titre_offre,
+            'offre' => $this->offre,
         ));
 
         $res = $req->fetch();
@@ -42,48 +41,9 @@ class Offre
     }
 
 
-    public function creeoffre(Bdd $base)
+    private function ajouteroffre(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('INSERT INTO offre (titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:titreoffre,:description,:datepublication,:typecontrat,:durecontrat,:pourvue,:refrepresentant)');
-
-        $req->execute(array(
-            'titreoffre' => $this->titreoffre,
-            'description' => $this->description,
-            'datepublication' => $this->datepublication,
-            'typecontrat' => $this->typecontrat,
-            'durecontrat' => $this->dureecontrat,
-            'pourvue' => null,
-            'refrepresentant' => $this->refrepresentant
-        ));
-        var_dump($this);
-        echo 'l`offre a bien été ajouté !' . '<br>';
-
-
-    }
-
-    private function modifieroffre(Bdd $base)
-    {
-        $req = $base->getBdd()->prepare('UPDATE offre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
-
-        $req->execute(array(
-            'id_offre' => $this->id_offre,
-            'titre_offre' => $this->titre_offre,
-            'description' => $this->description,
-            'date_publication' => $this->date_publication,
-            'type_contrat' => $this->type_contrat,
-            'dure_contrat' => $this->duree_contrat,
-            'pourvue' => $this->pourvue,
-            'ref_representant' => $this->ref_representant,
-        ));
-        echo 'l`offre a bien été modifié !' . '<br>';
-
-
-
-    }
-
-    private function supprimeroffre(Bdd $base)
-    {
-        $req = $base->getBdd()->prepare('DELETE offre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
+        $req = $base->getBdd()->prepare('INSERT INTO ajouteroffre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
 
         $req->execute(array(
             'id_offre' => $this->id_offre,
@@ -95,10 +55,43 @@ class Offre
             'pourvue' => $this->pourvue,
             'ref_representant' => $this->ref_representant,
         ));
-        echo 'l`offre a bien été Supprimé !' . '<br>';
+        echo 'l`offre a bien été ajouté !' . '<br>';
+
+
     }
 
-        /**
+    private function modifieroffre(Bdd $base)
+    {
+        $req = $base->getBdd()->prepare("UPDATE offre SET id_offre='id_offre',titre_offre='titre_offre',description='description',date_publication='date_publication',type_contrat='type_contrat',dure_contrat='dure_contrat',pourvue='pourvue',ref_representant='ref_representant'  WHERE offre=?");
+
+        if (offre->query(sql) === TRUE) {
+            echo "modification reussie";
+        } else {
+            echo "Erreur: " . offre->error;
+        }
+        offre->close();
+
+
+    }
+
+    private function supprimeroffre(Bdd $base)
+    {
+        $req = $base->getBdd()->prepare("DELETE FROM offre ");
+
+        if (offre->query(sql) === TRUE) {
+            echo "supprimé !";
+        } else {
+            echo "Erreur: " . offre->error;
+        }
+
+        offre->close();
+
+
+    }
+
+
+
+    /**
      * @return mixed
      */
     public function getIdOffre()
@@ -119,15 +112,15 @@ class Offre
      */
     public function getTitreOffre()
     {
-        return $this->titreoffre;
+        return $this->titre_offre;
     }
 
     /**
      * @param mixed $titre_offre
      */
-    public function setTitreOffre($titreoffre)
+    public function setTitreOffre($titre_offre)
     {
-        $this->titreoffre = $titreoffre;
+        $this->titre_offre = $titre_offre;
     }
 
     /**
@@ -151,15 +144,15 @@ class Offre
      */
     public function getDatePublication()
     {
-        return $this->datepublication;
+        return $this->date_publication;
     }
 
     /**
      * @param mixed $date_publication
      */
-    public function setDatePublication($datepublication)
+    public function setDatePublication($date_publication)
     {
-        $this->datepublication = $datepublication;
+        $this->date_publication = $date_publication;
     }
 
     /**
@@ -167,15 +160,15 @@ class Offre
      */
     public function getTypeContrat()
     {
-        return $this->typecontrat;
+        return $this->type_contrat;
     }
 
     /**
      * @param mixed $type_contrat
      */
-    public function setTypeContrat($typecontrat)
+    public function setTypeContrat($type_contrat)
     {
-        $this->typecontrat = $typecontrat;
+        $this->type_contrat = $type_contrat;
     }
 
     /**
@@ -183,15 +176,15 @@ class Offre
      */
     public function getDureeContrat()
     {
-        return $this->dureecontrat;
+        return $this->duree_contrat;
     }
 
     /**
      * @param mixed $duree_contrat
      */
-    public function setDureeContrat($dureecontrat)
+    public function setDureeContrat($duree_contrat)
     {
-        $this->dureecontrat = $dureecontrat;
+        $this->duree_contrat = $duree_contrat;
     }
 
     /**
@@ -209,23 +202,5 @@ class Offre
     {
         $this->pourvue = $pourvue;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getRefRepresentant()
-    {
-        return $this->refrepresentant;
-    }
-
-    /**
-     * @param mixed $ref_representant
-     */
-    public function setRefRepresentant($refrepresentant)
-    {
-        $this->refrepresentant = $refrepresentant;
-    }
-
-
 
 }

@@ -25,30 +25,34 @@ class Entreprise{
         }
     }
 
-    public function EntrepriseConnexion (Bdd $base){
+    public function ComptNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE email = :email  AND motdepasse = :motdepasse AND valider = 1 ');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE valider != 1 or valider is null');
 
-        $req->execute(array(
-            'email' => $this->email,
-            'motdepasse' => $this->motdepasse
+        $req->execute(array());
+
+        return $req->fetchAll();
+    }
+
+    public function profile(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE id_representant = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_representant
         ));
 
-        $res = $req->fetch();
-
-        if ($res) {
-            header('Location: ../index.php');
-        }
-        if ($res['valide'] != 1) {
-            header('Location: ../Erreur/dist/validation.html');
-        }
-        else{
-            echo ('mot de passe ou email incorrecte');
-        }
-
-        return $res;
-
+        return $req->fetch();
     }
+
+    public function validerentreprise(Bdd $base){
+        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider =1 WHERE id_representant = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_representant
+        ));
+    }
+
+
 
     /**
      * @return mixed
@@ -64,6 +68,22 @@ class Entreprise{
     public function setNomEntreprise($nom_entreprise)
     {
         $this->nom_entreprise = $nom_entreprise;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdRepresentant()
+    {
+        return $this->id_representant;
+    }
+
+    /**
+     * @param mixed $id_representant
+     */
+    public function setIdRepresentant($id_representant)
+    {
+        $this->id_representant = $id_representant;
     }
 
     /**

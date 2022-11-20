@@ -48,6 +48,8 @@ class Utilisateur{
             $_SESSION['id_representant'] = $res['id_representant'];
             $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
             $_SESSION['role_representant'] = $res['role_representant'];
+            $_SESSION['adresse'] = $res['adresse'];
+            $_SESSION['email'] = $res['email'];
             header('Location: ../index.php');
 
         }
@@ -167,6 +169,24 @@ class Utilisateur{
                 echo 'La personne a bien été inscrit !' . '<br>';
             }
         }
+
+    }
+
+    public function ComptNonValide(Bdd $base){
+
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1 or valider is null');
+
+        $req->execute(array());
+
+        return $req->fetchAll();
+    }
+
+    public function valider(Bdd $base){
+        $req = $base->getBdd()->prepare('Update utilisateur_eleves set valider =1 WHERE id_eleves = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_eleves
+        ));
 
     }
 

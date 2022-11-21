@@ -98,7 +98,31 @@ class Offre{
 
     }
 
+    public function OffreNonValide(Bdd $base){
 
+        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider != 1 or valider is null');
+
+        $req->execute(array());
+
+        return $req->fetchAll();
+    }
+
+    public function GetOffre(Bdd $base){
+
+        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider = 0 ');
+
+        $req->execute(array());
+
+        return $req->fetchAll();
+    }
+
+    public function valider(Bdd $base){
+        $req = $base->getBdd()->prepare('Update offre set valider =1 WHERE id_offre = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_offre
+        ));
+    }
 
     /**
      * @return mixed

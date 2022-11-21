@@ -43,7 +43,7 @@ session_start();
                             <nav class='d-none d-lg-block'>
                                 <ul id='navigation'>
                                     <li><a href='index.php'>Accueil</a></li>
-                                    <li><a href='job_listing.html'>Trouver un Jobs </a></li>
+                                    <li><a href='job_listing.php'>Trouver un Jobs </a></li>
                                     <li><a href='crea.html'>Evénements</a></li>
                                     <li><a href='#'>Page</a>
                                         <ul class='submenu'>
@@ -54,7 +54,7 @@ session_start();
                                         </ul>
                                     </li>
                                     <li><a href='contact.html'>Contact</a></li>
-                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom']." ".$_SESSION['prenom']." </a>
+                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']." </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.html'>Profil</a></li>
                                             <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
@@ -72,7 +72,7 @@ session_start();
                                 <nav class='d-none d-lg-block'>
                                     <ul id='navigation'>
                                         <li><a href='index.php'>Accueil</a></li>
-                                        <li><a href='job_listing.html'>Nos offre</a></li>
+                                        <li><a href='job_listing.php'>Nos offre</a></li>
                                         <li><a href='crea.html'>Evénements</a></li>
                                         <li><a href='#'>Prospect</a>
                                             <ul class='submenu'>
@@ -83,7 +83,7 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>
-                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>".$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']." </a>
+                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']." </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.html'>Profil</a></li>
                                             <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>

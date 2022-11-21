@@ -96,6 +96,15 @@ class Offre
         return $req->fetchAll();
     }
 
+    public function GetOffre(Bdd $base){
+
+        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider = 0 ');
+
+        $req->execute(array());
+
+        return $req->fetchAll();
+    }
+
     public function valider(Bdd $base){
         $req = $base->getBdd()->prepare('Update offre set valider =1 WHERE id_offre = :id');
 

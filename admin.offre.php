@@ -47,16 +47,16 @@ $nonvalide = $offre->OffreNonValide($bdd);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Eleve</a>
+                        <a class="nav-link active" aria-current="page" href="admin.php">Eleve</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Entreprise</a>
+                        <a class="nav-link active" href="admin.entreprise.php">Entreprise</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Emploi</a>
+                        <a class="nav-link active" href="admin.offre.php">Emploi</a>
                     </li>
                 </ul>
             </div>
@@ -71,9 +71,9 @@ $nonvalide = $offre->OffreNonValide($bdd);
             <thead>
             <tr>
                 <th>Numérot</th>
-                <th>nom</th>
-                <th>Poste</th>
-                <th>Email</th>
+                <th>Titre</th>
+                <th>Publié le</th>
+                <th>contra</th>
                 <th>Géré</th>
             </tr>
             </thead>
@@ -83,7 +83,8 @@ $nonvalide = $offre->OffreNonValide($bdd);
                 echo "<tr>
             <td>".$value['id_offre']."</td>
             <td>".$value['titre_offre']."</td>
-            
+            <td>".$value['date_publication']."</td>
+            <td>".$value['type_contrat']."</td>
             <td>
                 <form action='traitement/action_admin/gestion' method='post'>
                      <button type='submit'  class='btn btn-outline-secondary' name='action' value=".$value['id_offre']."_offre"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-lg' viewBox='0 0 16 16'>

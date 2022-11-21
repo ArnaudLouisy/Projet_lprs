@@ -31,6 +31,8 @@ class RendezVous{
         ));
 
         echo 'Le Rendez-vous a bien été crée !' . '<br>';
+
+        var_dump($this);
     }
 
     /**

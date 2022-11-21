@@ -26,8 +26,35 @@ session_start();
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
    </head>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
    <body>
+
+   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+   <script>
+       window.cookieconsent.initialise({
+           "palette": {
+               "popup": {
+                   "background": "#343c66",
+                   "text": "#cfcfe8"
+               },
+               "button": {
+                   "background": "#f71559"
+               }
+           },
+           "position": "bottom-right",
+           "type": "opt-out",
+           "content": {
+               "message": "Ce site web utilise des cookies.\n\nEn poursuivant votre navigation sur ce site, vous acceptez l'utilisation de Cookies ou autres traceurs pour vous proposer des publicités ciblées adaptés à vos centres d'intérêts et réaliser des statistiques de visites. ",
+               "dismiss": "Accepter",
+               "link": "En savoir plus",
+               "href": "http://localhost/Projet_lprs/cookies/"
+           }
+       });
+   </script>
+
+
+
+
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">

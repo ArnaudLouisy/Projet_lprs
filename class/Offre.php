@@ -1,7 +1,6 @@
 <?php
 
-class Offre
-{
+class Offre{
 
     private $id_offre;
     private $titre_offre;
@@ -41,7 +40,7 @@ class Offre
     }
 
 
-    private function ajouteroffre(Bdd $base)
+    public function ajouteroffre(Bdd $base)
     {
         $req = $base->getBdd()->prepare('INSERT INTO ajouteroffre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
 
@@ -62,14 +61,21 @@ class Offre
 
     private function modifieroffre(Bdd $base)
     {
-        $req = $base->getBdd()->prepare("UPDATE offre SET id_offre='id_offre',titre_offre='titre_offre',description='description',date_publication='date_publication',type_contrat='type_contrat',dure_contrat='dure_contrat',pourvue='pourvue',ref_representant='ref_representant'  WHERE offre=?");
+        $req = $base->getBdd()->prepare('UPDATE ajouteroffre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
 
-        if (offre->query(sql) === TRUE) {
-            echo "modification reussie";
-        } else {
-            echo "Erreur: " . offre->error;
-        }
-        offre->close();
+        $req->execute(array(
+            'id_offre' => $this->id_offre,
+            'titre_offre' => $this->titre_offre,
+            'description' => $this->description,
+            'date_publication' => $this->date_publication,
+            'type_contrat' => $this->type_contrat,
+            'dure_contrat' => $this->dure_contrat,
+            'pourvue' => $this->pourvue,
+            'ref_representant' => $this->ref_representant,
+        ));
+        echo 'l`offre a bien été modifié !' . '<br>';
+
+
 
 
     }
@@ -78,14 +84,17 @@ class Offre
     {
         $req = $base->getBdd()->prepare("DELETE FROM offre ");
 
-        if (offre->query(sql) === TRUE) {
-            echo "supprimé !";
-        } else {
-            echo "Erreur: " . offre->error;
-        }
-
-        offre->close();
-
+        $req->execute(array(
+            'id_offre' => $this->id_offre,
+            'titre_offre' => $this->titre_offre,
+            'description' => $this->description,
+            'date_publication' => $this->date_publication,
+            'type_contrat' => $this->type_contrat,
+            'dure_contrat' => $this->dure_contrat,
+            'pourvue' => $this->pourvue,
+            'ref_representant' => $this->ref_representant,
+        ));
+        echo 'l`offre a bien été supprimé !' . '<br>';
 
     }
 

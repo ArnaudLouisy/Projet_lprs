@@ -2,8 +2,9 @@
 session_start();
 require_once '../../class/Bdd.php';
 require_once '../../class/Offre.php';
-$bdd = new Bdd();
 
+
+$bdd = new Bdd();
 $offre = new Offre (array(
 
     'titreoffre'=>$_POST['titreoffre'],

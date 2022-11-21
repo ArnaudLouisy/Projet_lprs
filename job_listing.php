@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once 'class/Offre.php';
+require_once 'class/Bdd.php';
+$bdd = new Bdd();
+$offre = new Offre(array());
+$offrevalider = $offre->GetOffre($bdd);
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -295,159 +303,31 @@
                                 </div>
                                 <!-- Count of Job list End -->
                                 <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                <?php foreach ($offrevalider as $value){
+
+                                    echo ("<div class='single-job-items mb-30'>
+                                    <div class='job-items'>
+                                        <div class='company-img'>
+                                            <a href='#'><img src='assets/img/icon/job-list1.png' alt=''></a>
                                         </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
+                                        <div class='job-tittle job-tittle2'>
+                                            <a href='#'>
+                                                <h4>".$value['titre_offre']."</h4>
                                             </a>
                                             <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                                <li>".$value ['description']."</li>
+                                                <li><i class='fas fa-map-marker-alt'></i>Athens, Greece</li>
                                                 <li>$3500 - $4000</li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
+                                    <div class='items-link items-link2 f-right'>
+                                        <a href='job_details.html'>Full Time</a>
                                         <span>7 hours ago</span>
                                     </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list2.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list3.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list4.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list3.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list4.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
+                                </div>");
+                                }?>
+
                             </div>
                         </section>
                         <!-- Featured_job_end -->

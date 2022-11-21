@@ -34,8 +34,8 @@ require_once 'class/Bdd.php';
 
 
 
-    <input type="submit" value="Submit">
-
+    <input type="submit" value="Submit
+    <? var_dump();?>
 
 </form>
 

@@ -24,46 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
+--
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-    `id_admin` int(11) NOT NULL AUTO_INCREMENT,
-    `nom` varchar(200) NOT NULL,
-    `prenom` varchar(200) NOT NULL,
-    `email` varchar(200) NOT NULL,
-    `motdepasse` varchar(200) NOT NULL,
-    PRIMARY KEY (`id_admin`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `crea_eleves`
---
 
-DROP TABLE IF EXISTS `crea_eleves`;
-CREATE TABLE IF NOT EXISTS `crea_eleves` (
-    `ref_eleves` int(11) NOT NULL,
-    `ref_event` int(11) NOT NULL,
-    KEY `fk_crea-eleves_utilisateur_eleves` (`ref_eleves`),
-    KEY `fk_crea_eleves_evenement` (`ref_event`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `crea_entreprise`
---
-
-DROP TABLE IF EXISTS `crea_entreprise`;
-CREATE TABLE IF NOT EXISTS `crea_entreprise` (
-    `ref_representant` int(11) NOT NULL,
-    `ref_event` int(11) NOT NULL,
-    KEY `fk_crea-entreprise_utilisateur_entreprise` (`ref_representant`),
-    KEY `fk_crea_entreprtise_evenement` (`ref_event`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -82,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `evenement` (
     `nombre_inscrit` int(250) NOT NULL,
     `autorise` bit(1) DEFAULT b'0',
     `ref_salle` int(11) NOT NULL,
-    `ref_admin` int(11) NOT NULL,
+    `ref_user` int(11) NOT NULL,
     PRIMARY KEY (`id_event`),
     KEY `fk_evenement_salle` (`ref_salle`),
-    KEY `fk_evenement_admin` (`ref_admin`)
+    KEY `fk_evenement_user` (`ref_user`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

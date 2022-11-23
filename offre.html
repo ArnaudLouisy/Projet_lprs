@@ -1,9 +1,3 @@
-<?php
-session_start();
-require_once 'class/Offre.php';
-require_once 'class/Bdd.php';
-
-?>
 <!DOCTYPE html>
 <html>
 <body>
@@ -30,6 +24,7 @@ require_once 'class/Bdd.php';
     <label>dure_contrat :</label><br>
     <input type="number" name="durecontrat"><br>
 
+    INSERT INTO `offre`(`titre_offre`, `description`, `date_publication`, `type_contrat`,`ref_representant`) VALUES ('Vendeur',"S'occuper de la vente de piece detacher automobile",CURRENT_DATE,'CDI','1')
 
 
 

@@ -71,7 +71,7 @@ $offrevalider = $offre->GetOffre($bdd);
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li><a href="single-blog.html">Blog Details</a></li>
                                                     <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
+                                                    <li><a href="job_details.php">job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">Contact</a></li>
@@ -303,30 +303,29 @@ $offrevalider = $offre->GetOffre($bdd);
                                 </div>
                                 <!-- Count of Job list End -->
                                 <!-- single-job-content -->
-                                <?php foreach ($offrevalider as $value){
-
-                                    echo ("<div class='single-job-items mb-30'>
+                                <?php foreach ($offrevalider as $value):?>
+                                    <div class='single-job-items mb-30'>
                                     <div class='job-items'>
                                         <div class='company-img'>
                                             <a href='#'><img src='assets/img/icon/job-list1.png' alt=''></a>
                                         </div>
                                         <div class='job-tittle job-tittle2'>
                                             <a href='#'>
-                                                <h4>".$value['titre_offre']."</h4>
+                                                <h4><?= $value['titre_offre']?></h4>
                                             </a>
                                             <ul>
-                                                <li>".$value ['description']."</li>
+                                                <li><?=$value ['description']?></li>
                                                 <li><i class='fas fa-map-marker-alt'></i>Athens, Greece</li>
                                                 <li>$3500 - $4000</li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class='items-link items-link2 f-right'>
-                                        <a href='job_details.html'>Full Time</a>
+                                        <a type='submit' href='job_details.php?id=<?=$value['id_offre']?>'>Full Time</a>
                                         <span>7 hours ago</span>
                                     </div>
-                                </div>");
-                                }?>
+                                </div>
+                                <?php endforeach;?>
 
                             </div>
                         </section>

@@ -7,6 +7,7 @@ class Entreprise{
     private $adresse;
     private $email;
     private $motdepasse;
+    private $logo;
     private $role_representant;
     private $valider;
 
@@ -52,7 +53,14 @@ class Entreprise{
         ));
     }
 
+    public function AddLogo(Bdd $base){
+        $req = $base->getBdd()->prepare('Update utilisateur_entreprise set valider = 1,logo =:logo WHERE id_representant = :id');
 
+        $req ->execute(array(
+            'id'=>$this->id_representant,
+            'logo'=>$this->logo
+        ));
+    }
 
     /**
      * @return mixed
@@ -68,6 +76,22 @@ class Entreprise{
     public function setNomEntreprise($nom_entreprise)
     {
         $this->nom_entreprise = $nom_entreprise;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param mixed $logo
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
     }
 
     /**
@@ -165,7 +189,4 @@ class Entreprise{
     {
         $this->valider = $valider;
     }
-
-
-
 }

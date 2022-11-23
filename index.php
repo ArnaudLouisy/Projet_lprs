@@ -95,7 +95,7 @@ session_start();
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.html'>job Details</a></li>
+                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
@@ -124,7 +124,7 @@ session_start();
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.html'>job Details</a></li>
+                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
@@ -153,7 +153,7 @@ session_start();
                                                     <li><a href='rendezvous.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.html'>job Details</a></li>
+                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
@@ -368,10 +368,10 @@ session_start();
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                    <a href="job_details.php"><img src="assets/img/icon/job-list1.png" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                    <a href="job_details.php"><h4>Digital Marketer</h4></a>
                                     <ul>
                                         <li>Creative Agency</li>
                                         <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
@@ -380,7 +380,7 @@ session_start();
                                 </div>
                             </div>
                             <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
+                                <a href="job_details.php">Full Time</a>
                                 <span>7 hours ago</span>
                             </div>
                         </div>
@@ -400,10 +400,10 @@ session_start();
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                    <a href="job_details.php"><img src="assets/img/icon/job-list1.png" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                    <a href="job_details.php"><h4>Digital Marketer</h4></a>
                                     <ul>
                                         <li>Creative Agency</li>
                                         <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
@@ -412,7 +412,7 @@ session_start();
                                 </div>
                             </div>
                             <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
+                                <a href="job_details.php">Full Time</a>
                                 <span>7 hours ago</span>
                             </div>
                         </div>

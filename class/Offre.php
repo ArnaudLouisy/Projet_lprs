@@ -7,8 +7,9 @@ class Offre{
     private $description;
     private $date_publication;
     private $type_contrat;
-    private $duree_contrat;
+    private $dure_contrat;
     private $pourvue;
+    private $ref_representant;
 
     public function __construct(array $donnees)
     {
@@ -26,36 +27,19 @@ class Offre{
         }
     }
 
-    private function recupereroffre(Bdd $base)
-    {
-
-
-        $req = $base->getBdd()->prepare('SELECT * FROM offre ');
-        $req->execute(array(
-            'offre' => $this->offre,
-        ));
-
-        $res = $req->fetch();
-
-    }
-
-
     public function ajouteroffre(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('INSERT INTO ajouteroffre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
+        $req = $base->getBdd()->prepare('INSERT INTO offre (titre_offre,description,date_publication,type_contrat,dure_contrat,ref_representant) values (:titre_offre,:description,CURRENT_DATE,:type_contrat,:dure_contrat,:ref_representant)');
 
         $req->execute(array(
-            'id_offre' => $this->id_offre,
             'titre_offre' => $this->titre_offre,
             'description' => $this->description,
-            'date_publication' => $this->date_publication,
             'type_contrat' => $this->type_contrat,
             'dure_contrat' => $this->dure_contrat,
-            'pourvue' => $this->pourvue,
-            'ref_representant' => $this->ref_representant,
+            'ref_representant' => $this->ref_representant
         ));
+        var_dump($this,$req);
         echo 'l`offre a bien été ajouté !' . '<br>';
-
 
     }
 
@@ -114,6 +98,15 @@ class Offre{
         $req->execute(array());
 
         return $req->fetchAll();
+    }
+
+    public function offredetaile(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE id_offre = :id');
+
+        $req->execute(array(
+            'id'=>$this->id_offre
+        ));
+        return $req->fetch();
     }
 
     public function valider(Bdd $base){
@@ -207,17 +200,17 @@ class Offre{
     /**
      * @return mixed
      */
-    public function getDureeContrat()
+    public function getDureContrat()
     {
-        return $this->duree_contrat;
+        return $this->dure_contrat;
     }
 
     /**
-     * @param mixed $duree_contrat
+     * @param mixed $dure_contrat
      */
-    public function setDureeContrat($duree_contrat)
+    public function setDureContrat($dure_contrat)
     {
-        $this->duree_contrat = $duree_contrat;
+        $this->dure_contrat = $dure_contrat;
     }
 
     /**
@@ -235,5 +228,23 @@ class Offre{
     {
         $this->pourvue = $pourvue;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRefRepresentant()
+    {
+        return $this->ref_representant;
+    }
+
+    /**
+     * @param mixed $ref_representant
+     */
+    public function setRefRepresentant($ref_representant)
+    {
+        $this->ref_representant = $ref_representant;
+    }
+
+
 
 }

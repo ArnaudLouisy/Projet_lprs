@@ -194,8 +194,11 @@ $detaileresulta=$detaile->offredetaile($bdd);
                             <li>Application date : <span>12 Sep 2020</span></li>
                         </ul>
                         <div class="apply-btn2">
-                            <?php if ($_SESSION["role"]=="eleve"):?>
-                                <a href="#" class="btn">Postulez</a>
+                            <?php if (isset($_SESSION['id_eleve'])):?>
+                                <a href="#" class="btn head-btn2">Postulez</a>
+                            <?php elseif ($_SESSION['id_representant']):?>
+                                <a href="#" class="btn head-btn1">Modifier</a>
+                                <a href="#" class="btn head-btn2">Supprimer</a>
                             <?php endif;?>
 
                         </div>

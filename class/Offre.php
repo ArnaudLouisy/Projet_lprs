@@ -29,8 +29,7 @@ class Offre{
 
     public function ajouteroffre(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('INSERT INTO offre (titre_offre,description,date_publication,type_contrat,dure_contrat,ref_representant) values (:titre_offre,:description,CURRENT_DATE,:type_contrat,:dure_contrat,:ref_representant)');
-
+        $req = $base -> getBdd() ->prepare('INSERT INTO offre (titre_offre,description,date_publication,type_contrat,dure_contrat,ref_representant) values (:titre_offre,:description,CURRENT_DATE,:type_contrat,:dure_contrat,:ref_representant)');
         $req->execute(array(
             'titre_offre' => $this->titre_offre,
             'description' => $this->description,
@@ -38,7 +37,7 @@ class Offre{
             'dure_contrat' => $this->dure_contrat,
             'ref_representant' => $this->ref_representant
         ));
-        var_dump($this,$req);
+
         echo 'l`offre a bien été ajouté !' . '<br>';
 
     }

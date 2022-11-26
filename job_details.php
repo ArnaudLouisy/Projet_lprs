@@ -196,9 +196,16 @@ $detaileresulta=$detaile->offredetaile($bdd);
                         <div class="apply-btn2">
                             <?php if (isset($_SESSION['id_eleve'])):?>
                                 <a href="#" class="btn head-btn2">Postulez</a>
-                            <?php elseif ($_SESSION['id_representant']):?>
-                                <a href="#" class="btn head-btn1">Modifier</a>
-                                <a href="#" class="btn head-btn2">Supprimer</a>
+                            <?php elseif ($_SESSION['id_representant'] == $detaileresulta['ref_representant'] || isset($_SESSION['id_admin'])):?>
+                            <form action="traitement/offre/creeoffre.php" method="post">
+                                <button name="modifier" type="submit" class="btn head-btn1">Modifier</button>
+                                <button type="submit" name="supprimer" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn2">Supprimer</button>
+                            </form>
+                            <?php elseif ($detaileresulta['ref_representant'] != $_SESSION['id_representant'] ):?>
+                                <form action="traitement/offre/creeoffre.php" method="post">
+                                    <button disabled name="modifier" type="submit" class="btn head-btn1">Modifier</button>
+                                    <button disabled type="submit" name="supprimer" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn2">Supprimer</button>
+                                </form>
                             <?php endif;?>
 
                         </div>

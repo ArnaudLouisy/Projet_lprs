@@ -63,18 +63,12 @@ class Offre{
 
     }
 
-    private function supprimeroffre(Bdd $base)
+    public function supprimeroffre(Bdd $base)
     {
-        $req = $base->getBdd()->prepare("DELETE FROM offre ");
+        $req = $base->getBdd()->prepare('DELETE FROM offre WHERE id_offre = :id_offre and ref_representant = :ref_representant ');
 
         $req->execute(array(
             'id_offre' => $this->id_offre,
-            'titre_offre' => $this->titre_offre,
-            'description' => $this->description,
-            'date_publication' => $this->date_publication,
-            'type_contrat' => $this->type_contrat,
-            'dure_contrat' => $this->dure_contrat,
-            'pourvue' => $this->pourvue,
             'ref_representant' => $this->ref_representant,
         ));
         echo 'l`offre a bien été supprimé !' . '<br>';

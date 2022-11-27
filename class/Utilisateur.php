@@ -100,12 +100,10 @@ class Utilisateur{
                 header('Location: ../admin.php');
             }
             else{
-                header('Location: ../form/dist/login.php/#a-container');
+                header('Location: ../form/dist/login.php');
                 $_SESSION['erreurconnexion'] = "mot de passe ou adresse email incorrecte";
             };
         }
-        //var_dump($res);
-        //$req->debugDumpParams();
         return $res;
     }
 
@@ -163,9 +161,7 @@ class Utilisateur{
                     'motdepasse' => $this->motdepasse,
                     'adresse' => $this->adresse,
                 ));
-                var_dump($this);
-                var_dump($req);
-                die();
+
                 echo 'La personne a bien été inscrit !' . '<br>';
             }
         }

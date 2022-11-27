@@ -5,8 +5,8 @@ require_once '../../class/Offre.php';
 $bdd = new Bdd();
 if (isset($_POST['creer'])){
     $offre = new Offre (array(
-        'titreoffre'=>$_POST['titreoffre'],
-        'description'=>$_POST['description'],
+        'titreoffre'=> ucfirst(strtolower($_POST['titreoffre'])),
+        'description'=>ucfirst(strtolower($_POST['description'])),
         'typecontrat'=>$_POST['typecontrat'],
         'durecontrat'=>$_POST['durecontrat'],
         'refrepresentant'=>$_SESSION['id_representant']

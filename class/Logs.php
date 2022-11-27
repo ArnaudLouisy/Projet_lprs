@@ -22,15 +22,20 @@ class Logs{
     }
 
     public function logs(Bdd $base){
-        $req = $base->getBdd()->prepare('INSERT INTO logs (id_compte,date,heure,adresse_ip) values (:id_compte,:date,:heure,:adresse_ip)');
+        $req = $base->getBdd()->prepare('INSERT INTO logs (id_compte,date,heure,adresse_ip) values (:id_compte,CURRENT_TIME,CURRENT_DATE,:adresse_ip)');
 
         $req->execute(array(
             'id_compte' => $this->id_compte ,
-            'date' => $this->date,
-            'heure' => $this->heure,
             'adresse_ip' => $this->adresse_ip
         ));
+        var_dump($this);
+    }
 
+    public function VoireLoge(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM loge');
+        $req->execute(array());
+
+        return$req->fetchAll();
     }
 
     /**

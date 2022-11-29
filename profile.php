@@ -54,10 +54,10 @@ session_start();
                                         </ul>
                                     </li>
                                     <li><a href='contact.html'>Contact</a></li>
-                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']." </a>
+                                    <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.html'>Profil</a></li>
-                                            <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                            <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -83,10 +83,10 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>
-                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']." </a>
+                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']. " </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.html'>Profil</a></li>
-                                            <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                            <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                         </ul>
                                     </li>
                                     </ul>

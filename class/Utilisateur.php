@@ -3,16 +3,21 @@
 
 
 class Utilisateur{
+    private $id_utilisateur;
     private $nom;
     private $prenom;
     private $email;
+    private $logo;
     private $motdepasse;
     private $post;
     private $adresse;
+    private $cp;
+    private $ville;
     private $valider;
     private $domaine_etude;
     private $niveau_etude;
     private $role;
+    private $ref_admin;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -30,7 +35,7 @@ class Utilisateur{
 
     public function UtilisateurConnexion (Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE email = :email  AND motdepasse = :motdepasse');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE email = :email  AND motdepasse = :motdepasse');
 
         $req->execute(array(
             'email' => $this->email,
@@ -39,78 +44,33 @@ class Utilisateur{
 
         $res = $req->fetch();
 
-        if ($res['valider'] == 0 && isset($res['id_representant'])) {
-            header('Location: ../Erreur/dist/validation.html');
+        if ($res['valider'] == 0 && isset($res['id_utilisateur'])) {
+            header('Location: ../../Erreur/dist/validation.html');
         }
 
         elseif ($res) {
-
-            $_SESSION['id_representant'] = $res['id_representant'];
-            $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
-            $_SESSION['role_representant'] = $res['role_representant'];
-            $_SESSION['adresse'] = $res['adresse'];
-            $_SESSION['email'] = $res['email'];
-            header('Location: ../index.php');
-
-        }
-
-        if (!($res)){
-
-            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email  AND motdepasse = :motdepasse');
-
-            $req->execute(array(
-                'email' => $this->email,
-                'motdepasse' => $this->motdepasse
-            ));
-
-            $res = $req->fetch();
-
-            if ($res['valider'] == 0 && isset($res['id_eleves'])) {
-                header('Location: ../Erreur/dist/validation.html');
-            }
-
-            elseif ($res) {
-
-                $_SESSION['id_eleves'] = $res['id_eleves'];
-                $_SESSION['nom'] = $res['nom'];
+            $_SESSION['id_utilisateur'] = $res['id_utilisateur'];
+            $_SESSION['role'] = $res['role'];
+            $_SESSION['nom'] = $res['nom'];
+            if ($res['role'] == "Entreprise"){
+                $_SESSION['post'] = $res['post'];
+                header('Location: ../../index.php');
+            }elseif($res['role'] == "Eleve"){
                 $_SESSION['prenom'] = $res['prenom'];
-                $_SESSION['email'] = $res['email'];
-                $_SESSION['adresse'] = $res['adresse'];
-                $_SESSION['domaine'] = $res['domaine_etudes'];
-                header('Location: ../index.php');
-
-            }
-        }
-
-        if (!($res)) {
-
-            $req = $base->getBdd()->prepare('SELECT * FROM admin WHERE email = :email  AND motdepasse = :motdepasse');
-
-            $req->execute(array(
-                'email' => $this->email,
-                'motdepasse' => $this->motdepasse
-            ));
-
-            $res = $req->fetch();
-
-            if ($res) {
-                $_SESSION['id_admin'] = $res['id_admin'];
-                $_SESSION['nom'] = $res['nom'];
+                header('Location: ../../index.php');
+            }elseif ($res['role'] == "Admin"){
                 $_SESSION['prenom'] = $res['prenom'];
-                header('Location: ../admin.php');
+                header('Location: ../../admin.php');
             }
-            else{
-                header('Location: ../form/dist/login.php');
-                $_SESSION['erreurconnexion'] = "mot de passe ou adresse email incorrecte";
-            };
+
         }
+
         return $res;
     }
 
     public function UtilisateurInscription(Bdd $base){
 
-        if($this->role = "eleves"){
-            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE email = :email');
+            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE email = :email');
 
             $req->execute(array(
                 'email' => $this->email,
@@ -119,69 +79,44 @@ class Utilisateur{
             $res = $req->fetch();
 
             if ($res) {
-                header('Location: ../form/dist/inscription.php');
+                header('Location: ../../form/dist/inscription.php');
                 $_SESSION['erreur'] = "Cette adresse e-mail est déja inscrit .";
             }
             else {
-                $req = $base->getBdd()->prepare('INSERT INTO utilisateur_eleves (nom,prenom,email,motdepasse,adresse,domaine_etudes,niveau_etudes) values (:nom,:prenom,:email,:motdepasse,:adresse,:domaine_etude,:niveau_etude)');
-
+                $req = $base->getBdd()->prepare('INSERT INTO utilisateur (role,nom,prenom,email,motdepasse,adresse,cp,ville,domaine_etude,niveau_etude,logo,poste) values (:role,:nom,:prenom,:email,:motdepasse,:adresse,:cp,:ville,:domaine_etude,:niveau_etude,:logo,:poste)');
                 $req->execute(array(
-                    'nom' => $this->nom,
+                    'role' => $this->role,
+                    'nom'=> $this->nom,
                     'prenom' => $this->prenom,
                     'email' => $this->email,
                     'motdepasse' => $this->motdepasse,
                     'adresse' => $this->adresse,
+                    'cp' => $this->cp,
+                    'ville' => $this->ville,
                     'domaine_etude' => $this->domaine_etude,
                     'niveau_etude' => $this->niveau_etude,
+                    'logo' => $this->logo,
+                    'poste' => $this->post
                 ));
-
                 echo 'La personne a bien été inscrit !' . '<br>';
             }
-        }
-        if($this->role = "entreprise"){
-            $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_entreprise WHERE email = :email');
-
-            $req->execute(array(
-                'email' => $this->email,
-            ));
-
-            $res = $req->fetch();
-
-            if ($res) {
-                header('Location: ../form/dist/inscription.php');
-                $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
-            }
-            else {
-                $req = $base->getBdd()->prepare('INSERT INTO utilisateur_entreprise (nom_entreprise,email,motdepasse,adresse,role_representant) values (:nom_entreprise,:email,:motdepasse,:adresse,:role_representant)');
-
-                $req->execute(array(
-                    'nom_entreprise' => $this->nom,
-                    'role_representant' => $this->post,
-                    'email' => $this->email,
-                    'motdepasse' => $this->motdepasse,
-                    'adresse' => $this->adresse,
-                ));
-
-                echo 'La personne a bien été inscrit !' . '<br>';
-            }
-        }
-
     }
 
     public function ComptNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur_eleves WHERE valider != 1 or valider is null');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE valider != 1 or valider is null AND role != :role');
 
-        $req->execute(array());
-
+        $req->execute(array(
+            'role' => "Admin"
+        ));
         return $req->fetchAll();
     }
 
     public function valider(Bdd $base){
-        $req = $base->getBdd()->prepare('Update utilisateur_eleves set valider =1 WHERE id_eleves = :id');
+        $req = $base->getBdd()->prepare('Update utilisateur set valider =1 WHERE id_utilisateur = :id');
 
         $req ->execute(array(
-            'id'=>$this->id_eleves
+            'id'=>$this->id_utilisateur
         ));
 
     }
@@ -339,8 +274,82 @@ class Utilisateur{
     }
 
     /**
+     * @return mixed
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param mixed $logo
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * @param mixed $cp
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUtilisateur()
+    {
+        return $this->id_utilisateur;
+    }
+
+    /**
+     * @param mixed $id_utilisateur
+     */
+    public function setIdUtilisateur($id_utilisateur)
+    {
+        $this->id_utilisateur = $id_utilisateur;
+    }
+
+    /**
+     * @param mixed $ref_admin
+     */
+    public function setRefAdmin($ref_admin)
+    {
+        $this->ref_admin = $ref_admin;
+    }
+
+    /**
      * @param $res
      * @return void
      */
+
+
 
 }

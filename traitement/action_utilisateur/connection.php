@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once '../class/Utilisateur.php';
-require_once '../class/Logs.php';
-require_once '../class/Bdd.php';
+require_once '../../class/Utilisateur.php';
+require_once '../../class/Logs.php';
+require_once '../../class/Bdd.php';
 
 $bdd = new Bdd();
 
@@ -13,7 +13,7 @@ $eleves = new Utilisateur (array(
 $res=$eleves->UtilisateurConnexion($bdd);
 
 $loge = new Logs(array(
-    'idcompte'=>$res['id_eleves'],
+    'idcompte'=>$res['id_utilisateur'],
     date_default_timezone_set('Europe/Paris'),
     'date'=>date("d-m-y" ),
     date_default_timezone_set('Europe/Paris'),

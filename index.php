@@ -80,7 +80,7 @@ session_start();
                             </div>  
                         </div>
                         <!--session eleve-->
-                        <?php if (isset($_SESSION['id_eleves'])){
+                        <?php if ($_SESSION['id_utilisateur'] == "Eleve"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -102,14 +102,14 @@ session_start();
                                             <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
-                                                    <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                    <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </nav>
                                 </div>");}
                                 //session entreprise
-                              elseif (isset($_SESSION['id_representant'])){
+                              elseif ($_SESSION['id_utilisateur'] == "Entreprise"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -128,10 +128,10 @@ session_start();
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
-                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise'].' '.$_SESSION['role_representant']." </a>
+                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise'].' '.$_SESSION['role_representant']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
-                                                    <li><a href='traitement/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                    <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                                 </ul>
                                             </li>
                                         </ul>

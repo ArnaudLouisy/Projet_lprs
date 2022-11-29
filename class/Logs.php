@@ -28,11 +28,10 @@ class Logs{
             'id_compte' => $this->id_compte ,
             'adresse_ip' => $this->adresse_ip
         ));
-        var_dump($this);
     }
 
     public function VoireLoge(Bdd $base){
-        $req = $base->getBdd()->prepare('SELECT * FROM loge');
+        $req = $base->getBdd()->prepare('SELECT * FROM logs');
         $req->execute(array());
 
         return$req->fetchAll();

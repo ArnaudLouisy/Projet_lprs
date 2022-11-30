@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once 'class/Eleves.php';
+require_once 'class/Utilisateur.php';
 require_once 'class/Bdd.php';
 $bdd = new Bdd();
-$eleve = new Eleves(array(
-    'ideleves' => $_SESSION['id_eleves']
+$utilisateur = new Utilisateur(array(
+    'idutilisateur' => $_SESSION['id_utilisateur']
 ));
-$profile=$eleve->profile($bdd)
+$profile=$utilisateur->profile($bdd)
 ?>
 <!DOCTYPE html>
 <html lang="en">

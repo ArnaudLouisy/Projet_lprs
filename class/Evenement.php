@@ -25,20 +25,42 @@ class Evenement{
         }
     }
     public function creeunevenement(Bdd $base){
-            $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit,salle) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit,:salle)');
+            $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit)');
             $req->execute(array(
-                'nom_event' => $this->nom,
+                'nom_event' => $this->nom_event,
                 'description' => $this->description,
                 'date' => $this->date,
                 'heure' => $this->heure,
                 'duree' => $this->duree,
                 'nombre_inscrit' => $this->nombre_inscrit,
-                'salle' => $this->salle,
+
             ));
 
 
             echo 'levenement a bien été crée !' . '<br>';
         }
+
+    public function modifierevenement(Bdd $base)
+    {
+        $req = $base->getBdd()->prepare('UPDATE evenement SET  nom_event = :nom_event, description = :description, date = :date, heure = :heure; duree = :duree, nombre_inscrit = :nombre_inscrit WHERE id_event = :id');
+
+        $req->execute(array(
+            'nom_event' => $this->nom_event,
+            'description' => $this->description,
+            'date' => $this->date,
+            'heure' => $this->heure,
+            'duree' => $this->duree,
+            'nombre_inscrit' => $this->nombre_inscrit,
+
+
+        ));
+        echo 'l`evenement a bien été modifié !' . '<br>';
+
+
+
+
+    }
+
 
     public function inscriptionevenement(Bdd $base){
 

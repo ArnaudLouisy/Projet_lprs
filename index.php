@@ -80,7 +80,7 @@ session_start();
                             </div>  
                         </div>
                         <!--session eleve-->
-                        <?php if ($_SESSION['id_utilisateur'] == "Eleve"){
+                        <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'] == "Eleve"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -109,7 +109,7 @@ session_start();
                                     </nav>
                                 </div>");}
                                 //session entreprise
-                              elseif ($_SESSION['id_utilisateur'] == "Entreprise"){
+                              elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'] == "Entreprise"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -146,7 +146,7 @@ session_start();
                                     <nav class='d-none d-lg-block'>
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Home</a></li>
-                                            <li><a href='job_listing.php'> </a></li>
+                                            <li><a href='job_listing.php'>Emploi</a></li>
                                             <li><a href='crea.html'>Creation </a></li>
                                             <li><a href='#'>Page</a>
                                 <ul class='submenu'>

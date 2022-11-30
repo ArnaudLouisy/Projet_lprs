@@ -3,7 +3,7 @@
 class Postule{
 
     private $ref_offre;
-    private $ref_eleve;
+    private $ref_utilisateur;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -20,10 +20,10 @@ class Postule{
     }
 
     public function Postulez(Bdd $base){
-        $req = $base -> getBdd() ->prepare('INSERT INTO postule (ref_offre,ref_eleve) values (:ref_offre,:ref_eleve)');
+        $req = $base -> getBdd() ->prepare('INSERT INTO postule (ref_offre,ref_utilisateur) values (:ref_offre,:ref_utilisateur)');
         $req->execute(array(
             'ref_offre' => $this->_offre,
-            'ref_eleve' => $this->description,
+            'ref_utilisateur' => $this->ref_utilisateur,
         ));
     }
 
@@ -36,11 +36,13 @@ class Postule{
     }
 
     /**
-     * @param mixed $ref_eleve
+     * @param mixed $ref_utilisateur
      */
-    public function setRefEleve($ref_eleve)
+    public function setRefUtilisateur($ref_utilisateur)
     {
-        $this->ref_eleve = $ref_eleve;
+        $this->ref_utilisateur = $ref_utilisateur;
     }
+
+
 
 }

@@ -24,9 +24,6 @@
     <input type="submit" name="creer" value="Submit">
 
 </form>
-
-
-
 </body>
 </html>
 

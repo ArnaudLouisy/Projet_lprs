@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once 'class/Evenement.php';
-require_once 'class/Bdd.php';
+require_once '../class/Offre.php';
+require_once '../class/Bdd.php';
 $bdd = new Bdd();
-$even = new Evenement(array());
-$evenement = $even->EvenementNonValide($bdd);
+$offre= new Offre(array());
+$nonvalide = $offre->OffreNonValide($bdd);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,21 +15,21 @@ $evenement = $even->EvenementNonValide($bdd);
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/price_rangs.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/price_rangs.css">
+    <link rel="stylesheet" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
@@ -58,6 +58,9 @@ $evenement = $even->EvenementNonValide($bdd);
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.offre.php">Emploi</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.offre.php">Logs</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,32 +68,33 @@ $evenement = $even->EvenementNonValide($bdd);
 </header>
 
 <div class="container">
-    <h1>Evenement</h1>
+    <h1>Emploi</h1>
     <div class="row">
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
                 <th>Numérot</th>
                 <th>Titre</th>
-                <th>Date</th>
-                <th>Email</th>
+                <th>Publié le</th>
+                <th>contra</th>
                 <th>Géré</th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($evenement as $value){
+
+            <?php foreach ($nonvalide as $value){
                 echo "<tr>
-            <td>".$value['id_event']."</td>
-            <td>".$value['nom_event']."</td>
-            <td>".$value['date']."</td>
-            <td>".$value['email']."</td>
+            <td>".$value['id_offre']."</td>
+            <td>".$value['titre_offre']."</td>
+            <td>".$value['date_publication']."</td>
+            <td>".$value['type_contrat']. "</td>
             <td>
-                <form action='traitement/action_utilisateur/action_admin/gestion' method='post'>
-                     <button type='submit'  class='btn btn-outline-secondary' name='action' value=" .$value['id_representan']."_entreprise"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-lg' viewBox='0 0 16 16'>
+                <form action='../traitement/action_utilisateur/action_admin/gestion' method='post'>
+                     <button type='submit'  class='btn btn-outline-secondary' name='action' value=" .$value['id_offre']."_offre"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-lg' viewBox='0 0 16 16'>
   <path d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/>
 </svg></button>
                 
-                <button type='submit'  class='btn btn-outline-secondary' name='supprime' value=".$value['id_representan']."_representan"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
+                <button type='submit'  class='btn btn-outline-secondary' name='supprime' value=".$value['id_offre']."_offre"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
   <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
   <path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>
 </svg></button>
@@ -118,6 +122,6 @@ $evenement = $even->EvenementNonValide($bdd);
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
-<script src="assets/js/js.data.js"></script>
+<script src="../assets/js/js.data.js"></script>
 </body>
 </html>

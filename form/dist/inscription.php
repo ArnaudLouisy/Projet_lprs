@@ -30,7 +30,7 @@ session_start()
             elseif(isset($_SESSION['erreurmotdepasse'])):
                 echo ("<span class='form__span' style='color: red '>".$_SESSION['erreurmotdepasse']."</span>");
             else:
-              //  echo ("<span class='form__span'>ou adresse email pour créer un compte</span>");
+              echo ("<span class='form__span'>ou adresse email pour créer un compte</span>");
             endif;
             ?>
             <input class="form__input" name="nom" type="text" placeholder="Nom">

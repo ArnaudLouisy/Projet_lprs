@@ -9,19 +9,21 @@ if ($_POST['action']){
             'idutilisateur'=>$res[0]
         ));
         $utilisateur->valider($bdd);
-        header('Location: ');
+        header('Location: ../../../admin/admin.php');
     }elseif ($res[1]=='offre'){
         require_once '../../../class/Offre.php';
         $offre = new Offre(array(
             'idoffre'=>$res[0]
         ));
         $offre->valider($bdd);
+        header('Location: ../../../admin/admin.offre.php');
     }elseif ($res[1]=='evenement'){
         require_once '../../../class/Evenement.php';
         $evenement = new Evenement(array(
             'idevent'=>$res[0],
         ));
         $evenement->valider($bdd);
+        header('Location: ../../../admin/admin.evenement.php');
     }
 }
 

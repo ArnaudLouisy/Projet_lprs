@@ -57,34 +57,95 @@ $offrevalider = $offre->GetOffre($bdd);
                                 <a href="index.php"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>  
                         </div>
-                        <div class="col-lg-9 col-md-9">
-                            <div class="menu-wrapper">
+                        <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
+                            echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
                                 <!-- Main-menu -->
-                                <div class="main-menu">
-                                    <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="index.php">Home</a></li>
-                                            <li><a href="job_listing.html">Find a Jobs </a></li>
-                                            <li><a href="crea.html">About</a></li>
-                                            <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.php">job Details</a></li>
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Accueil</a></li>
+                                            <li><a href='job_listing.php'>Trouver une offre </a></li>
+                                            <li><a href='crea.html'>Evénements</a></li>
+                                           <li><a href='#'>Page</a>
+                                            <ul class='submenu'>
+                                                    <li><a href='blog.html'>Blog</a></li>
+                                                    <li><a href='single-blog.html'>Blog Details</a></li>
+                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
+                                            <ul class='submenu'>
+                                                    <li><a href='profile.php'>Profil</a></li>
+                                                    <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </nav>
-                                </div>          
-                                <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="#" class="btn head-btn1">Register</a>
-                                    <a href="#" class="btn head-btn2">Login</a>
+                                </div>");}
+                        //session entreprise
+                        elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"){
+                            echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
+                                <!-- Main-menu -->
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Accueil</a></li>
+                                            <li><a href='job_listing.php'>Nos offre</a></li>
+                                            <li><a href='crea.html'>Evénements</a></li>
+                                            <li><a href='#'>Prospect</a>
+                                            <ul class='submenu'>
+                                                    <li><a href='blog.html'>Blog</a></li>
+                                                    <li><a href='single-blog.html'>Blog Details</a></li>
+                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='job_details.php'>job Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom'].' '.$_SESSION['post']. " </a>
+                                            <ul class='submenu'>
+                                                    <li><a href='profile.php'>Profil</a></li>
+                                                    <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>");}
+
+                        //aucune session
+                        else{echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
+                                <!-- Main-menu -->
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Home</a></li>
+                                            <li><a href='job_listing.php'>Emploi</a></li>
+                                            <li><a href='crea.html'>Creation </a></li>
+                                            <li><a href='#'>Page</a>
+                                <ul class='submenu'>
+                                                    <li><a href='rendezvous.html'>Blog</a></li>
+                                                    <li><a href='single-blog.html'>Blog Details</a></li>
+                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='job_details.php'>job Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href='contact.html'>Contact</a></li>
+                                        </ul>
+                                    </nav>
                                 </div>
-                            </div>
-                        </div>
+                                <!-- Header-btn -->
+                                <div class='header-btn d-none f-right d-lg-block'>
+                                    <a href='form/dist/inscription.php' class='btn head-btn1'>S'inscrire</a>
+                                    <a href='form/dist/login.php' class='btn head-btn2'>Se connecter</a>
+                                </div>");}
+
+                        ?>
+                    </div>
+                </div>
                         <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
@@ -104,7 +165,7 @@ $offrevalider = $offre->GetOffre($bdd);
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Get your job</h2>
+                                <h2>Trouvez un emploi</h2>
                             </div>
                         </div>
                     </div>

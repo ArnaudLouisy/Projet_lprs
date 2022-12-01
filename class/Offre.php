@@ -9,7 +9,7 @@ class Offre{
     private $type_contrat;
     private $dure_contrat;
     private $pourvue;
-    private $ref_representant;
+    private $ref_utilisateur;
 
     public function __construct(array $donnees)
     {
@@ -29,14 +29,16 @@ class Offre{
 
     public function ajouteroffre(Bdd $base)
     {
-        $req = $base -> getBdd() ->prepare('INSERT INTO offre (titre_offre,description,date_publication,type_contrat,dure_contrat,ref_representant) values (:titre_offre,:description,CURRENT_DATE,:type_contrat,:dure_contrat,:ref_representant)');
+        $req = $base -> getBdd() ->prepare('INSERT INTO offre (titre_offre,description,type_contrat,dure_contrat,ref_utilisateur) values (:titre_offre,:description,:type_contrat,:dure_contrat,:ref_utilisateur)');
         $req->execute(array(
             'titre_offre' => $this->titre_offre,
             'description' => $this->description,
             'type_contrat' => $this->type_contrat,
             'dure_contrat' => $this->dure_contrat,
-            'ref_representant' => $this->ref_representant
+            'ref_utilisateur' => $this->ref_utilisateur
+
         ));
+var_dump($this,$req);
 
         echo 'l`offre a bien été ajouté !' . '<br>';
 
@@ -86,7 +88,7 @@ class Offre{
 
     public function GetOffre(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider = 0 ');
+        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider = 1 ');
 
         $req->execute(array());
 
@@ -111,27 +113,11 @@ class Offre{
     }
 
     /**
-     * @return mixed
-     */
-    public function getIdOffre()
-    {
-        return $this->id_offre;
-    }
-
-    /**
      * @param mixed $id_offre
      */
     public function setIdOffre($id_offre)
     {
         $this->id_offre = $id_offre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTitreOffre()
-    {
-        return $this->titre_offre;
     }
 
     /**
@@ -143,27 +129,11 @@ class Offre{
     }
 
     /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * @param mixed $description
      */
     public function setDescription($description)
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDatePublication()
-    {
-        return $this->date_publication;
     }
 
     /**
@@ -175,27 +145,11 @@ class Offre{
     }
 
     /**
-     * @return mixed
-     */
-    public function getTypeContrat()
-    {
-        return $this->type_contrat;
-    }
-
-    /**
      * @param mixed $type_contrat
      */
     public function setTypeContrat($type_contrat)
     {
         $this->type_contrat = $type_contrat;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDureContrat()
-    {
-        return $this->dure_contrat;
     }
 
     /**
@@ -207,14 +161,6 @@ class Offre{
     }
 
     /**
-     * @return mixed
-     */
-    public function getPourvue()
-    {
-        return $this->pourvue;
-    }
-
-    /**
      * @param mixed $pourvue
      */
     public function setPourvue($pourvue)
@@ -223,21 +169,11 @@ class Offre{
     }
 
     /**
-     * @return mixed
+     * @param mixed $ref_utilisateur
      */
-    public function getRefRepresentant()
+    public function setRefUtilisateur($ref_utilisateur)
     {
-        return $this->ref_representant;
+        $this->ref_utilisateur = $ref_utilisateur;
     }
-
-    /**
-     * @param mixed $ref_representant
-     */
-    public function setRefRepresentant($ref_representant)
-    {
-        $this->ref_representant = $ref_representant;
-    }
-
-
 
 }

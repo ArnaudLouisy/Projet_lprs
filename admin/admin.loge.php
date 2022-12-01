@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'class/Logs.php';
-require_once 'class/Bdd.php';
+require_once '../class/Logs.php';
+require_once '../class/Bdd.php';
 $bdd = new Bdd();
 $logs = new Logs(array());
 $logsvue = $logs->VoireLoge($bdd);
@@ -15,21 +15,21 @@ $logsvue = $logs->VoireLoge($bdd);
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/price_rangs.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/price_rangs.css">
+    <link rel="stylesheet" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
@@ -58,6 +58,9 @@ $logsvue = $logs->VoireLoge($bdd);
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.offre.php">Emploi</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.loge.php">Logs</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,8 +74,7 @@ $logsvue = $logs->VoireLoge($bdd);
             <thead>
             <tr>
                 <th>Id_utilisateur</th>
-                <th>Date</th>
-                <th>Heure</th>
+                <th>Date et heure</th>
                 <th>Adresse ip</th>
             </tr>
             </thead>
@@ -81,9 +83,7 @@ $logsvue = $logs->VoireLoge($bdd);
                 echo "<tr>
             <td>".$value['id_compte']."</td>
             <td>".$value['date']."</td>
-            <td>".$value['heure']."</td>
-            <td>".$value['adresse_ip']. "</td>
-            <td>
+            <td>".$value['adresse_ip']."</td>
             </td>
             </tr>";};?>
             </tbody>
@@ -91,7 +91,6 @@ $logsvue = $logs->VoireLoge($bdd);
             <tr>
                 <th>Id_utilisateur</th>
                 <th>Date</th>
-                <th>Heure</th>
                 <th>Adresse ip</th>
             </tr>
             </tfoot>
@@ -105,6 +104,6 @@ $logsvue = $logs->VoireLoge($bdd);
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
-<script src="assets/js/js.data.js"></script>
+<script src="../assets/js/js.data.js"></script>
 </body>
 </html>

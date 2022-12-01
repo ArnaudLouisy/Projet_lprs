@@ -25,10 +25,9 @@ session_start();
             <link rel="stylesheet" href="assets/css/slick.css">
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
    </head>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
    <body>
-
    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
    <script>
        window.cookieconsent.initialise({
@@ -51,10 +50,6 @@ session_start();
            }
        });
    </script>
-
-
-
-
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -80,7 +75,7 @@ session_start();
                             </div>  
                         </div>
                         <!--session eleve-->
-                        <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'] == "Eleve"){
+                        <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -95,7 +90,6 @@ session_start();
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
@@ -109,7 +103,7 @@ session_start();
                                     </nav>
                                 </div>");}
                                 //session entreprise
-                              elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'] == "Entreprise"){
+                              elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
                                 <!-- Main-menu -->
@@ -124,11 +118,10 @@ session_start();
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>
-                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise'].' '.$_SESSION['role_representant']. " </a>
+                                            <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom'].' '.$_SESSION['post']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
                                                     <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
@@ -153,7 +146,6 @@ session_start();
                                                     <li><a href='rendezvous.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
                                                     <li><a href='elements.html'>Elements</a></li>
-                                                    <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href='contact.html'>Contact</a></li>

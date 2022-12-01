@@ -9,7 +9,7 @@ if (isset($_POST['creer'])){
         'description'=>ucfirst(strtolower($_POST['description'])),
         'typecontrat'=>$_POST['typecontrat'],
         'durecontrat'=>$_POST['durecontrat'],
-        'refrepresentant'=>$_SESSION['id_representant']
+        'refutilisateur'=>$_SESSION['id_utilisateur']
     ));
     $offre->ajouteroffre($bdd);
 }elseif (isset($_POST['supprimer']) && $_POST['supprimer'] != null){
@@ -17,9 +17,6 @@ if (isset($_POST['creer'])){
         'idoffre'=>$_POST['supprimer'],
         'refrepresentant'=>$_SESSION['id_representant']
     ));
-
-    var_dump($_SESSION, $offre);
-    die();
     $offre->supprimeroffre($bdd);
 }
 

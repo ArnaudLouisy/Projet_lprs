@@ -35,7 +35,7 @@ session_start();
                         </div>
                     </div>
                     <!--session eleve-->
-                    <?php if (isset($_SESSION['id_eleves'])){
+                    <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
                                     echo ("<div class='col-lg-9 col-md-9'>
                     <div class='menu-wrapper'>
                         <!-- Main-menu -->
@@ -56,7 +56,7 @@ session_start();
                                     <li><a href='contact.html'>Contact</a></li>
                                     <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                         <ul class='submenu'>
-                                            <li><a href='profile.html'>Profil</a></li>
+                                            <li><a href='profile.php'>Profil</a></li>
                                             <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                         </ul>
                                     </li>
@@ -64,7 +64,7 @@ session_start();
                             </nav>
                         </div>");}
                         //session entreprise
-                        elseif (isset($_SESSION['id_representant'])){
+                        elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"){
                         echo ("<div class='col-lg-9 col-md-9'>
                         <div class='menu-wrapper'>
                             <!-- Main-menu -->
@@ -78,14 +78,13 @@ session_start();
                                             <ul class='submenu'>
                                                 <li><a href='blog.html'>Blog</a></li>
                                                 <li><a href='single-blog.html'>Blog Details</a></li>
-                                                <li><a href='elements.html'>Elements</a></li>
-                                                <li><a href='job_details.php'>job Details</a></li>
+                                                <li><a href='elements.html'>Elements</a></li>         
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>
                                         <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']. " </a>
                                         <ul class='submenu'>
-                                            <li><a href='profile.html'>Profil</a></li>
+                                            <li><a href='profile.php'>Profil</a></li>
                                             <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                         </ul>
                                     </li>
@@ -100,7 +99,6 @@ session_start();
                             </div>
                         </div>
                     </div>
-                        <!-- Header End -->
 </header>
 
 <div class="container">
@@ -113,21 +111,18 @@ session_start();
                             <img src="assets/img/icon/Profile.jpg" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <?php
-                                if(isset($_SESSION['id_eleves'])):
-                                    echo ("<H4>".$_SESSION." ".$_SESSION['prenom']."</h4>
+                                if(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"):
+                                    echo ("<H4>".$_SESSION["nom"]." ".$_SESSION['prenom']."</h4>
                                            <p class='text-secondary mb-1'>Etudiant en ".$_SESSION['domaine']."</p>
                                            <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
                                             ");
-                                elseif(isset($_SESSION['id_representant'])):
+                                elseif(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"):
                                     echo ("<H4>".$_SESSION['nom_entreprise']."</h4>
                                            <p class='text-secondary mb-1'>".$_SESSION['role_representant']." chez ".$_SESSION['nom_entreprise']."</p>
                                            <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
                                             ");
                                 endif;
                                 ?>
-
-
-
                             </div>
                         </div>
                     </div>

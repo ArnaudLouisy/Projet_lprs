@@ -22,7 +22,7 @@ class Logs{
     }
 
     public function logs(Bdd $base){
-        $req = $base->getBdd()->prepare('INSERT INTO logs (id_compte,date,heure,adresse_ip) values (:id_compte,CURRENT_TIME,CURRENT_DATE,:adresse_ip)');
+        $req = $base->getBdd()->prepare('INSERT INTO logs (id_compte,adresse_ip) values (:id_compte,:adresse_ip)');
 
         $req->execute(array(
             'id_compte' => $this->id_compte ,

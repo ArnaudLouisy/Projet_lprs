@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Utilisateur{
     private $id_utilisateur;
     private $nom;
@@ -47,11 +45,11 @@ class Utilisateur{
         if ($res['valider'] == 0 && isset($res['id_utilisateur'])) {
             header('Location: ../../Erreur/dist/validation.html');
         }
-
-        elseif ($res) {
+        elseif ($res['valider'] == 1) {
             $_SESSION['id_utilisateur'] = $res['id_utilisateur'];
             $_SESSION['role'] = $res['role'];
             $_SESSION['nom'] = $res['nom'];
+            echo $res['role'];
             if ($res['role'] == "Entreprise"){
                 $_SESSION['post'] = $res['post'];
                 header('Location: ../../index.php');
@@ -60,9 +58,12 @@ class Utilisateur{
                 header('Location: ../../index.php');
             }elseif ($res['role'] == "Admin"){
                 $_SESSION['prenom'] = $res['prenom'];
-                header('Location: ../../admin.php');
+                header('Location: ../../admin/admin.php');
             }
 
+        }else{
+            header('Location: ../../form/dist/login');
+            $_SESSION['erreurconnexion'] = "Information incorecte ou compte inhesistant .";
         }
 
         return $res;
@@ -79,8 +80,8 @@ class Utilisateur{
             $res = $req->fetch();
 
             if ($res) {
+                $_SESSION['erreurinscription'] = "Cette adresse e-mail est déja inscrit .";
                 header('Location: ../../form/dist/inscription.php');
-                $_SESSION['erreur'] = "Cette adresse e-mail est déja inscrit .";
             }
             else {
                 $req = $base->getBdd()->prepare('INSERT INTO utilisateur (role,nom,prenom,email,motdepasse,adresse,cp,ville,domaine_etude,niveau_etude,logo,poste) values (:role,:nom,:prenom,:email,:motdepasse,:adresse,:cp,:ville,:domaine_etude,:niveau_etude,:logo,:poste)');
@@ -98,8 +99,18 @@ class Utilisateur{
                     'logo' => $this->logo,
                     'poste' => $this->post
                 ));
-                echo 'La personne a bien été inscrit !' . '<br>';
+                header('Location: ../../index.php');
             }
+    }
+
+    public function profile(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_utilisateur
+        ));
+
+        return $req->fetch();
     }
 
     public function ComptNonValide(Bdd $base){

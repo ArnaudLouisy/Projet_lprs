@@ -25,7 +25,6 @@ class Postule{
             'ref_offre' => $this->ref_offre,
             'ref_utilisateur' => $this->ref_utilisateur,
         ));
-        var_dump($this);
     }
 
     /**
@@ -43,7 +42,4 @@ class Postule{
     {
         $this->ref_utilisateur = $ref_utilisateur;
     }
-
-
-
 }

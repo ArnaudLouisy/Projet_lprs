@@ -51,7 +51,7 @@ class Utilisateur{
             $_SESSION['nom'] = $res['nom'];
             echo $res['role'];
             if ($res['role'] == "Entreprise"){
-                $_SESSION['post'] = $res['post'];
+                $_SESSION['post'] = $res['poste'];
                 header('Location: ../../index.php');
             }elseif($res['role'] == "Eleve"){
                 $_SESSION['prenom'] = $res['prenom'];

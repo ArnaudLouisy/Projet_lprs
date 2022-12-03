@@ -382,7 +382,7 @@ $offrevalider = $offre->GetOffre($bdd);
                                         </div>
                                     </div>
                                     <div class='items-link items-link2 f-right'>
-                                        <a type='submit' href='job_details.php?id=<?=$value['id_offre']?>'>Full Time</a>
+                                        <a type='submit' href='job_details.php?id=<?=$value['id_offre']?>'><?=$value['type_contrat']?></a>
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>

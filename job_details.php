@@ -258,14 +258,14 @@ $detaileresulta=$detaile->offredetaile($bdd);
                                 </form>
                             <?php elseif ($_SESSION['id_utilisateur'] == $detaileresulta['ref_utilisateur'] || $_SESSION['role']=="Admin"):?>
                             <form action="traitement/offre/creeoffre.php" method="post">
-                                <button name="modifier" type="submit" class="btn head-btn1">Modifier</button>
                                 <button type="submit" name="supprimer" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn2">Supprimer</button>
                             </form>
+                            <form action="profile.edit.php" method="post">
+                                <button name="modifieroffre" type="submit" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn1">Modifier</button>
+                            </form>
                             <?php elseif ($detaileresulta['ref_utilisateur'] != $_SESSION['id_utilisateur'] ):?>
-                                <form action="traitement/offre/creeoffre.php" method="post">
-                                    <button disabled name="modifier" type="submit" class="btn head-btn1">Modifier</button>
-                                    <button disabled type="submit" name="supprimer" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn2">Supprimer</button>
-                                </form>
+                                    <button disabled  class="btn head-btn1">Modifier</button>
+                                    <button disabled  class="btn head-btn2">Supprimer</button>
                             <?php endif;?>
 
                         </div>

@@ -1,5 +1,12 @@
 <?php
 session_start();
+require_once 'class/Bdd.php';
+require_once 'class/Utilisateur.php';
+$bdd = new Bdd();
+$utilisateur = new Utilisateur(array(
+    'idutilisateur' => $_SESSION['id_utilisateur']
+));
+$profile=$utilisateur->profile($bdd)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,8 +120,8 @@ session_start();
                                 <?php
                                 if(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"):
                                     echo ("<H4>".$_SESSION["nom"]." ".$_SESSION['prenom']."</h4>
-                                           <p class='text-secondary mb-1'>Etudiant en ".$_SESSION['domaine']."</p>
-                                           <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
+                                           <p class='text-secondary mb-1'>Etudiant en ".$profile['domaine_etude']."</p>
+                                           <p class='text-muted font-size-sm'>".$profile['adresse']." ".$profile['cp']." ".$profile['ville']."</p>
                                             ");
                                 elseif(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"):
                                     echo ("<H4>".$_SESSION['nom_entreprise']."</h4>
@@ -156,14 +163,14 @@ session_start();
                 <div class="card mb-3">
                     <div class="card-body">
                         <?PHP
-                        if(isset($_SESSION['id_eleves'])){
+                        if(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
                             echo ("
                         <div class='row'>
                             <div class='col-sm-3'>
                                 <h6 class='mb-0'>Nom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['nom']."
+                                ".$profile['nom']."
                             </div>
                         </div>
                         <hr>
@@ -172,7 +179,7 @@ session_start();
                                 <h6 class='mb-0'>prenom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['prenom']."
+                                ".$profile['prenom']."
                             </div>
                         </div>
                         <hr>
@@ -181,25 +188,7 @@ session_start();
                                 <h6 class='mb-0'>Email</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['email']."
-                            </div>
-                        </div>
-                        <hr>
-                        <div class='row'>
-                            <div class='col-sm-3'>
-                                <h6 class='mb-0'>prenom</h6>
-                            </div>
-                            <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['prenom']."
-                            </div>
-                        </div>
-                        <hr>
-                        <div class='row'>
-                            <div class='col-sm-3'>
-                                <h6 class='mb-0'>Email</h6>
-                            </div>
-                            <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['email']."
+                                ".$profile['email']."
                             </div>
                         </div>
                         <hr>
@@ -208,7 +197,25 @@ session_start();
                                 <h6 class='mb-0'>Adresse</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['adresse']."
+                                ".$profile['adresse']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Ville</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['ville']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Code postale</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['cp']."
                             </div>
                         </div>
                         <hr>
@@ -217,7 +224,7 @@ session_start();
                                 <h6 class='mb-0'>Domaine Etudes</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['domaine_etudes']."
+                                ".$profile['domaine_etude']."
                             </div>
                         </div>
                         <hr>
@@ -226,7 +233,7 @@ session_start();
                                 <h6 class='mb-0'>Niveau Etudes</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['niveau_etudes']."
+                                ".$profile['niveau_etude']."
                             </div>
                         </div>
                         <hr>

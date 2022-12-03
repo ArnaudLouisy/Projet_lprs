@@ -60,13 +60,10 @@ class Evenement
         echo 'l`evenement a bien été modifié !' . '<br>';
     }
 
-    public function supprimerevenemnt(Bdd $base)
-    {
-
-        $bdd = new bdd();
-        $req = $bdd->getBdd()->prepare("DELETE FROM evenement WHERE id_evenement = :id");
+    public function supprimerevenemnt(Bdd $base){
+        $req = $base->getBdd()->prepare("DELETE FROM evenement WHERE id_event = :id");
         $req->execute(array(
-            'id' => $this->getId()
+            'id' => $this->id_event
         ));
         echo "Evenement supprimé";
 

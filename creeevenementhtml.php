@@ -6,9 +6,6 @@
 
 <form action="traitement/evenement/creeevenement.php" method="post">
 
-
-
-
     <label>nom_event  :</label><br>
     <input type="text" name="nom_event"><br>
 
@@ -22,11 +19,7 @@
     <input type="time" name="heure"><br>
 
     <label>duree :</label><br>
-    <input type="number" name="duree"><br>
-
-    <label>nombre_inscrit :</label><br>
-    <input type="text" name="nombre_inscrit"><br>
-
+    <input type="time" name="duree"><br>
 
     <input type="submit" name="creer" value="Submit">
 

@@ -1,5 +1,7 @@
 <?php
-class Evenement{
+
+class Evenement
+{
 
     private $id_event;
     private $nom_event;
@@ -8,6 +10,7 @@ class Evenement{
     private $heure;
     private $duree;
     private $nombre_inscrit;
+    private $ref_utilisateur;
     private $autorise;
 
     public function __construct(array $donnees)
@@ -15,9 +18,10 @@ class Evenement{
         $this->hydrate($donnees);
     }
 
-    private function hydrate(array $donnees){
-        foreach ($donnees as $key => $value){
-            $method = 'set'.ucfirst($key);
+    private function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value) {
+            $method = 'set' . ucfirst($key);
 
             if (method_exists($this, $method)) {
                 $this->$method($value);
@@ -25,20 +29,18 @@ class Evenement{
         }
     }
 
-    public function creeunevenement(Bdd $base){
-            $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit)');
-            $req->execute(array(
-                'nom_event' => $this->nom_event,
-                'description' => $this->description,
-                'date' => $this->date,
-                'heure' => $this->heure,
-                'duree' => $this->duree,
-                'nombre_inscrit' => $this->nombre_inscrit,
-
-            ));
-
-
-            echo 'levenement a bien été crée !' . '<br>';
+    public function creeunevenement(Bdd $base)
+    {
+        $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,ref_utilisateur) values (:nom_event,:description,:date,:heure,:duree,:ref_utilisateur)');
+        $req->execute(array(
+            'nom_event' => $this->nom_event,
+            'description' => $this->description,
+            'date' => $this->date,
+            'heure' => $this->heure,
+            'duree' => $this->duree,
+            'ref_utilisateur' => $this->ref_utilisateur
+        ));
+        echo 'levenement a bien été crée !' . '<br>';
     }
 
     public function modifierevenement(Bdd $base)
@@ -58,20 +60,21 @@ class Evenement{
         echo 'l`evenement a bien été modifié !' . '<br>';
     }
 
-        public function supprimerevenemnt(Bdd $base){
+    public function supprimerevenemnt(Bdd $base)
+    {
 
         $bdd = new bdd();
         $req = $bdd->getBdd()->prepare("DELETE FROM evenement WHERE id_evenement = :id");
         $req->execute(array(
-            'id'=>$this->getId()
+            'id' => $this->getId()
         ));
         echo "Evenement supprimé";
 
     }
 
 
-
-    public function EvenementNonValide(Bdd $base){
+    public function EvenementNonValide(Bdd $base)
+    {
 
         $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autorise != 1 or autorise is null');
 
@@ -80,11 +83,12 @@ class Evenement{
         return $req->fetchAll();
     }
 
-    public function valider(Bdd $base){
+    public function valider(Bdd $base)
+    {
         $req = $base->getBdd()->prepare('Update evenement set autorise =1 WHERE id_event = :id');
 
-        $req ->execute(array(
-            'id'=>$this->id_event
+        $req->execute(array(
+            'id' => $this->id_event
         ));
     }
 
@@ -215,8 +219,6 @@ class Evenement{
     {
         $this->autorise = $autorise;
     }
-
-
 
 
 }

@@ -10,7 +10,7 @@ if (isset($_POST['creer'])){
         'date'=>$_POST['date'],
         'heure'=>$_POST['heure'],
         'duree'=>$_POST['duree'],
-        'refutilisateur' => $_SESSION['idutilisatue']
+        'refutilisateur' => $_SESSION['idutilisateur']
     ));
 
 

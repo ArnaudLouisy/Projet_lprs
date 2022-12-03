@@ -24,6 +24,7 @@ class Evenement{
             }
         }
     }
+
     public function creeunevenement(Bdd $base){
             $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit)');
             $req->execute(array(
@@ -38,7 +39,7 @@ class Evenement{
 
 
             echo 'levenement a bien été crée !' . '<br>';
-        }
+    }
 
     public function modifierevenement(Bdd $base)
     {
@@ -61,28 +62,9 @@ class Evenement{
 
     }
 
-
-    public function inscriptionevenement(Bdd $base){
-
-        $req = $base->getBdd()->prepare('INSERT INTO evenement (nom_event,description,date,heure,duree,nombre_inscrit,salle) values (:nom_event,:description,:date,:heure,:duree,:nombre_inscrit,:salle)');
-
-        $req->execute(array(
-            'nom_event' => $this->nom_event,
-            'description' => $this->description,
-            'date' => $this->date,
-            'heure' => $this->heure,
-            'duree' => $this->duree,
-            'nombre_inscrit' => $this->nombre_inscrit,
-            'salle' => $this->salle,
-        ));
-
-
-        echo 'levenement a bien ete inscrit !' . '<br>';
-    }
-
     public function EvenementNonValide(Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autoriser != 1 or autoriser is null');
+        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autorise != 1 or autorise is null');
 
         $req->execute(array());
 
@@ -90,7 +72,7 @@ class Evenement{
     }
 
     public function valider(Bdd $base){
-        $req = $base->getBdd()->prepare('Update evenement set autoriser =1 WHERE id_event = :id');
+        $req = $base->getBdd()->prepare('Update evenement set autorise =1 WHERE id_event = :id');
 
         $req ->execute(array(
             'id'=>$this->id_event

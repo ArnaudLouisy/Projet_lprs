@@ -46,35 +46,25 @@ var_dump($this,$req);
 
     private function modifieroffre(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('UPDATE ajouteroffre (id_offre,titre_offre,description,date_publication,type_contrat,dure_contrat,pourvue,ref_representant) values (:id_offre, :titre_offre,:description,:date_publication,:type_contrat,:dure_contrat,:pourvue,:ref_representant)');
+        $req = $base->getBdd()->prepare('UPDATE offre SET titre_offre = :titre_offre,description = :description,type_contrat = :type_contrat,dure_contrat = :dure_contrat WHERE id_offre = :id_offre');
 
         $req->execute(array(
             'id_offre' => $this->id_offre,
             'titre_offre' => $this->titre_offre,
             'description' => $this->description,
-            'date_publication' => $this->date_publication,
             'type_contrat' => $this->type_contrat,
-            'dure_contrat' => $this->dure_contrat,
-            'pourvue' => $this->pourvue,
-            'ref_representant' => $this->ref_representant,
+            'dure_contrat' => $this->dure_contrat
         ));
         echo 'l`offre a bien été modifié !' . '<br>';
-
-
-
-
     }
 
-    public function supprimeroffre(Bdd $base)
-    {
+    public function supprimeroffre(Bdd $base){
         $req = $base->getBdd()->prepare('DELETE FROM offre WHERE id_offre = :id_offre and ref_representant = :ref_representant ');
-
         $req->execute(array(
             'id_offre' => $this->id_offre,
             'ref_representant' => $this->ref_representant,
         ));
         echo 'l`offre a bien été supprimé !' . '<br>';
-
     }
 
     public function OffreNonValide(Bdd $base){

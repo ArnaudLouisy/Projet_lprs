@@ -46,22 +46,6 @@ class Logs{
     }
 
     /**
-     * @param mixed $date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    /**
-     * @param mixed $heure
-     */
-    public function setHeure($heure)
-    {
-        $this->heure = $heure;
-    }
-
-    /**
      * @param mixed $adresse_ip
      */
     public function setAdresseIp($adresse_ip)

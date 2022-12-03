@@ -3,8 +3,9 @@ session_start();
 require_once '../../class/Bdd.php';
 require_once '../../class/Evenement.php';
 
+
 $bdd = new Bdd();
-if (isset($_POST['modifier'])){
+if (isset($_POST['supprimer'])){
     $evenement = new Evenement (array(
         'idevent'=>$_POST['id_event'],
         'nomevent'=>$_POST['nom_event'],
@@ -16,6 +17,6 @@ if (isset($_POST['modifier'])){
     ));
 
 
-    var_dump($_POST,$evenement);
-    $evenement->modifierevenement($bdd);
+
+    $evenement->supprimerevenemnt($bdd);
 }

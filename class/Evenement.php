@@ -60,15 +60,38 @@ class Evenement
         echo 'l`evenement a bien été modifié !' . '<br>';
     }
 
+    public function voirLesEvenement(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autorise = 1 ');
+
+        $req->execute(array());
+        return $req->fetchAll();
+    }
+
+    public function voirUnEvenement(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autorise = 1 AND id_event = :id');
+
+        $req->execute(array(
+            'id' => $this.$this->id_event
+        ));
+
+        return $req->fetchAll();
+    }
+
+    public function nombreEvenement(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT COUNT(*) FROM evenement WHERE autorise = 1 ');
+
+        $req->execute(array());
+
+        return $req->fetch();
+    }
+
     public function supprimerevenemnt(Bdd $base){
         $req = $base->getBdd()->prepare("DELETE FROM evenement WHERE id_event = :id");
         $req->execute(array(
             'id' => $this->id_event
         ));
         echo "Evenement supprimé";
-
     }
-
 
     public function EvenementNonValide(Bdd $base)
     {

@@ -67,6 +67,15 @@ var_dump($this,$req);
         echo 'l`offre a bien été supprimé !' . '<br>';
     }
 
+    public function nombreOffre(Bdd $base){
+        $req = $base->getBdd()->prepare('SELECT COUNT(*) FROM offre WHERE valider = 1 ');
+
+        $req->execute(array());
+
+        return $req->fetch();
+    }
+
+
     public function OffreNonValide(Bdd $base){
 
         $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE valider != 1 or valider is null');

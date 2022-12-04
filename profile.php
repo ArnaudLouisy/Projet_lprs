@@ -51,12 +51,12 @@ $profile=$utilisateur->profile($bdd)
                                 <ul id='navigation'>
                                     <li><a href='index.php'>Accueil</a></li>
                                     <li><a href='job_listing.php'>Trouver un Jobs </a></li>
-                                    <li><a href='crea.html'>Evénements</a></li>
+                                    <li><a href='crea.php'>Evénements</a></li>
                                     <li><a href='#'>Page</a>
                                         <ul class='submenu'>
                                             <li><a href='blog.html'>Blog</a></li>
                                             <li><a href='single-blog.html'>Blog Details</a></li>
-                                            <li><a href='elements.html'>Elements</a></li>
+                                            <li><a href='elements.php'>Elements</a></li>
                                             <li><a href='job_details.php'>job Details</a></li>
                                         </ul>
                                     </li>
@@ -80,12 +80,12 @@ $profile=$utilisateur->profile($bdd)
                                     <ul id='navigation'>
                                         <li><a href='index.php'>Accueil</a></li>
                                         <li><a href='job_listing.php'>Nos offre</a></li>
-                                        <li><a href='crea.html'>Evénements</a></li>
+                                        <li><a href='crea.php'>Evénements</a></li>
                                         <li><a href='#'>Prospect</a>
                                             <ul class='submenu'>
                                                 <li><a href='blog.html'>Blog</a></li>
                                                 <li><a href='single-blog.html'>Blog Details</a></li>
-                                                <li><a href='elements.html'>Elements</a></li>         
+                                                <li><a href='elements.php'>Elements</a></li>         
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>

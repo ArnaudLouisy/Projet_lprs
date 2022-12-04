@@ -5,6 +5,7 @@ require_once 'class/Bdd.php';
 $bdd = new Bdd();
 $offre = new Offre(array());
 $offrevalider = $offre->GetOffre($bdd);
+$nombreoffre = $offre->nombreOffre($bdd)
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -66,12 +67,12 @@ $offrevalider = $offre->GetOffre($bdd);
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Accueil</a></li>
                                             <li><a href='job_listing.php'>Trouver une offre </a></li>
-                                            <li><a href='crea.html'>Evénements</a></li>
+                                            <li><a href='crea.php'>Evénements</a></li>
                                            <li><a href='#'>Page</a>
                                             <ul class='submenu'>
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='elements.php'>Elements</a></li>
                                                     <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
@@ -95,12 +96,12 @@ $offrevalider = $offre->GetOffre($bdd);
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Accueil</a></li>
                                             <li><a href='job_listing.php'>Nos offre</a></li>
-                                            <li><a href='crea.html'>Evénements</a></li>
+                                            <li><a href='crea.php'>Evénements</a></li>
                                             <li><a href='#'>Prospect</a>
                                             <ul class='submenu'>
                                                     <li><a href='blog.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='elements.php'>Elements</a></li>
                                                     <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
@@ -124,12 +125,12 @@ $offrevalider = $offre->GetOffre($bdd);
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Home</a></li>
                                             <li><a href='job_listing.php'>Emploi</a></li>
-                                            <li><a href='crea.html'>Creation </a></li>
+                                            <li><a href='crea.php'>Creation </a></li>
                                             <li><a href='#'>Page</a>
                                 <ul class='submenu'>
                                                     <li><a href='rendezvous.html'>Blog</a></li>
                                                     <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.html'>Elements</a></li>
+                                                    <li><a href='elements.php'>Elements</a></li>
                                                     <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
@@ -347,7 +348,7 @@ $offrevalider = $offre->GetOffre($bdd);
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-                                            <span>39, 782 Jobs found</span>
+                                            <span><?= $nombreoffre[0]?> Offre trouvée</span>
                                             <!-- Select job items start -->
                                             <div class="select-job-items">
                                                 <span>Sort by</span>

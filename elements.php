@@ -58,7 +58,7 @@
                                         <ul id="navigation">
                                             <li><a href="index.php">Home</a></li>
                                             <li><a href="job_listing.php">Find a Jobs </a></li>
-                                            <li><a href="crea.html">About</a></li>
+                                            <li><a href="crea.php">About</a></li>
                                             <li><a href="#">Page</a>
                                                 <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>

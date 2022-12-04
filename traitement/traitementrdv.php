@@ -10,4 +10,5 @@ $rendezvous = new RendezVous (array(
     'ref_offre'=>$_POST['ref_offre']
 ));
 $rendezvous->creerendezvous($bdd);
-var_dump($_POST);
+
+

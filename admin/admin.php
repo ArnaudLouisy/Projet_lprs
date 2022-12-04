@@ -73,7 +73,7 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
-                <th>Numérot</th>
+                <th>Numéro</th>
                 <th>nom</th>
                 <th>Poste/Prénom</th>
                 <th>Role</th>
@@ -106,7 +106,7 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
             </tbody>
             <tfoot>
             <tr>
-                <th>Numérot</th>
+                <th>Numéro</th>
                 <th>nom</th>
                 <th>Prénom</th>
                 <th>Role</th>

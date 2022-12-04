@@ -73,10 +73,10 @@ $nonvalide = $offre->OffreNonValide($bdd);
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
-                <th>Numérot</th>
+                <th>Numéro</th>
                 <th>Titre</th>
                 <th>Publié le</th>
-                <th>contra</th>
+                <th>contrat</th>
                 <th>Géré</th>
             </tr>
             </thead>
@@ -105,7 +105,7 @@ $nonvalide = $offre->OffreNonValide($bdd);
             </tbody>
             <tfoot>
             <tr>
-                <th>Numérot</th>
+                <th>Numéro</th>
                 <th>nom</th>
                 <th>Poste</th>
                 <th>Email</th>

@@ -243,7 +243,7 @@ class Evenement
     /**
      * @param mixed $ref_utilisateur
      */
-    public function setRefUtilisateur($ref_utilisateur): void
+    public function setRefUtilisateur($ref_utilisateur)
     {
         $this->ref_utilisateur = $ref_utilisateur;
     }

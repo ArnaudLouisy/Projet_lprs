@@ -8,3 +8,4 @@ $postulez = new Postule(array(
     'refoffre'=>$_POST['postulez']
 ));
 $postulez->Postulez($bdd);
+header('Location: ../../../index.php');

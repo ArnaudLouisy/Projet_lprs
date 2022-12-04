@@ -73,7 +73,7 @@ $evenement = $even->EvenementNonValide($bdd);
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
-                <th>Numérot</th>
+                <th>Numéro</th>
                 <th>Titre</th>
                 <th>Date</th>
                 <th>Durée</th>
@@ -104,7 +104,7 @@ $evenement = $even->EvenementNonValide($bdd);
             </tbody>
             <tfoot>
             <tr>
-                <th>Numérot</th>
+                <th>Numéro</th>
                 <th>nom</th>
                 <th>Poste</th>
                 <th>Email</th>

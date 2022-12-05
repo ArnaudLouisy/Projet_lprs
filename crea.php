@@ -76,7 +76,7 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                                                     <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
                                             <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
@@ -105,7 +105,7 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                                                     <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
                                             <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom'].' '.$_SESSION['post']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
@@ -134,7 +134,7 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                                                     <li><a href='job_details.php'>job Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -186,7 +186,7 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                             <div class="support-caption">
                                 <p class="pera-top">Ces evenements sont des mis en relation entre les elèves et les entreprise .</p>
                                 <p>En tant qu'elèves rencontré des entreprise inovante tourné vers l'avenir qui vous corespond, en tant qu'entreprise trouvez des jeunes motivé et determiner </p>
-                                <p><a href="formulaire_evenement.html" class="btn post-btn">crée un evenement </a></p>
+                                <p><a href="evenement_form.php" class="btn post-btn">crée un evenement </a></p>
                                 <a href="formulaire_inscription_evenement.html" class="btn post-btn">s'inscrire a un evenement </a>
                             </div>
                         </div>
@@ -562,33 +562,33 @@ $nombreevent = $evenement->nombreEvenement($bdd);
     </main>
     <footer>
         <!-- Footer Start-->
+        <!-- Footer Start-->
         <div class="footer-area footer-bg footer-padding">
             <div class="container">
                 <div class="row d-flex justify-content-between">
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                       <div class="single-footer-caption mb-50">
-                         <div class="single-footer-caption mb-30">
-                             <div class="footer-tittle">
-                                 <h4>Creation d'evenel</h4>
-                                 <div class="footer-pera">
-                                     <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <div class="footer-tittle">
+                                    <h4>A Propos De Nous </h4>
+                                    <div class="footer-pera">
+                                        <p>Notre but est de crée des relations entre des entreprise a la recherche de mains d'oeuvre et d'etudiant en recherche d'emploi</p>
+                                    </div>
                                 </div>
-                             </div>
-                         </div>
+                            </div>
 
-                       </div>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Contact Info</h4>
+                                <h4>Nos Info</h4>
                                 <ul>
                                     <li>
-                                    <p>Address :Your address goes
-                                        here, your demo address.</p>
+                                        <p></p>
                                     </li>
-                                    <li><a href="#">Phone : +8880 44338899</a></li>
-                                    <li><a href="#">Email : info@colorlib.com</a></li>
+                                    <li><a href="#">Telephone : +33 6 19 29 12 14</a></li>
+                                    <li><a href="#">Email : Job.finder@gmail.com</a></li>
                                 </ul>
                             </div>
 
@@ -597,13 +597,13 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Important Link</h4>
+                                <h4>Lien Important</h4>
                                 <ul>
-                                    <li><a href="#"> View Project</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Testimonial</a></li>
-                                    <li><a href="#">Proparties</a></li>
-                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#"> Haut De La Page</a></li>
+                                    <li><a href="../Projet_lprs/form/dist/login.php">Vous Connectez </a></li>
+                                    <li><a href="../Projet_lprs/form/dist/inscription.php">Vous Inscrire</a></li>
+                                    <li><a href="../Projet_lprs/crea.php">Crée Un Evenement</a></li>
+                                    <li><a href="../Projet_lprs/job_listing.php">Offre D'Emploi</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -613,22 +613,22 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                             <div class="footer-tittle">
                                 <h4>Newsletter</h4>
                                 <div class="footer-pera footer-pera2">
-                                 <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
-                             </div>
-                             <!-- Form -->
-                             <div class="footer-form" >
-                                 <div id="mc_embed_signup">
-                                     <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                     method="get" class="subscribe_form relative mail_part">
-                                         <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                         class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                         onblur="this.placeholder = ' Email Address '">
-                                         <div class="form-icon">
-                                             <button type="submit" name="submit" id="newsletter-submit"
-                                             class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
-                                         </div>
-                                         <div class="mt-10 info"></div>
-                                     </form>
+                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
+                                </div>
+                                <!-- Form -->
+                                <div class="footer-form" >
+                                    <div id="mc_embed_signup">
+                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                              method="get" class="subscribe_form relative mail_part">
+                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                                   class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                                   onblur="this.placeholder = ' Email Address '">
+                                            <div class="form-icon">
+                                                <button type="submit" name="submit" id="newsletter-submit"
+                                                        class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
+                                            </div>
+                                            <div class="mt-10 info"></div>
+                                        </form>
                                  </div>
                              </div>
                             </div>

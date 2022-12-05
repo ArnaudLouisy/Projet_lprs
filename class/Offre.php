@@ -42,7 +42,7 @@ class Offre{
 
     }
 
-    private function modifieroffre(Bdd $base)
+    public function modifieroffre(Bdd $base)
     {
         $req = $base->getBdd()->prepare('UPDATE offre SET titre_offre = :titre_offre,description = :description,type_contrat = :type_contrat,dure_contrat = :dure_contrat WHERE id_offre = :id_offre');
 
@@ -54,6 +54,9 @@ class Offre{
             'dure_contrat' => $this->dure_contrat
         ));
         echo 'l`offre a bien été modifié !' . '<br>';
+
+        var_dump($this);
+
     }
 
     public function supprimeroffre(Bdd $base){

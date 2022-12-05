@@ -153,7 +153,7 @@ if (isset($_POST['modifieroffre']) && $_POST['modifieroffre'] != null){
                         </div>
                     </div>
                 </div>
-                <form action="traitement/action_utilisateur/modif.profile.php" method="post">
+                <form action="traitement/offre/creeoffre.php" method="post">
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
@@ -192,7 +192,7 @@ if (isset($_POST['modifieroffre']) && $_POST['modifieroffre'] != null){
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <button name="valider" type="button" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
+                                        <button name="modifier" type="submit"  class="btn btn-secondary px-4" value="<?=$afficheoffre['id_offre']?>">Valider</button>
                                     </div>
                                 </div>
                             </div>

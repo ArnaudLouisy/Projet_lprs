@@ -45,18 +45,17 @@ class Evenement
 
     public function modifierevenement(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('UPDATE evenement SET  nom_event = :nom_event, description = :description, date = :date, heure = :heure; duree = :duree, nombre_inscrit = :nombre_inscrit WHERE id_event = :id');
+        $req = $base->getBdd()->prepare('UPDATE evenement SET nom_event = :nom_event, description = :description, date = :date, heure = :heure, duree = :duree WHERE id_event = :id_event');
 
         $req->execute(array(
+            'id_event'=> $this->id_event,
             'nom_event' => $this->nom_event,
             'description' => $this->description,
             'date' => $this->date,
             'heure' => $this->heure,
             'duree' => $this->duree,
-            'nombre_inscrit' => $this->nombre_inscrit,
-
-
         ));
+        var_dump($this);
         echo 'l`evenement a bien été modifié !' . '<br>';
     }
 

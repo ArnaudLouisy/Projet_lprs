@@ -242,11 +242,11 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                             </ul>
                             <div class="apply-btn2">
                                 <?php if ($_SESSION['role'] == "Eleve" || $_SESSION['role'] == "Entreprise" && $detaileresulta['ref_utilisateur'] != $_SESSION['id_utilisateur']):?>
-                                    <form action="traitement/action_utilisateur/action_eleve/postulez.php" method="post">
-                                        <button name="postulez" type="submit" class="btn head-btn1" value="<?= $detaileresulta['id_event'] ?>">S'inscrire</button>
+                                    <form action="traitement/action_utilisateur/inscription_event.php" method="post">
+                                        <button name="inscrire" type="submit" class="btn head-btn1" value="<?= $detaileresulta['id_event'] ?>">S'inscrire</button>
                                     </form>
                                 <?php elseif ($_SESSION['id_utilisateur'] == $detaileresulta['ref_utilisateur'] || $_SESSION['role']=="Admin"):?>
-                                    <form action="traitement/offre/creeoffre.php" method="post">
+                                    <form action="traitement/evenement/suppevenement.php" method="post">
                                         <button type="submit" name="supprimer" value="<?= $detaileresulta['id_event'] ?>" class="btn head-btn2">Supprimer</button>
                                     </form>
                                     <form action="profile.edit.php" method="post">

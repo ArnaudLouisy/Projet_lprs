@@ -103,6 +103,17 @@ class Utilisateur{
             }
     }
 
+    public function modifiProfile(Bdd $base){
+        $req = $base->getBdd()->prepare('UPDATE utilisateur SET nom = :nom, prenom = :prenom, email = :email WHERE id_utilisateur = :id');
+
+        $req ->execute(array(
+            'id'=>$this->id_utilisateur,
+            'nom'=>$this->nom,
+            'prenom'=>$this->prenom,
+            'email'=>$this->email,
+        ));
+    }
+
     public function profile(Bdd $base){
         $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = :id');
 

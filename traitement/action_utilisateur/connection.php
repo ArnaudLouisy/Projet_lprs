@@ -8,7 +8,7 @@ $bdd = new Bdd();
 
 $eleves = new Utilisateur (array(
     'email'=>$_POST['email'],
-    'motdepasse'=>$_POST['motdepasse']
+    'motdepasse'=>password_hash($_POST['motdepasse'],PASSWORD_DEFAULT)
 ));
 $res=$eleves->UtilisateurConnexion($bdd);
 

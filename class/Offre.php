@@ -37,7 +37,6 @@ class Offre{
             'dure_contrat' => $this->dure_contrat,
             'ref_utilisateur' => $this->ref_utilisateur
         ));
-        var_dump($this);
         echo 'l`offre a bien été ajouté !' . '<br>';
 
     }
@@ -60,10 +59,10 @@ class Offre{
     }
 
     public function supprimeroffre(Bdd $base){
-        $req = $base->getBdd()->prepare('DELETE FROM offre WHERE id_offre = :id_offre and ref_representant = :ref_representant ');
+        $req = $base->getBdd()->prepare('DELETE FROM offre WHERE id_offre = :id_offre and ref_utilisateur = :ref_utilisateur');
         $req->execute(array(
             'id_offre' => $this->id_offre,
-            'ref_representant' => $this->ref_representant,
+            'ref_utilisateur' => $this->ref_utilisateur,
         ));
         echo 'l`offre a bien été supprimé !' . '<br>';
     }

@@ -15,14 +15,14 @@ if (isset($_POST['creer'])){
 }elseif (isset($_POST['supprimer']) && $_POST['supprimer'] != null){
     $offre = new Offre (array(
         'idoffre'=>$_POST['supprimer'],
-        'refrepresentant'=>$_SESSION['id_representant']
+        'refutilisateur'=>$_SESSION['id_utilisateur']
     ));
     $offre->supprimeroffre($bdd);
 
 }elseif (isset($_POST['modifier']) && $_POST['modifier'] != null){
     $offre = new Offre (array(
         'idoffre'=> $_POST['modifier'],
-        'titreoffre'=> ucfirst(strtolower($_POST['titreoffre'])),
+        'titreoffre'=> ucfirst(strtolower($_POST['titre_offre'])),
         'description'=>ucfirst(strtolower($_POST['description'])),
         'typecontrat'=>$_POST['type_contrat'],
         'durecontrat'=>$_POST['dure_contrat'],

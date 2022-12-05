@@ -131,7 +131,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                       <div class="row">
                           <div class="col-sm-3"></div>
                           <div class="col-sm-9 text-secondary">
-                              <button name="valider" type="button" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
+                              <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
                           </div>
                       </div>
                   </div>
@@ -224,7 +224,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <button name="valider" type="button" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
+                                        <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
                                     </div>
                                 </div>
                             </div>
@@ -323,7 +323,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                         </div>
                     </div>
                 </div>
-                <form action="traitement/action_utilisateur/modif.profile.php" method="post">
+                <form action="traitement/evenement/modifevenement.php" method="post">
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
@@ -370,7 +370,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <button name="valider" type="button" class="btn btn-secondary px-4" value="<?=$afficheevent['id_event']?>">Valider</button>
+                                        <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$afficheevent['id_event']?>">Valider</button>
                                     </div>
                                 </div>
                             </div>

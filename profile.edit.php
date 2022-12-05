@@ -143,7 +143,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
 </div>
 <?php endif;?>
 
-<?PHP if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"):?>
+<?PHP if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise" && !isset($_POST['modifieroffre'])  &&  !isset($_POST['modifierevent'])):?>
     <div class="container">
         <div class="main-body">
             <div class="row">
@@ -153,8 +153,8 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="assets/img/icon/Profile.jpg" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
-                                    <h4><?=$profile['nom']." ".$profile['prenom']?></h4>
-                                    <p class="text-secondary mb-1">Poste de <?=$profile['poste']?> </p>
+                                    <h4><?=$profile['nom']?></h4>
+                                    <p class="text-secondary mb-1"><?=$profile['poste']?> chez <?=$profile['poste']?></p>
                                     <p class="text-muted font-size-sm"><?=$profile['adresse']." ".$profile['cp']." ".$profile['ville']?></p>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                                         <h6 class='mb-0'>Poste</h6>
                                     </div>
                                     <div class='col-sm-9 text-secondary'>
-                                        <input name="prenom" type='text' class='form-control' value='<?=$profile['poste']?>'>
+                                        <input name="post" type='text' class='form-control' value='<?=$profile['poste']?>'>
                                     </div>
                                 </div>
                                 <div class='row mb-3'>
@@ -305,7 +305,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
     </div>
 <?php endif;?>
 
-<?PHP if (isset($_POST['modifierevnt']) && $_POST['modifierevnt'] != null && isset($_SESSION['id_utilisateur'])):?>
+<?PHP if (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null && isset($_SESSION['id_utilisateur'])):?>
     <div class="container">
         <div class="main-body">
             <div class="row">
@@ -316,7 +316,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                                 <img src="assets/img/icon/Profile.jpg" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
                                     <h4><?=$profile['nom']." ".$profile['poste']?></h4>
-                                    <p class="text-secondary mb-1">Modification de l'offre <?=$afficheoffre['titre_offre']?> </p>
+                                    <p class="text-secondary mb-1">Modification de l'evenement <?=$afficheevent['nom_event']?> </p>
                                     <p class="text-muted font-size-sm"><?=$profile['adresse']." ".$profile['cp']." ".$profile['ville']?></p>
                                 </div>
                             </div>
@@ -340,29 +340,37 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                                         <h6 class='mb-0'>Description</h6>
                                     </div>
                                     <div class='col-sm-9 text-secondary'>
-                                        <input name="description" type='text' class='form-control' value='<?=$afficheoffre['description']?>'>
+                                        <input name="description" type='text' class='form-control' value='<?=$afficheevent['description']?>'>
                                     </div>
                                 </div>
                                 <div class='row mb-3'>
                                     <div class='col-sm-3'>
-                                        <h6 class='mb-0'>Type de contrat</h6>
+                                        <h6 class='mb-0'>Date </h6>
                                     </div>
                                     <div class='col-sm-9 text-secondary'>
-                                        <input name="type_contrat" type='text' class='form-control' value='<?=$afficheoffre['type_contrat']?>'>
+                                        <input name="date" type='text' class='form-control' value='<?=$afficheevent['date']?>'>
                                     </div>
                                 </div>
                                 <div class='row mb-3'>
                                     <div class='col-sm-3'>
-                                        <h6 class='mb-0'>durée du contrat</h6>
+                                        <h6 class='mb-0'>Heure </h6>
                                     </div>
                                     <div class='col-sm-9 text-secondary'>
-                                        <input name="dure_contrat" type='text' class='form-control' value='<?=$afficheoffre['dure_contrat']?>'>
+                                        <input name="heure" type='time' class='form-control' value='<?=$afficheevent['heure']?>'>
+                                    </div>
+                                </div>
+                                <div class='row mb-3'>
+                                    <div class='col-sm-3'>
+                                        <h6 class='mb-0'>Durée </h6>
+                                    </div>
+                                    <div class='col-sm-9 text-secondary'>
+                                        <input name="duree" type='time' class='form-control' value='<?=$afficheevent['duree']?>'>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <button name="valider" type="button" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
+                                        <button name="valider" type="button" class="btn btn-secondary px-4" value="<?=$afficheevent['id_event']?>">Valider</button>
                                     </div>
                                 </div>
                             </div>

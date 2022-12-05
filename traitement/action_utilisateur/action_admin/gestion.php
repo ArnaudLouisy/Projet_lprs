@@ -23,7 +23,7 @@ if ($_POST['action']){
             'idevent'=>$res[0],
         ));
         $evenement->valider($bdd);
-        header('Location: ../../../admin/admin.evenement_form.php');
+        header('Location: ../../../admin/admin.evenement.php');
     }
 }
 

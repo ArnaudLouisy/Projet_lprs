@@ -47,10 +47,10 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="admin.php">Eleve</a>
+                        <a class="nav-link active" aria-current="page" href="admin.php">Utilisateur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="admin.entreprise.php">Entreprise</a>
+                        <a class="nav-link active" href="admin.entreprise.php">Salle</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
@@ -61,6 +61,7 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.loge.php">Logs</a>
                     </li>
+                    <a class="nav-link active" href="../traitement/action_utilisateur/deco.php">Deco </a>
                 </ul>
             </div>
         </div>
@@ -68,7 +69,7 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
 </header>
 
 <div class="container">
-    <h1>Eleve</h1>
+    <h1>Utilisateur</h1>
     <div class="row">
         <table id="example" class="table table-striped" style="width:100%">
             <thead>

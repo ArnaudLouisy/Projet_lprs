@@ -14,8 +14,9 @@ if (isset($_POST['creer'])){
     ));
 
 
-var_dump($_POST,$evenement);
+
 $evenement->creeunevenement($bdd);
 }
 
+header('Location: ../../index.php');
 

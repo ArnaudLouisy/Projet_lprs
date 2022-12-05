@@ -185,16 +185,16 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                         <div class="single-job-items mb-50">
                             <div class="job-items">
                                 <div class="company-img company-img-details">
-                                    <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                    <a href="#"><img src="assets/img/icon/un-evenement.php" style="width: 100px " alt=""></a>
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
                                         <h4><?= $detaileresulta['nom_event']?></h4>
                                     </a>
                                     <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
+                                        <li</li>
+
+                                        <li></li>
                                     </ul>
                                 </div>
                             </div>
@@ -205,27 +205,24 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                             <div class="post-details1 mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Description Du poste</h4>
+                                    <h4>Description De L'Evenement</h4>
                                 </div>
                                 <p><?=$detaileresulta['description']?></p>
                             </div>
                             <div class="post-details2  mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Required Knowledge, Skills, and Abilities</h4>
+
                                 </div>
                                 <ul>
-                                    <li>System Software Development</li>
+
                                 </ul>
                             </div>
                             <div class="post-details2  mb-50">
                                 <!-- Small Section Tittle -->
-                                <div class="small-section-tittle">
-                                    <h4>Education + Experience</h4>
-                                </div>
+
                                 <ul>
-                                    <li>3 or more years of professional design experience</li>
-                                </ul>
+
                             </div>
                         </div>
                     </div>
@@ -265,15 +262,7 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                         <div class="post-details4  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Company Information</h4>
-                            </div>
-                            <span>Colorlib</span>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <ul>
-                                <li>Name: <span>Colorlib </span></li>
-                                <li>Web : <span> colorlib.com</span></li>
-                                <li>Email: <span>carrier.colorlib@gmail.com</span></li>
-                            </ul>
+
                         </div>
                     </div>
                 </div>

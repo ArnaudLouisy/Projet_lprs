@@ -60,7 +60,7 @@ $profile=$utilisateur->profile($bdd)
                                             <li><a href='job_details.php'>job Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href='contact.html'>Contact</a></li>
+                                    <li><a href='contact.php'>Contact</a></li>
                                     <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.php'>Profil</a></li>
@@ -88,7 +88,7 @@ $profile=$utilisateur->profile($bdd)
                                                 <li><a href='elements.php'>Elements</a></li>         
                                             </ul>
                                         </li>
-                                        <li><a href='contact.html'>Contact</a></li>
+                                        <li><a href='contact.php'>Contact</a></li>
                                         <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']. " </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.php'>Profil</a></li>

@@ -77,7 +77,7 @@ $detaileresulta=$detaile->offredetaile($bdd);
                                                     <li><a href='elements.php'>Elements</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
                                             <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
@@ -105,7 +105,7 @@ $detaileresulta=$detaile->offredetaile($bdd);
                                                     <li><a href='elements.php'>Elements</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
                                             <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom'].' '.$_SESSION['post']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
@@ -133,7 +133,7 @@ $detaileresulta=$detaile->offredetaile($bdd);
                                                     <li><a href='elements.php'>Elements</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href='contact.html'>Contact</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -299,9 +299,9 @@ $detaileresulta=$detaile->offredetaile($bdd);
                     <div class="single-footer-caption mb-50">
                         <div class="single-footer-caption mb-30">
                             <div class="footer-tittle">
-                                <h4>About Us</h4>
+                                <h4>A Propos De Nous </h4>
                                 <div class="footer-pera">
-                                    <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                    <p>Notre but est de crée des relations entre des entreprise a la recherche de mains d'oeuvre et d'etudiant en recherche d'emploi</p>
                                 </div>
                             </div>
                         </div>
@@ -311,14 +311,13 @@ $detaileresulta=$detaile->offredetaile($bdd);
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Contact Info</h4>
+                            <h4>Nos Info</h4>
                             <ul>
                                 <li>
-                                    <p>Address :Your address goes
-                                        here, your demo address.</p>
+                                    <p></p>
                                 </li>
-                                <li><a href="#">Phone : +8880 44338899</a></li>
-                                <li><a href="#">Email : info@colorlib.com</a></li>
+                                <li><a href="#">Telephone : +33 6 19 29 12 14</a></li>
+                                <li><a href="#">Email : Job.finder@gmail.com</a></li>
                             </ul>
                         </div>
 
@@ -327,13 +326,13 @@ $detaileresulta=$detaile->offredetaile($bdd);
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Important Link</h4>
+                            <h4>Lien Important</h4>
                             <ul>
-                                <li><a href="#"> View Project</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Testimonial</a></li>
-                                <li><a href="#">Proparties</a></li>
-                                <li><a href="#">Support</a></li>
+                                <li><a href="#"> Haut De La Page</a></li>
+                                <li><a href="../Projet_lprs/form/dist/login.php">Vous Connectez </a></li>
+                                <li><a href="../Projet_lprs/form/dist/inscription.php">Vous Inscrire</a></li>
+                                <li><a href="../Projet_lprs/crea.php">Crée Un Evenement</a></li>
+                                <li><a href="../Projet_lprs/job_listing.php">Offre D'Emploi</a></li>
                             </ul>
                         </div>
                     </div>

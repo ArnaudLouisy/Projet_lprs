@@ -4,11 +4,11 @@ $_GET['id'];
 require_once 'class/Bdd.php';
 $bdd = new Bdd();
 if (isset($_GET['id']) && $_GET['id'] != null){
-    require_once 'class/Offre.php';
-    $detaile = new Offre(array(
-        'idoffre'=> $_GET['id']
+    require_once 'class/Evenement.php';
+    $evenement = new Evenement(array(
+        'idevent'=> $_GET['id']
     ));
-    $detaileresulta=$detaile->offredetaile($bdd);
+    $detaileresulta=$evenement->voirUnEvenement($bdd);
 }
 ?>
 <!doctype html>
@@ -16,7 +16,7 @@ if (isset($_GET['id']) && $_GET['id'] != null){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Detaile d'employ </title>
+    <title>Detaile d'evenement </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -147,13 +147,13 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                     ?>
                 </div>
             </div>
-                    <!-- Mobile Menu -->
-                    <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
-                    </div>
-                </div>
+            <!-- Mobile Menu -->
+            <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <!-- Header End -->
 </header>
@@ -176,110 +176,109 @@ if (isset($_GET['id']) && $_GET['id'] != null){
     <!-- Hero Area End -->
     <!-- job post company Start -->
     <?php if (isset($_GET['id']) && $_GET['id'] != null):?>
-    <div class="job-post-company pt-120 pb-120">
-        <div class="container">
-            <div class="row justify-content-between">
-                <!-- Left Content -->
-                <div class="col-xl-7 col-lg-8">
-                    <!-- job single -->
-                    <div class="single-job-items mb-50">
-                        <div class="job-items">
-                            <div class="company-img company-img-details">
-                                <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
+        <div class="job-post-company pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <!-- Left Content -->
+                    <div class="col-xl-7 col-lg-8">
+                        <!-- job single -->
+                        <div class="single-job-items mb-50">
+                            <div class="job-items">
+                                <div class="company-img company-img-details">
+                                    <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                </div>
+                                <div class="job-tittle">
+                                    <a href="#">
+                                        <h4><?= $detaileresulta['nom_event']?></h4>
+                                    </a>
+                                    <ul>
+                                        <li>Creative Agency</li>
+                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                        <li>$3500 - $4000</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="job-tittle">
-                                <a href="#">
-                                    <h4><?= $detaileresulta['titre_offre']?></h4>
-                                </a>
+                        </div>
+                        <!-- job single End -->
+
+                        <div class="job-post-details">
+                            <div class="post-details1 mb-50">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4>Description Du poste</h4>
+                                </div>
+                                <p><?=$detaileresulta['description']?></p>
+                            </div>
+                            <div class="post-details2  mb-50">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4>Required Knowledge, Skills, and Abilities</h4>
+                                </div>
                                 <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
+                                    <li>System Software Development</li>
+                                </ul>
+                            </div>
+                            <div class="post-details2  mb-50">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4>Education + Experience</h4>
+                                </div>
+                                <ul>
+                                    <li>3 or more years of professional design experience</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <!-- job single End -->
-
-                    <div class="job-post-details">
-                        <div class="post-details1 mb-50">
+                    <!-- Right Content -->
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="post-details3  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Description Du poste</h4>
-                            </div>
-                            <p><?=$detaileresulta['description']?></p>
-                        </div>
-                        <div class="post-details2  mb-50">
-                            <!-- Small Section Tittle -->
-                            <div class="small-section-tittle">
-                                <h4>Required Knowledge, Skills, and Abilities</h4>
+                                <h4>Evenement</h4>
                             </div>
                             <ul>
-                                <li>System Software Development</li>
+                                <li>Date : <span><?=$detaileresulta['date']?></span></li>
+                                <li>Durée : <span><?=$detaileresulta['duree']?></span></li>
+                                <li>Location : <span>New York</span></li>
+                                <li>Nombre de place : <span>02</span></li>
+                                <li>Salary :  <span>$7,800 yearly</span></li>
                             </ul>
-                        </div>
-                        <div class="post-details2  mb-50">
-                            <!-- Small Section Tittle -->
-                            <div class="small-section-tittle">
-                                <h4>Education + Experience</h4>
-                            </div>
-                            <ul>
-                                <li>3 or more years of professional design experience</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Right Content -->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="post-details3  mb-50">
-                        <!-- Small Section Tittle -->
-                        <div class="small-section-tittle">
-                            <h4>Job Overview</h4>
-                        </div>
-                        <ul>
-                            <li>Posted date : <span>12 Aug 2019</span></li>
-                            <li>Location : <span>New York</span></li>
-                            <li>Vacancy : <span>02</span></li>
-                            <li>Job nature : <span><?=$detaileresulta['type_contrat']?></span></li>
-                            <li>Salary :  <span>$7,800 yearly</span></li>
-                            <li>Application date : <span>12 Sep 2020</span></li>
-                        </ul>
-                        <div class="apply-btn2">
-                            <?php if ($_SESSION['role'] == "Eleve"):?>
-                                <form action="traitement/action_utilisateur/action_eleve/postulez.php" method="post">
-                                    <button name="postulez" type="submit" class="btn head-btn1" value="<?= $detaileresulta['id_offre'] ?>">Postulez</button>
-                                </form>
-                            <?php elseif ($_SESSION['id_utilisateur'] == $detaileresulta['ref_utilisateur'] || $_SESSION['role']=="Admin"):?>
-                            <form action="traitement/offre/creeoffre.php" method="post">
-                                <button type="submit" name="supprimer" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn2">Supprimer</button>
-                            </form>
-                            <form action="profile.edit.php" method="post">
-                                <button name="modifieroffre" type="submit" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn1">Modifier</button>
-                            </form>
-                            <?php elseif ($detaileresulta['ref_utilisateur'] != $_SESSION['id_utilisateur'] ):?>
+                            <div class="apply-btn2">
+                                <?php if ($_SESSION['role'] == "Eleve" || $_SESSION['role'] == "Entreprise"):?>
+                                    <form action="traitement/action_utilisateur/action_eleve/postulez.php" method="post">
+                                        <button name="postulez" type="submit" class="btn head-btn1" value="<?= $detaileresulta['id_event'] ?>">S'inscrire</button>
+                                    </form>
+                                <?php elseif ($_SESSION['id_utilisateur'] == $detaileresulta['ref_utilisateur'] || $_SESSION['role']=="Admin"):?>
+                                    <form action="traitement/offre/creeoffre.php" method="post">
+                                        <button type="submit" name="supprimer" value="<?= $detaileresulta['id_offre'] ?>" class="btn head-btn2">Supprimer</button>
+                                    </form>
+                                    <form action="profile.edit.php" method="post">
+                                        <button name="modifieroffre" type="submit" value="<?= $detaileresulta['id_event'] ?>" class="btn head-btn1">Modifier</button>
+                                    </form>
+                                <?php elseif ($detaileresulta['ref_utilisateur'] != $_SESSION['id_utilisateur'] ):?>
                                     <button disabled  class="btn head-btn1">Modifier</button>
                                     <button disabled  class="btn head-btn2">Supprimer</button>
-                            <?php endif;?>
+                                <?php endif;?>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="post-details4  mb-50">
-                        <!-- Small Section Tittle -->
-                        <div class="small-section-tittle">
-                            <h4>Company Information</h4>
+                        <div class="post-details4  mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Company Information</h4>
+                            </div>
+                            <span>Colorlib</span>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            <ul>
+                                <li>Name: <span>Colorlib </span></li>
+                                <li>Web : <span> colorlib.com</span></li>
+                                <li>Email: <span>carrier.colorlib@gmail.com</span></li>
+                            </ul>
                         </div>
-                        <span>Colorlib</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                        <ul>
-                            <li>Name: <span>Colorlib </span></li>
-                            <li>Web : <span> colorlib.com</span></li>
-                            <li>Email: <span>carrier.colorlib@gmail.com</span></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php endif;?>
     <!-- job post company End -->
 
@@ -455,4 +454,3 @@ if (isset($_GET['id']) && $_GET['id'] != null){
 
 </body>
 </html>
-

@@ -36,10 +36,8 @@ class Offre{
             'type_contrat' => $this->type_contrat,
             'dure_contrat' => $this->dure_contrat,
             'ref_utilisateur' => $this->ref_utilisateur
-
         ));
-var_dump($this,$req);
-
+        var_dump($this);
         echo 'l`offre a bien été ajouté !' . '<br>';
 
     }

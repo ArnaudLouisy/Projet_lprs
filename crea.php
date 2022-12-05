@@ -546,7 +546,7 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                                             </div>
                                         </div>
                                         <div class='items-link items-link2 f-right'>
-                                            <a type='submit' href='job_details.php?idevent=<?=$value['id_event']?>'><?=$value['duree']?></a>
+                                            <a type='submit' href='event_detail.php?id=<?=$value['id_event']?>'><?=$value['duree']?></a>
                                             <span>7 hours ago</span>
                                         </div>
                                     </div>

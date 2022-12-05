@@ -71,10 +71,10 @@ class Evenement
         $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autorise = 1 AND id_event = :id');
 
         $req->execute(array(
-            'id' => $this.$this->id_event
+            'id' => $this->id_event
         ));
 
-        return $req->fetchAll();
+        return $req->fetch();
     }
 
     public function nombreEvenement(Bdd $base){
@@ -243,8 +243,7 @@ class Evenement
     /**
      * @param mixed $ref_utilisateur
      */
-    public function setRefUtilisateur($ref_utilisateur)
-    {
+    public function setRefUtilisateur($ref_utilisateur){
         $this->ref_utilisateur = $ref_utilisateur;
     }
 

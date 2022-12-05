@@ -89,7 +89,7 @@ $profile=$utilisateur->profile($bdd)
                                             </ul>
                                         </li>
                                         <li><a href='contact.html'>Contact</a></li>
-                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom_entreprise']." ".$_SESSION['role_representant']. " </a>
+                                        <li><a href='#'><img src='assets/img/icon/Profile.jpg' width='55'>" .$_SESSION['nom']." ".$_SESSION['post']. " </a>
                                         <ul class='submenu'>
                                             <li><a href='profile.php'>Profil</a></li>
                                             <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
@@ -124,9 +124,9 @@ $profile=$utilisateur->profile($bdd)
                                            <p class='text-muted font-size-sm'>".$profile['adresse']." ".$profile['cp']." ".$profile['ville']."</p>
                                             ");
                                 elseif(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"):
-                                    echo ("<H4>".$_SESSION['nom_entreprise']."</h4>
-                                           <p class='text-secondary mb-1'>".$_SESSION['role_representant']." chez ".$_SESSION['nom_entreprise']."</p>
-                                           <p class='text-muted font-size-sm'>".$_SESSION['adresse']."</p>
+                                    echo ("<H4>".$_SESSION['nom']."</h4>
+                                           <p class='text-secondary mb-1'>".$_SESSION['post']." chez ".$_SESSION['nom']."</p>
+                                           <p class='text-muted font-size-sm'>".$profile['adresse']." ".$profile['cp']." ".$profile['ville']."</p>
                                             ");
                                 endif;
                                 ?>
@@ -162,8 +162,7 @@ $profile=$utilisateur->profile($bdd)
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <?PHP
-                        if(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
+                        <?PHP if(isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
                             echo ("
                         <div class='row'>
                             <div class='col-sm-3'>
@@ -238,22 +237,22 @@ $profile=$utilisateur->profile($bdd)
                         </div>
                         <hr>
                         ");}
-                        elseif (isset($_SESSION['id_representant'])){
+                        elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"){
                             echo ("<div class='row'>
                             <div class='col-sm-3'>
                                 <h6 class='mb-0'>Nom</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['nom_entreprise']."
+                                ".$profile['nom']."
                             </div>
                         </div>
                         <hr>
                         <div class='row'>
                             <div class='col-sm-3'>
-                                <h6 class='mb-0'>prenom</h6>
+                                <h6 class='mb-0'>Post</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['role_representant']."
+                                ".$profile['poste']."
                             </div>
                         </div>
                         <hr>
@@ -262,7 +261,7 @@ $profile=$utilisateur->profile($bdd)
                                 <h6 class='mb-0'>Email</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['email']."
+                                ".$profile['email']."
                             </div>
                         </div>
                         <hr>
@@ -271,12 +270,29 @@ $profile=$utilisateur->profile($bdd)
                                 <h6 class='mb-0'>Adresse</h6>
                             </div>
                             <div class='col-sm-9 text-secondary'>
-                                ".$_SESSION['adresse']."
+                                ".$profile['adresse']."
                             </div>
                         </div>
-                        <hr>");
-                        }
-                        ?>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Ville</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['ville']."
+                            </div>
+                        </div>
+                        <hr>
+                        <div class='row'>
+                            <div class='col-sm-3'>
+                                <h6 class='mb-0'>Code postale</h6>
+                            </div>
+                            <div class='col-sm-9 text-secondary'>
+                                ".$profile['cp']."
+                            </div>
+                        </div>
+                        <hr>
+                        ");} ?>
                         <div class="row">
                             <div class="col-sm-12">
                                 <a class="btn head-btn1 " href="profile.edit.php">modifié</a>

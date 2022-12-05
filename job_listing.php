@@ -167,6 +167,9 @@ $nombreoffre = $offre->nombreOffre($bdd)
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
                                 <h2>Trouvez un emploi</h2>
+                                <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == 'Entreprise' ):?>
+                                    <br><p><a href="../Projet_lprs/offre.html" class="btn post-btn">crée une offre </a></p>
+                                <?php endif;?>
                             </div>
                         </div>
                     </div>
@@ -174,6 +177,7 @@ $nombreoffre = $offre->nombreOffre($bdd)
             </div>
         </div>
         <!-- Hero Area End -->
+
         <!-- Job List Area Start -->
         <div class="job-listing-area pt-120 pb-120">
             <div class="container">

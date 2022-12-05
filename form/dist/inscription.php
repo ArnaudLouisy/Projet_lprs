@@ -77,13 +77,13 @@ session_start()
         <div class="switch__container" id="switch-c1">
             <h1 class="switch__title title">S'inscrire en tant entreprise </h1>
             <p class="switch__description description">Si vous etes une entreprise cliquez sur le bouton pour vous inscrire </p>
-            <button class="switch__button button switch-btn">s'inscrire eleves </button>
+            <button class="switch__button button switch-btn">Inscription entreprise  </button>
             <form><button formaction="../../index.php" class="switch__button button switch-btn">Accueil</button></form>
         </div>
         <div class="switch__container is-hidden" id="switch-c2">
             <h2 class="switch__title title">S'inscrire en tant qu'elèves </h2>
             <p class="switch__description description">Si vous etes un eleves cliquez sur le bouton pour vous inscrire</p>
-            <button class="switch__button button switch-btn">S'inscrire eleves</button>
+            <button class="switch__button button switch-btn">Inscription eleèves </button>
         </div>
     </div>
 </div>

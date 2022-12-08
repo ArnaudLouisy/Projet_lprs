@@ -187,7 +187,6 @@ $nombreevent = $evenement->nombreEvenement($bdd);
                                 <p class="pera-top">Ces evenements sont des mis en relation entre les elèves et les entreprise .</p>
                                 <p>En tant qu'elèves rencontré des entreprise inovante tourné vers l'avenir qui vous corespond, en tant qu'entreprise trouvez des jeunes motivé et determiner </p>
                                 <p><a href="evenement_form.php" class="btn post-btn">crée un evenement </a></p>
-                                <a href="formulaire_inscription_evenement.html" class="btn post-btn">s'inscrire a un evenement </a>
                             </div>
                         </div>
                     </div>

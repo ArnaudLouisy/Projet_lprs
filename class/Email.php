@@ -1,9 +1,12 @@
 <?php
 
+require_once '../vendor/autoload.php';
+
 class Email{
     private $destinataire;
     private $titre;
     private $expediteur;
+    private $corps;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -24,7 +27,7 @@ class Email{
     }
 
     public function compteCreer(){
-
+        
     }
 
     public function compteValider(){

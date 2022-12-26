@@ -8,6 +8,7 @@ class Utilisateur{
     private $logo;
     private $motdepasse;
     private $post;
+    private $verif;
     private $adresse;
     private $cp;
     private $ville;
@@ -33,40 +34,42 @@ class Utilisateur{
 
     public function UtilisateurConnexion (Bdd $base){
 
-        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE email = :email  AND motdepasse = :motdepasse');
+        $req = $base->getBdd()->prepare('SELECT * FROM utilisateur WHERE email = :email');
 
         $req->execute(array(
             'email' => $this->email,
-            'motdepasse' => $this->motdepasse
         ));
 
         $res = $req->fetch();
 
-        if ($res['valider'] == 0 && isset($res['id_utilisateur'])) {
-            header('Location: ../../Erreur/dist/validation.html');
-        }
-        elseif ($res['valider'] == 1) {
-            $_SESSION['id_utilisateur'] = $res['id_utilisateur'];
-            $_SESSION['role'] = $res['role'];
-            $_SESSION['nom'] = $res['nom'];
-            echo $res['role'];
-            if ($res['role'] == "Entreprise"){
-                $_SESSION['post'] = $res['poste'];
-                header('Location: ../../index.php');
-            }elseif($res['role'] == "Eleve"){
-                $_SESSION['prenom'] = $res['prenom'];
-                header('Location: ../../index.php');
-            }elseif ($res['role'] == "Admin"){
-                $_SESSION['prenom'] = $res['prenom'];
-                header('Location: ../../admin/admin.php');
-            }
+        $verif = password_verify($this->motdepasse,$res['motdepasse']);
 
+        if ($verif == true){
+            if ($res['valider'] == 0 && isset($res['id_utilisateur'])) {
+                header('Location: ../../Erreur/dist/validation.html');
+            }
+            elseif ($res['valider'] == 1) {
+                $_SESSION['id_utilisateur'] = $res['id_utilisateur'];
+                $_SESSION['role'] = $res['role'];
+                $_SESSION['nom'] = $res['nom'];
+                if ($res['role'] == "Entreprise"){
+                    $_SESSION['post'] = $res['poste'];
+                    header('Location: ../../index.php');
+                }elseif($res['role'] == "Eleve"){
+                    $_SESSION['prenom'] = $res['prenom'];
+                    header('Location: ../../index.php');
+                }elseif ($res['role'] == "Admin"){
+                    $_SESSION['prenom'] = $res['prenom'];
+                    header('Location: ../../admin/admin.php');
+                }
+
+            }
         }else{
             header('Location: ../../form/dist/login');
             $_SESSION['erreurconnexion'] = "Information incorecte ou compte inhesistant .";
         }
 
-        return $res;
+        return $res ;
     }
 
     public function UtilisateurInscription(Bdd $base){

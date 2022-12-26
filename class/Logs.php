@@ -2,7 +2,7 @@
 
 class Logs{
 
-    private $id_compte;
+    private $ref_compte;
     private $date;
     private $heure;
     private $adresse_ip;
@@ -22,10 +22,10 @@ class Logs{
     }
 
     public function logs(Bdd $base){
-        $req = $base->getBdd()->prepare('INSERT INTO logs (id_compte,adresse_ip) values (:id_compte,:adresse_ip)');
+        $req = $base->getBdd()->prepare('INSERT INTO logs (ref_compte,adresse_ip) values (:ref_compte,:adresse_ip)');
 
         $req->execute(array(
-            'id_compte' => $this->id_compte ,
+            'ref_compte' => $this->ref_compte ,
             'adresse_ip' => $this->adresse_ip
         ));
     }
@@ -38,11 +38,11 @@ class Logs{
     }
 
     /**
-     * @param mixed $id_compte
+     * @param mixed $ref_compte
      */
-    public function setIdCompte($id_compte)
+    public function setRefCompte($ref_compte): void
     {
-        $this->id_compte = $id_compte;
+        $this->ref_compte = $ref_compte;
     }
 
     /**

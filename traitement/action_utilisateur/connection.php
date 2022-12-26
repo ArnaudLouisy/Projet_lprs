@@ -8,12 +8,11 @@ $bdd = new Bdd();
 
 $eleves = new Utilisateur (array(
     'email'=>$_POST['email'],
-    'motdepasse'=>password_hash($_POST['motdepasse'],PASSWORD_DEFAULT)
+    'motdepasse'=>$_POST['motdepasse']
 ));
 $res=$eleves->UtilisateurConnexion($bdd);
-
 $loge = new Logs(array(
-    'idcompte'=>$res['id_utilisateur'],
+    'refcompte'=>$res['id_utilisateur'],
     date_default_timezone_set('Europe/Paris'),
     'date'=>date("d-m-y" ),
     date_default_timezone_set('Europe/Paris'),

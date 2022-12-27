@@ -41,6 +41,8 @@ session_start()
             <input class="form__input" name="domaine" type="text" placeholder="Domaine d'etude">
             <input class="form__input" name="niveau" type="text" placeholder="Niveau d'etude">
             <input class="form__input" name="email" type="text" placeholder="Email">
+            Photo de profile
+            <input class="form__input" name="photo" type="file" >
             <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
             <input class="form__input" type="password" name="mdpconfirme" placeholder="Confirmation"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
             <button name="role" value="eleve" type="submit" class=" b">S'inscrire</button>
@@ -60,12 +62,13 @@ session_start()
             endif;
             ?>
             <input class="form__input" name="nom" type="text" placeholder="Nom de l'entreprise">
-            <input class="form__input" name="logo" type="text" placeholder="Lien vers le logo de votre entreprise">
             <input class="form__input" name="adresse" type="text" placeholder="Rue">
             <input class="form__input" name="cp" type="text" placeholder="Code postal">
             <input class="form__input" name="ville" type="text" placeholder="Ville">
             <input class="form__input" name="post" type="text" placeholder="Post">
             <input class="form__input" name="email" type="text" placeholder="Email">
+            Logo de votre entreprise
+            <input class="form__input" name="photo" type="file">
             <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
             <input class="form__input" type="password" name="mdpconfirme" placeholder="Confirmation"><?php if (isset($_SESSION['erreurmotdepasse'])){echo ("<H3 style='color: red'>*</H3>");}?>
             <button name="role" value="entreprise" type="submit" class=" b">S'inscrire</button>

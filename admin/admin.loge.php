@@ -50,7 +50,7 @@ $logsvue = $logs->VoireLoge($bdd);
                         <a class="nav-link active" aria-current="page" href="admin.php">Utilisateur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="admin.entreprise.php">Salle</a>
+                        <a class="nav-link active" href="admin.salle.php">Salle</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>

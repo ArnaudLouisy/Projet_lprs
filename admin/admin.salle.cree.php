@@ -3,8 +3,10 @@ session_start();
 require_once '../class/Salle.php';
 require_once '../class/Bdd.php';
 $bdd = new Bdd();
-$salle = new Salle(array());
-$sallevue = $salle->voirSalle($bdd);
+$salle = new Salle(array(
+    'idsalle'=> $_POST['modif']
+));
+$lasalle = $salle->voirLaSalle($bdd);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +52,7 @@ $sallevue = $salle->voirSalle($bdd);
                         <a class="nav-link active" aria-current="page" href="admin.php">Utilisateur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="admin.salle.php">Salle</a>
+                        <a class="nav-link active" href="admin.salle.cree.php">Salle</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
@@ -68,52 +70,64 @@ $sallevue = $salle->voirSalle($bdd);
     </nav>
 </header>
 
-<div class="container">
-    <div class="m-2"  >
-        <h1 class="col-3">Salle</h1>
-        <a href="admin.salle.cree.php"><button class="btn head-btn2 border border-dark border-"> Cree une salle</button></a>
-        </br>
+<?php if (isset($_POST['modif']) && $_POST['modif']!=null):?>
+
+    <div class="container ">
+        <h4> Modification de salle </h4>
+        <form action="../traitement/action_utilisateur/action_admin/affecter.php" method="post">
+            <div class="mb-3 col-3">
+                <label for="exampleInputPassword1" class="form-label">Nom</label>
+                <input type="text" name="nom" class="form-control" value="<?=$lasalle['nom_salle']?>" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 col-3">
+                <label for="exampleInputPassword1" class="form-label">Nombre de place</label>
+                <input type="number" name="nombre_place" class="form-control" value="<?=$lasalle['nombre_place']?>"id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 col-3">
+                <label for="exampleInputPassword1" class="form-label">Adresse</label>
+                <input type="text" name="adresse" class="form-control" value="<?=$lasalle['adresse']?>" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 col-3">
+                <label for="exampleInputPassword1" class="form-label">Code postal</label>
+                <input type="number" name="cp" class="form-control" value="<?=$lasalle['cp']?>" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 col-3">
+                <label for="exampleInputPassword1" class="form-label">Ville</label>
+                <input type="text" name="ville" class="form-control" value="<?=$lasalle['ville']?>" id="exampleInputPassword1">
+            </div>
+            <button type="submit" name="modifier" value="<?=$lasalle['id_salle']?>">Modifier</button>
+        </form>
     </div>
 
-    <div class="row">
-        <table id="example" class="table table-striped" style="width:100%">
-            <thead>
-            <tr>
-                <th>Id_salle</th>
-                <th>Nom</th>
-                <th>Nombre de place</th>
-                <th>Adresse</th>
-                <th>Gére</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($sallevue as $value):?>
+<?php else:?>
+<div class="container ">
+    <h4> Creation de Salle </h4>
+    <form action="../traitement/action_utilisateur/action_admin/affecter.php" method="post">
+        <div class="mb-3 col-3">
+            <label for="exampleInputPassword1" class="form-label">Nom</label>
+            <input type="text" name="nom" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 col-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre de place</label>
+            <input type="number" name="nombre_place" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 col-3">
+            <label for="exampleInputPassword1" class="form-label">Adresse</label>
+            <input type="text" name="adresse" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 col-3">
+            <label for="exampleInputPassword1" class="form-label">Code postal</label>
+            <input type="number" name="cp" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 col-3">
+            <label for="exampleInputPassword1" class="form-label">Ville</label>
+            <input type="text" name="ville" class="form-control" id="exampleInputPassword1">
+        </div>
+        <input type="submit" name="valider" value="Valider">
 
-            <tr>
-            <td><?=$value['id_salle']?></td>
-            <td><?=$value['nom_salle']?></td>
-            <td><?=$value['nombre_place']?></td>
-            <td><?=$value['adresse'].",".$value['ville']." ".$value['cp']?></td>
-            <td><form action='admin.salle.cree.php' method='post'>
-                     <button type="submit" class="btn btn-outline-secondary" name="modif" value="<?=$value['id_salle']?>">Modifier</button></form>
-
-                <form action='../traitement/action_utilisateur/action_admin/affecter.php' method='post'><button type='submit'  class='btn btn-outline-secondary' name='supprime' value="<?=$value['id_salle']?>"><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
-                    <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
-                    <path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>
-                </svg></button>
-            </form></td>
-            </tr><?php endforeach;?>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th>Id_utilisateur</th>
-                <th>Date</th>
-                <th>Adresse ip</th>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+    </form>
 </div>
+<?php endif; ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

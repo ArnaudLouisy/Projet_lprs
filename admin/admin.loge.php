@@ -82,7 +82,7 @@ $logsvue = $logs->VoireLoge($bdd);
             <tbody>
             <?php foreach ($logsvue as $value){
                 echo "<tr>
-            <td>".$value['id_compte']."</td>
+            <td>".$value['ref_compte']."</td>
             <td>".$value['date']."</td>
             <td>".$value['adresse_ip']."</td>
             </td>

@@ -37,24 +37,33 @@ class Salle{
     public function voirSalle(Bdd $base){
         $req = $base->getBdd()->prepare('SELECT * FROM salle');
         $req ->execute(array());
+        return $req;
     }
 
     public function voirLaSalle(Bdd $base){
-        $req = $base->getBdd()->prepare('SELECT * FROM salle WHERE id_salle = :id_salle');
+        $req = $base->getBdd()->prepare('SELECT * FROM salle WHERE id_salle = :id');
         $req ->execute(array(
-            'id_salle' => $this->id_salle
+            'id' => $this->id_salle
         ));
+        return $req->fetch();
     }
 
     public function modifierLaSalle(Bdd $base){
-        $req = $base->getBdd()->prepare('UPDATE salle SET nom_salle = :nom_salle, nombre_place = :nombre_place, adresse = :adresse, cp = :cp, ville = :ville');
-        $req->execute(array());
+        $req = $base->getBdd()->prepare('UPDATE salle SET nom_salle = :nom_salle, nombre_place = :nombre_place, adresse = :adresse, cp = :cp, ville = :ville WHERE id_salle = :id' );
+        $req->execute(array(
+            'id'=> $this->id_salle,
+            'nom_salle'=> $this->nom_salle,
+            'nombre_place'=> $this->nombre_place,
+            'adresse'=> $this->adresse,
+            'ville'=> $this->ville,
+            'cp'=> $this->cp,
+        ));
     }
 
     public function supprimerLaSalle(Bdd $base){
-        $req = $base->getBdd()->prepare('DELETE FROM salle WHERE id_salle = :id_salle');
+        $req = $base->getBdd()->prepare('DELETE FROM salle WHERE id_salle = :id');
         $req ->execute(array(
-            'id_salle' => $this->id_salle
+            'id' => $this->id_salle
         ));
     }
 

@@ -12,6 +12,7 @@ class Evenement
     private $nombre_inscrit;
     private $ref_utilisateur;
     private $autorise;
+    private $ref_salle;
 
     public function __construct(array $donnees)
     {
@@ -102,12 +103,13 @@ class Evenement
         return $req->fetchAll();
     }
 
-    public function valider(Bdd $base)
+    public function validerEtAffectezSalle(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('Update evenement set autorise =1 WHERE id_event = :id');
+        $req = $base->getBdd()->prepare('Update evenement set autorise =1, ref_salle = :ref_salle WHERE id_event = :id');
 
         $req->execute(array(
-            'id' => $this->id_event
+            'id' => $this->id_event,
+            'ref_salle' => $this->ref_salle
         ));
     }
 
@@ -246,5 +248,12 @@ class Evenement
         $this->ref_utilisateur = $ref_utilisateur;
     }
 
+    /**
+     * @param mixed $ref_salle
+     */
+    public function setRefSalle($ref_salle): void
+    {
+        $this->ref_salle = $ref_salle;
+    }
 
 }

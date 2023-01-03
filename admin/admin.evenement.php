@@ -101,7 +101,7 @@ $evenement = $even->EvenementNonValide($bdd);
                              <option value="<?=$valeur['id_salle']?>"><?=$valeur['nom_salle']?></option>
                              <?php endforeach;?>
                          </select>
-                         <button class="btn btn-outline-secondary" name="valider" type="submit" id="button-addon2">Button</button>
+                         <button class="btn btn-outline-secondary" name="valider" type="submit" value="<?=$value['id_event']?>" id="button-addon2">Button</button>
                      </div>
                 
                 <button type='submit'  class='btn btn-outline-secondary' name='supprime' value=".$value['id_event']."_evenement"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>

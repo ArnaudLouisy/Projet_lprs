@@ -2,6 +2,7 @@
 require_once '../../../class/Bdd.php';
 $bdd = new Bdd();
 var_dump($_POST);
+
 if (isset($_POST['action'])){
     $res=explode("_",$_POST['action']);
     if ($res[1]=="utilisateur"){
@@ -18,13 +19,6 @@ if (isset($_POST['action'])){
         ));
         $offre->valider($bdd);
         header('Location: ../../../admin/admin.offre.php');
-    }elseif ($res[1]=='evenement'){
-        require_once '../../../class/Evenement.php';
-        $evenement = new Evenement(array(
-            'idevent'=>$res[0],
-        ));
-        $evenement->valider($bdd);
-        header('Location: ../../../admin/admin.evenement.php');
     }
 }elseif (isset($_POST['supprime'])){
     $res=explode("_",$_POST['supprime']);
@@ -51,6 +45,14 @@ if (isset($_POST['action'])){
         $evenement->supprimerevenemnt($bdd);
         header('Location: ../../../admin/admin.evenement.php');
     }
+}elseif (isset($_POST['valider']) && $_POST['valider'] != null){
+    require_once '../../../class/Evenement.php';
+    $evenement = new Evenement(array(
+        'idevent'=>$_POST['valider'],
+        'refsalle'=>$_POST['salle']
+    ));
+    $evenement->validerEtAffectezSalle($bdd);
+    header('Location: ../../../admin/admin.evenement.php');
 }
 
 

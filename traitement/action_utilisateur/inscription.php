@@ -13,9 +13,6 @@ foreach ($_POST as $value){
         break;
     }
 }
-
-
-
 if (!$erreur) {
     if ($_POST['motdepasse'] == $_POST['mdpconfirme']) {
         if (isset($_FILES['photo'])){
@@ -28,7 +25,7 @@ if (!$erreur) {
             $photo = new File($nameFile,$sizeFile,$typeFile,$erreurFile,$tmpFile);
             $nom = $photo ->fileChequ();
         }else{
-            $nom = null;
+            $nom = 'assets/img/icon/Profile.jpg';
         }
         $utilisateur = new Utilisateur (array(
             'nom' => strtoupper($_POST['nom']),
@@ -36,7 +33,7 @@ if (!$erreur) {
             'role' => ucfirst($_POST['role']),
             'logo' => $nom,
             'email' => $_POST['email'],
-            'motdepasse' => $_POST['motdepasse'],
+            'motdepasse' => password_hash($_POST['motdepasse'],PASSWORD_DEFAULT),
             'adresse' => $_POST['adresse'],
             'cp'=>$_POST['cp'],
             'ville'=>$_POST['ville'],

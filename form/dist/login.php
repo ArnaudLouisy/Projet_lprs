@@ -34,7 +34,7 @@ session_start()
               <input class="form__input" name="email" type="text" placeholder="Email">
               <input class="form__input" name="motdepasse" type="password" placeholder="Mot de passe">
               <H1 style='background-color: red'></H1>
-              <h4> <input class="form-check-input" type="checkbox"> Se souvenir de moi</h4>
+              <h4> <input class="form-check-input" type="checkbox" name="remenber"> Se souvenir de moi</h4>
 
               <a class="form__link">Mot de passe oubliée ?</a>
               <button class="">Se connecter</button>

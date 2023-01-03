@@ -37,7 +37,7 @@ class File{
                     $uniquename = md5(uniqid(rand(),true));
                     $name = "../../photo/" . $uniquename . ".". strtolower(end($extention));
                     move_uploaded_file($this->tmpFile,$name);
-
+                    $chemin="photo/" . $uniquename . ".". strtolower(end($extention));
                 }else{
                     $_SESSION['erreurinscription'] = "Merci de metre une image";
                 }
@@ -48,8 +48,7 @@ class File{
         }else{
             $_SESSION['erreurinscription'] = "Une erreur est survenue lors du chargement";
         }
-        var_dump($name);
-        return $name;
+        return $chemin;
     }
 
 }

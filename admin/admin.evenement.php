@@ -1,8 +1,11 @@
 <?php
 session_start();
 require_once '../class/Evenement.php';
+require_once '../class/Salle.php';
 require_once '../class/Bdd.php';
 $bdd = new Bdd();
+$salle = new Salle(array());
+$lessalle = $salle->voirSalle($bdd);
 $even = new Evenement(array());
 $evenement = $even->EvenementNonValide($bdd);
 ?>
@@ -18,6 +21,7 @@ $evenement = $even->EvenementNonValide($bdd);
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <!-- CSS here -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/price_rangs.css">
@@ -82,17 +86,23 @@ $evenement = $even->EvenementNonValide($bdd);
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($evenement as $value){
-                echo "<tr>
-            <td>".$value['id_event']."</td>
-            <td>".$value['nom_event']."</td>
-            <td>".$value['date']."</td>
-            <td>".$value['duree']."</td>
+            <?php foreach ($evenement as $value):?>
+            <tr>
+            <td><?=$value['id_event']?></td>
+            <td><?=$value['nom_event']?></td>
+            <td><?=$value['date']?></td>
+            <td><?=$value['duree']?></td>
             <td>
                 <form action='../traitement/action_utilisateur/action_admin/gestion.php' method='post'>
-                     <button type='submit'  class='btn btn-outline-secondary' name='action' value=" .$value['id_event']."_evenement"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-lg' viewBox='0 0 16 16'>
-  <path d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/>
-</svg></button>
+                     <div class="input-group mb-3">
+                         <select class="js-example-basic-single" name="salle" id="salle">
+                             <option value="0">--Selectionez une salle--</option>
+                             <?php foreach ($lessalle as $valeur): ?>
+                             <option value="<?=$valeur['id_salle']?>"><?=$valeur['nom_salle']?></option>
+                             <?php endforeach;?>
+                         </select>
+                         <button class="btn btn-outline-secondary" name="valider" type="submit" id="button-addon2">Button</button>
+                     </div>
                 
                 <button type='submit'  class='btn btn-outline-secondary' name='supprime' value=".$value['id_event']."_evenement"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
   <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
@@ -101,7 +111,7 @@ $evenement = $even->EvenementNonValide($bdd);
                 </form>
               
             </td>
-            </tr>";};?>
+            </tr><?php endforeach;?>
             </tbody>
             <tfoot>
             <tr>
@@ -116,8 +126,9 @@ $evenement = $even->EvenementNonValide($bdd);
     </div>
 </div>
 
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>

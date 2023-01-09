@@ -42,6 +42,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+//session eleve
 <?PHP if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"):?>
 <div class="container">
   <div class="main-body">
@@ -50,7 +51,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
         <div class="card">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <img src="assets/img/icon/Profile.jpg" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+              <img src="<?=$_SESSION['photo']?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
               <div class="mt-3">
                 <h4><?=$profile['nom']." ".$profile['prenom']?></h4>
                 <p class="text-secondary mb-1">Etudiant en <?=$profile['domaine_etude']?> </p>
@@ -61,7 +62,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
         </div>
       </div>
       <form action="traitement/action_utilisateur/modif.profile.php" method="post">
-          <div class="col-lg-8">
+          <div class="container">
               <div class="card">
                   <div class="card-body">
                       <div class='row mb-3'>
@@ -128,10 +129,18 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                               <input name="niveau" type='text' class='form-control' value='<?=$profile['niveau_etude']?>'>
                           </div>
                       </div>
+                      <div class='row mb-3'>
+                          <div class='col-sm-3'>
+                              <h6 class='mb-0'>Photo de profile</h6>
+                          </div>
+                          <div class='col-sm-9 text-secondary'>
+                              <input name="photo" type='file' class='form-control' value=''>
+                          </div>
+                      </div>
                       <div class="row">
                           <div class="col-sm-3"></div>
                           <div class="col-sm-9 text-secondary">
-                              <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
+                              <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur'].'_eleve'?>">Valider</button>
                           </div>
                       </div>
                   </div>
@@ -142,7 +151,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
   </div>
 </div>
 <?php endif;?>
-
+//session enterprise
 <?PHP if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise" && !isset($_POST['modifieroffre'])  &&  !isset($_POST['modifierevent'])):?>
     <div class="container">
         <div class="main-body">
@@ -151,7 +160,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="assets/img/icon/Profile.jpg" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                <img src="<?=$_SESSION['photo']?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
                                     <h4><?=$profile['nom']?></h4>
                                     <p class="text-secondary mb-1"><?=$profile['poste']?> chez <?=$profile['poste']?></p>
@@ -161,8 +170,8 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                         </div>
                     </div>
                 </div>
-                <form action="traitement/action_utilisateur/modif.profile.php" method="post">
-                    <div class="col-lg-8">
+                <form action="traitement/action_utilisateur/modif.profile.php" enctype="multipart/form-data" method="post">
+                    <div class="container">
                         <div class="card">
                             <div class="card-body">
                                 <div class='row mb-3'>
@@ -215,16 +224,16 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
                                 </div>
                                 <div class='row mb-3'>
                                     <div class='col-sm-3'>
-                                        <h6 class='mb-0'>Lien vers votre logo</h6>
+                                        <h6 class='mb-0'>Photo de profile</h6>
                                     </div>
                                     <div class='col-sm-9 text-secondary'>
-                                        <input name="domaine" type='text' class='form-control' value='<?=$profile['logo']?>'>
+                                        <input name="photo" type='file' class='form-control' value=''>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur']?>">Valider</button>
+                                        <button name="valider" type="submit" class="btn btn-secondary px-4" value="<?=$profile['id_utilisateur'].'_entreprise'?>">Valider</button>
                                     </div>
                                 </div>
                             </div>

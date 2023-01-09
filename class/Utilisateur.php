@@ -52,6 +52,7 @@ class Utilisateur{
                 $_SESSION['id_utilisateur'] = $res['id_utilisateur'];
                 $_SESSION['role'] = $res['role'];
                 $_SESSION['nom'] = $res['nom'];
+                $_SESSION['photo'] = $res['logo'];
                 if ($res['role'] == "Entreprise"){
                     $_SESSION['post'] = $res['poste'];
                     header('Location: ../../index.php');
@@ -106,14 +107,20 @@ class Utilisateur{
             }
     }
 
-    public function modifiProfile(Bdd $base){
-        $req = $base->getBdd()->prepare('UPDATE utilisateur SET nom = :nom, prenom = :prenom, email = :email WHERE id_utilisateur = :id');
+    public function modifiProfile(Bdd $base): void
+    {
+        $req = $base->getBdd()->prepare('UPDATE utilisateur SET nom = :nom, cp = :cp, ville = :ville, logo = :logo,adresse = :adresse, poste = :post, prenom = :prenom, email = :email WHERE id_utilisateur = :id');
 
         $req ->execute(array(
             'id'=>$this->id_utilisateur,
             'nom'=>$this->nom,
+            'cp'=>$this->cp,
+            'ville'=>$this->ville,
+            'adresse'=>$this->adresse,
+            'post'=>$this->post,
             'prenom'=>$this->prenom,
             'email'=>$this->email,
+            'logo'=>$this->logo
         ));
     }
 
@@ -140,6 +147,14 @@ class Utilisateur{
     public function valider(Bdd $base){
         $req = $base->getBdd()->prepare('Update utilisateur set valider =1 WHERE id_utilisateur = :id');
 
+        $req ->execute(array(
+            'id'=>$this->id_utilisateur
+        ));
+
+    }
+
+    public function supprimer(Bdd $base){
+        $req = $base->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id');
         $req ->execute(array(
             'id'=>$this->id_utilisateur
         ));

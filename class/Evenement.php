@@ -105,11 +105,12 @@ class Evenement
 
     public function validerEtAffectezSalle(Bdd $base)
     {
-        $req = $base->getBdd()->prepare('Update evenement set autorise =1, ref_salle = :ref_salle WHERE id_event = :id');
+        $req = $base->getBdd()->prepare('Update evenement set autorise =1, ref_salle = :ref_salle, nombre_inscrit = :nombre_inscrit WHERE id_event = :id');
 
         $req->execute(array(
             'id' => $this->id_event,
-            'ref_salle' => $this->ref_salle
+            'ref_salle' => $this->ref_salle,
+            'nombre_inscrit' => $this->nombre_inscrit
         ));
     }
 

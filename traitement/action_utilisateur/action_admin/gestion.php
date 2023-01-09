@@ -47,9 +47,11 @@ if (isset($_POST['action'])){
     }
 }elseif (isset($_POST['valider']) && $_POST['valider'] != null){
     require_once '../../../class/Evenement.php';
+    $salle = explode('_',$_POST['salle']);
     $evenement = new Evenement(array(
         'idevent'=>$_POST['valider'],
-        'refsalle'=>$_POST['salle']
+        'refsalle'=>$salle[0],
+        'nombreinscrit'=>$salle[1]
     ));
     $evenement->validerEtAffectezSalle($bdd);
     header('Location: ../../../admin/admin.evenement.php');

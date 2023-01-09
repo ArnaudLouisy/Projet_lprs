@@ -7,8 +7,8 @@ if (isset($_POST['creer'])){
     $offre = new Offre (array(
         'titreoffre'=> ucfirst(strtolower($_POST['titreoffre'])),
         'description'=>ucfirst(strtolower($_POST['description'])),
-        'typecontrat'=>$_POST['type_contrat'],
-        'durecontrat'=>$_POST['dure_contrat'],
+        'typecontrat'=>$_POST['typecontrat'],
+        'durecontrat'=>$_POST['durecontrat'],
         'refutilisateur'=>$_SESSION['id_utilisateur']
     ));
     $offre->ajouteroffre($bdd);

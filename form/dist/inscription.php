@@ -5,7 +5,7 @@ session_start()
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Neumorphism Login Form</title>
+    <title>Inscription</title>
     <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -14,6 +14,9 @@ session_start()
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="main.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
@@ -35,7 +38,7 @@ session_start()
             ?>
             <input class="form__input" name="nom" type="text" placeholder="Nom">
             <input class="form__input" name="prenom" type="text" placeholder="Prenom">
-            <input class="form__input" name="adresse" type="text" placeholder="Rue">
+            <select class="selectAdress form__input" name="adresse"></select>
             <input class="form__input" name="cp" type="text" placeholder="Code postal">
             <input class="form__input" name="ville" type="text" placeholder="Ville">
             <input class="form__input" name="domaine" type="text" placeholder="Domaine d'etude">
@@ -62,7 +65,7 @@ session_start()
             endif;
             ?>
             <input class="form__input" name="nom" type="text" placeholder="Nom de l'entreprise">
-            <input class="form__input" name="adresse" type="text" placeholder="Rue">
+            <select class="selectAdress form__input" name="adresse"></select>
             <input class="form__input" name="cp" type="text" placeholder="Code postal">
             <input class="form__input" name="ville" type="text" placeholder="Ville">
             <input class="form__input" name="post" type="text" placeholder="Post">
@@ -91,6 +94,61 @@ session_start()
     </div>
 </div>
 <script src="main.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".selectAdress").select2({
+            language: "fr",
+            inputTooShort: function () {
+                return "Vous deviez entrée plus de character...";
+            },
+            ajax: {
+                url: "https://api-adresse.data.gouv.fr/search/",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term, // search term
+                        limit: 15
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.features.map(item => ({
+                            id: item.properties.label,
+                            text: item.properties.label,
+                            city: item.properties.city,
+                            citycode: item.properties.citycode,
+                            street : item.properties.street,
+                            housenumber : item.properties.housenumber
+                        }))
+
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'Rentrez votre adresse',
+            minimumInputLength: 1,
+            templateResult: adressResult,
+            templateSelection: adressSelection
+        });
+
+        function adressResult(adress) {
+            if (adress.loading){
+                return adress.text;
+            }
+            return adress.text;
+        }
+
+        function adressSelection(adress){
+            let codePostal = $('input[name="cp"]');
+            let ville = $('input[name="ville"]');
+                codePostal.val(adress.citycode)
+                ville.val(adress.city)
+            return adress.housenumber+" "+adress.street;
+        }
+
+    });
+</script>
 </body>
 </html>
 <!-- partial -->

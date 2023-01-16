@@ -10,7 +10,6 @@ if (isset($_POST['action'])){
         $utilisateur = new Utilisateur(array(
             'idutilisateur'=>$res[0]
         ));
-        header('Location: ../../../admin/admin.php');
         $utilisateur->valider($bdd);
         header('Location: ../../../admin/admin.php');
     }elseif ($res[1]=='offre'){

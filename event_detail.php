@@ -236,16 +236,16 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                             <ul>
                                 <li>Date : <span><?=$detaileresulta['date']?></span></li>
                                 <li>Durée : <span><?=$detaileresulta['duree']?></span></li>
-                                <li>Location : <span>New York</span></li>
-                                <li>Nombre de place : <span>02</span></li>
-                                <li>Salary :  <span>$7,800 yearly</span></li>
+                                <li>localisation : <span><?=$detaileresulta['adresse'].", "?></span>
+                                <li>Ville : <span><?=$detaileresulta['cp']." ".$detaileresulta['ville']?></span></li>
+                                <li>Nombre de place : <span><?=$detaileresulta['nombre_inscrit']?></span></li>
                             </ul>
                             <div class="apply-btn2">
                                 <?php if ($_SESSION['role'] == "Eleve" || $_SESSION['role'] == "Entreprise" && $detaileresulta['ref_utilisateur'] != $_SESSION['id_utilisateur']):?>
                                     <form action="traitement/action_utilisateur/inscription_event.php" method="post">
                                         <button name="inscrire" type="submit" class="btn head-btn1" value="<?= $detaileresulta['id_event'] ?>">S'inscrire</button>
                                     </form>
-                                <?php elseif ($_SESSION['id_utilisateur'] == $detaileresulta['ref_utilisateur'] || $_SESSION['role']=="Admin"):?>
+                                <?php elseif ($_SESSION['id_utilisateur'] == $detaileresulta['ref_utilisateur']):?>
                                     <form action="traitement/evenement/suppevenement.php" method="post">
                                         <button type="submit" name="supprimer" value="<?= $detaileresulta['id_event'] ?>" class="btn head-btn2">Supprimer</button>
                                     </form>

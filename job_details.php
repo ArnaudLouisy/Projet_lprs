@@ -212,7 +212,7 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                         <div class="post-details2  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Required Knowledge, Skills, and Abilities</h4>
+                                <h4>Connaissances, Compétences et Aptitudes Requises</h4>
                             </div>
                             <ul>
                                 <li>System Software Development</li>
@@ -221,7 +221,7 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                         <div class="post-details2  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Education + Experience</h4>
+                                <h4>Formation + Expérience</h4>
                             </div>
                             <ul>
                                 <li>3 or more years of professional design experience</li>
@@ -234,15 +234,11 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                     <div class="post-details3  mb-50">
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
-                            <h4>Job Overview</h4>
+                            <h4>Detaille Du Post</h4>
                         </div>
                         <ul>
                             <li>Posted date : <span>12 Aug 2019</span></li>
                             <li>Location : <span>New York</span></li>
-                            <li>Vacancy : <span>02</span></li>
-                            <li>Job nature : <span><?=$detaileresulta['type_contrat']?></span></li>
-                            <li>Salary :  <span>$7,800 yearly</span></li>
-                            <li>Application date : <span>12 Sep 2020</span></li>
                         </ul>
                         <div class="apply-btn2">
                             <?php if ($_SESSION['role'] == "Eleve"):?>
@@ -262,19 +258,6 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                             <?php endif;?>
 
                         </div>
-                    </div>
-                    <div class="post-details4  mb-50">
-                        <!-- Small Section Tittle -->
-                        <div class="small-section-tittle">
-                            <h4>Company Information</h4>
-                        </div>
-                        <span>Colorlib</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                        <ul>
-                            <li>Name: <span>Colorlib </span></li>
-                            <li>Web : <span> colorlib.com</span></li>
-                            <li>Email: <span>carrier.colorlib@gmail.com</span></li>
-                        </ul>
                     </div>
                 </div>
             </div>

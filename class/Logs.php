@@ -40,7 +40,7 @@ class Logs{
     /**
      * @param mixed $ref_compte
      */
-    public function setRefCompte($ref_compte): void
+    public function setRefCompte($ref_compte)
     {
         $this->ref_compte = $ref_compte;
     }

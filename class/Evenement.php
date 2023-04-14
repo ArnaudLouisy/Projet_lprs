@@ -252,7 +252,7 @@ class Evenement
     /**
      * @param mixed $ref_salle
      */
-    public function setRefSalle($ref_salle): void
+    public function setRefSalle($ref_salle)
     {
         $this->ref_salle = $ref_salle;
     }

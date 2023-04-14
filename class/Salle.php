@@ -70,7 +70,7 @@ class Salle{
     /**
      * @param mixed $id_salle
      */
-    public function setIdSalle($id_salle): void
+    public function setIdSalle($id_salle)
     {
         $this->id_salle = $id_salle;
     }
@@ -78,7 +78,7 @@ class Salle{
     /**
      * @param mixed $nom_salle
      */
-    public function setNomSalle($nom_salle): void
+    public function setNomSalle($nom_salle)
     {
         $this->nom_salle = $nom_salle;
     }
@@ -86,7 +86,7 @@ class Salle{
     /**
      * @param mixed $nombre_place
      */
-    public function setNombrePlace($nombre_place): void
+    public function setNombrePlace($nombre_place)
     {
         $this->nombre_place = $nombre_place;
     }
@@ -94,7 +94,7 @@ class Salle{
     /**
      * @param mixed $adresse
      */
-    public function setAdresse($adresse): void
+    public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
     }
@@ -102,7 +102,7 @@ class Salle{
     /**
      * @param mixed $cp
      */
-    public function setCp($cp): void
+    public function setCp($cp)
     {
         $this->cp = $cp;
     }
@@ -110,7 +110,7 @@ class Salle{
     /**
      * @param mixed $ville
      */
-    public function setVille($ville): void
+    public function setVille($ville)
     {
         $this->ville = $ville;
     }

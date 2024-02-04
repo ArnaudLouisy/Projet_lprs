@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -56,6 +56,17 @@ session_start()
 </html>
 <!-- partial -->
   <script  src="./script.js"></script>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php
+/*if (isset($_GET["alert"]) || $_GET["alert"]=='champ'){
+    echo ("<script>
+alert('Un champ est vide')
+</script>");
+}elseif (isset($_GET["alert"]) || $_GET["alert"]=='pasconnecter'){
+    echo ("<script>
+alert('Information incorrecte ou compte inexistant')
+</script>");
+}*/
+?>
 </body>
 </html>

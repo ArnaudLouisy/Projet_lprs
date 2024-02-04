@@ -66,8 +66,8 @@ class Utilisateur{
 
             }
         }else{
-            header('Location: ../../form/dist/login');
-            $_SESSION['erreurconnexion'] = "Information incorecte ou compte inhesistant .";
+            header('Location: ../../form/dist/login.php?alert=pasconnecter');
+            $_SESSION['erreurconnexion'] = "Information incorrecte ou compte inexistant .";
         }
 
         return $res ;

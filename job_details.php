@@ -71,18 +71,11 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                                         <ul id='navigation'>
                                             <li><a href='index.php'>Accueil</a></li>
                                             <li><a href='job_listing.php'>Trouver une offre </a></li>
-                                            <li><a href='crea.php'>Evénements</a></li>
-                                           <li><a href='#'>Page</a>
-                                            <ul class='submenu'>
-                                                    <li><a href='blog.html'>Blog</a></li>
-                                                    <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.php'>Elements</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href='crea.php'>Evénements</a></li>   
                                             <li><a href='contact.php'>Contact</a></li>
-                                            <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
+                                            <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>" ." ".$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                             <ul class='submenu'>
-                                                    <li><a href='profile.php'>Profil</a></li>
+                                                    <li><a href='profile.php'>Profil</a></li> 
                                                     <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                                 </ul>
                                             </li>
@@ -100,23 +93,18 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                                             <li><a href='index.php'>Accueil</a></li>
                                             <li><a href='job_listing.php'>Nos offre</a></li>
                                             <li><a href='crea.php'>Evénements</a></li>
-                                            <li><a href='#'>Prospect</a>
-                                            <ul class='submenu'>
-                                                    <li><a href='blog.html'>Blog</a></li>
-                                                    <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.php'>Elements</a></li>
-                                                </ul>
-                                            </li>
                                             <li><a href='contact.php'>Contact</a></li>
-                                            <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>" .$_SESSION['nom'].' '.$_SESSION['post']. " </a>
+                                            <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>"." ".$_SESSION['nom'].' '.$_SESSION['post']. " </a>
                                             <ul class='submenu'>
                                                     <li><a href='profile.php'>Profil</a></li>
+                                                    <li><a href='prospect.php'>Prospect</a></li>
                                                     <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </nav>
                                 </div>");}
+
                     //aucune session
                     else{echo ("<div class='col-lg-9 col-md-9'>
                             <div class='menu-wrapper'>
@@ -124,16 +112,9 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                                 <div class='main-menu'>
                                     <nav class='d-none d-lg-block'>
                                         <ul id='navigation'>
-                                            <li><a href='index.php'>Home</a></li>
+                                            <li><a href='index.php'>Accueil</a></li>
                                             <li><a href='job_listing.php'>Emploi</a></li>
-                                            <li><a href='crea.php'>Creation </a></li>
-                                            <li><a href='#'>Page</a>
-                                <ul class='submenu'>
-                                                    <li><a href='rendezvous.html'>Blog</a></li>
-                                                    <li><a href='single-blog.html'>Blog Details</a></li>
-                                                    <li><a href='elements.php'>Elements</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href='crea.php'>Evenement</a></li>
                                             <li><a href='contact.php'>Contact</a></li>
                                         </ul>
                                     </nav>
@@ -185,7 +166,7 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                <a href="#"><img src="<?=$detaileresulta['logo']?>" height="75"  width="75" class="border border-primary" alt=""></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
@@ -237,8 +218,9 @@ if (isset($_GET['id']) && $_GET['id'] != null){
                             <h4>Detaille Du Post</h4>
                         </div>
                         <ul>
-                            <li>Posted date : <span>12 Aug 2019</span></li>
-                            <li>Location : <span>New York</span></li>
+                            <li>Posted date : <span><?=$detaileresulta['date_publication']?></span></li>
+                            <li>Location : <span><?= $detaileresulta['adresse'].","?></span></li>
+                            <li>Ville : <span><?= $detaileresulta['ville']." ".$detaileresulta['cp']?></span></li>
                         </ul>
                         <div class="apply-btn2">
                             <?php if ($_SESSION['role'] == "Eleve"):?>

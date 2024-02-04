@@ -8,6 +8,7 @@ $salle = new Salle(array(
 ));
 $lasalle = $salle->voirLaSalle($bdd);
 ?>
+<?php if (isset($_SESSION["role"])&&($_SESSION["role"]==='Admin')): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +54,9 @@ $lasalle = $salle->voirLaSalle($bdd);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.salle.cree.php">Salle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.materiele.php">Materiele</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
@@ -136,3 +140,6 @@ $lasalle = $salle->voirLaSalle($bdd);
 <script src="../assets/js/js.data.js"></script>
 </body>
 </html>
+<?php else:?>
+
+<?php endif; ?>

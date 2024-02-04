@@ -19,7 +19,8 @@ class Postule{
         }
     }
 
-    public function Postulez(Bdd $base){
+    public function PostulezOffre(Bdd $base): void
+    {
         $req = $base -> getBdd() ->prepare('INSERT INTO postule (ref_offre,ref_utilisateur) values (:ref_offre,:ref_utilisateur)');
         $req->execute(array(
             'ref_offre' => $this->ref_offre,

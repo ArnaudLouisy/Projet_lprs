@@ -7,5 +7,5 @@ $postulez = new Postule(array(
     'refutilisateur'=>$_SESSION['id_utilisateur'],
     'refoffre'=>$_POST['postulez']
 ));
-$postulez->Postulez($bdd);
+$postulez->PostulezOffre($bdd);
 header('Location: ../../../index.php');

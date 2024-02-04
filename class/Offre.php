@@ -95,10 +95,10 @@ class Offre{
     }
 
     public function offredetaile(Bdd $base){
-        $req = $base->getBdd()->prepare('SELECT * FROM offre WHERE id_offre = :id');
+        $req = $base->getBdd()->prepare('SELECT *,cp,ville,adresse,logo FROM offre inner join utilisateur on offre.id_offre = :id and offre.ref_utilisateur= utilisateur.id_utilisateur');
 
         $req->execute(array(
-            'id'=>$this->id_offre
+            'id'=>$this->id_offre,
         ));
         return $req->fetch();
     }

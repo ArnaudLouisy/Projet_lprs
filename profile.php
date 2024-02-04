@@ -43,61 +43,47 @@ $profile=$utilisateur->profile($bdd)
                     </div>
                     <!--session eleve-->
                     <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"){
-                                    echo ("<div class='col-lg-9 col-md-9'>
-                    <div class='menu-wrapper'>
-                        <!-- Main-menu -->
-                        <div class='main-menu'>
-                            <nav class='d-none d-lg-block'>
-                                <ul id='navigation'>
-                                    <li><a href='index.php'>Accueil</a></li>
-                                    <li><a href='job_listing.php'>Trouver un Jobs </a></li>
-                                    <li><a href='crea.php'>Evénements</a></li>
-                                    <li><a href='#'>Page</a>
-                                        <ul class='submenu'>
-                                            <li><a href='blog.html'>Blog</a></li>
-                                            <li><a href='single-blog.html'>Blog Details</a></li>
-                                            <li><a href='elements.php'>Elements</a></li>
-                                            <li><a href='job_details.php'>job Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href='contact.html'>Contact</a></li>
-                                    <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>" .$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
-                                        <ul class='submenu'>
-                                            <li><a href='profile.php'>Profil</a></li>
-                                            <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>");}
-                        //session entreprise
-                        elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"){
                         echo ("<div class='col-lg-9 col-md-9'>
-                        <div class='menu-wrapper'>
-                            <!-- Main-menu -->
-                            <div class='main-menu'>
-                                <nav class='d-none d-lg-block'>
-                                    <ul id='navigation'>
-                                        <li><a href='index.php'>Accueil</a></li>
-                                        <li><a href='job_listing.php'>Nos offre</a></li>
-                                        <li><a href='crea.php'>Evénements</a></li>
-                                        <li><a href='#'>Prospect</a>
+                            <div class='menu-wrapper'>
+                                <!-- Main-menu -->
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Accueil</a></li>
+                                            <li><a href='job_listing.php'>Trouver une offre </a></li>
+                                            <li><a href='crea.php'>Evénements</a></li>   
+                                            <li><a href='contact.php'>Contact</a></li>
+                                            <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>" ." ".$_SESSION['nom']." ".$_SESSION['prenom']. " </a>
                                             <ul class='submenu'>
-                                                <li><a href='blog.html'>Blog</a></li>
-                                                <li><a href='single-blog.html'>Blog Details</a></li>
-                                                <li><a href='elements.php'>Elements</a></li>         
-                                            </ul>
-                                        </li>
-                                        <li><a href='contact.html'>Contact</a></li>
-                                        <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>" .$_SESSION['nom']." ".$_SESSION['post']. " </a>
-                                        <ul class='submenu'>
-                                            <li><a href='profile.php'>Profil</a></li>
-                                            <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                    <li><a href='profile.php'>Profil</a></li> 
+                                                    <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
-                                    </li>
-                                    </ul>
-                                </nav>
-                            </div>");}?>
+                                    </nav>
+                                </div>");}
+                    //session entreprise
+                    elseif (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise"){
+                        echo ("<div class='col-lg-9 col-md-9'>
+                            <div class='menu-wrapper'>
+                                <!-- Main-menu -->
+                                <div class='main-menu'>
+                                    <nav class='d-none d-lg-block'>
+                                        <ul id='navigation'>
+                                            <li><a href='index.php'>Accueil</a></li>
+                                            <li><a href='job_listing.php'>Nos offre</a></li>
+                                            <li><a href='crea.php'>Evénements</a></li>
+                                            <li><a href='contact.php'>Contact</a></li>
+                                            <li><a href='#'><img class='rounded-circle' src='" .$_SESSION['photo']."' width='55'>"." ".$_SESSION['nom'].' '.$_SESSION['post']. " </a>
+                                            <ul class='submenu'>
+                                                    <li><a href='profile.php'>Profil</a></li>
+                                                    <li><a href='prospect.php'>Prospect</a></li>
+                                                    <li><a href='traitement/action_utilisateur/deco.php'>Se déconnecter <img src='assets/logout.jpg' width='20'></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>");} ?>
                             </div>
                         </div>
                             <!-- Mobile Menu -->

@@ -68,7 +68,7 @@ class Evenement
     }
 
     public function voirUnEvenement(Bdd $base){
-        $req = $base->getBdd()->prepare('SELECT * FROM evenement WHERE autorise = 1 AND id_event = :id');
+        $req = $base->getBdd()->prepare('SELECT *,ville,cp,adresse FROM evenement inner join salle on evenement.autorise = 1 AND evenement.id_event = :id and evenement.ref_salle=salle.id_salle');
 
         $req->execute(array(
             'id' => $this->id_event

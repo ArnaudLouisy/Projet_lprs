@@ -1,13 +1,10 @@
 <?php
 session_start();
-require_once '../class/Evenement.php';
-require_once '../class/Salle.php';
+require_once '../class/Materiele.php';
 require_once '../class/Bdd.php';
 $bdd = new Bdd();
-$salle = new Salle(array());
-$lessalle = $salle->voirSalle($bdd);
-$even = new Evenement(array());
-$evenement = $even->EvenementNonValide($bdd);
+$materiele = new Materiele(array());
+$materielevue = $materiele->voirMateriele($bdd);
 ?>
 <?php if (isset($_SESSION["role"])&&($_SESSION["role"]==='Admin')): ?>
     <!DOCTYPE html>
@@ -22,7 +19,6 @@ $evenement = $even->EvenementNonValide($bdd);
         <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
         <!-- CSS here -->
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
         <link rel="stylesheet" href="../assets/css/price_rangs.css">
@@ -55,7 +51,7 @@ $evenement = $even->EvenementNonValide($bdd);
                             <a class="nav-link active" aria-current="page" href="admin.php">Utilisateur</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="admin.salle.php">Salle</a>
+                            <a class="nav-link active" href="admin.salle.cree.php">Salle</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="admin.materiele.php">Materiele</a>
@@ -76,62 +72,58 @@ $evenement = $even->EvenementNonValide($bdd);
         </nav>
     </header>
 
-    <div class="container">
-        <h1>Evenement</h1>
-        <div class="row">
-            <table id="example" class="table table-striped" style="width:100%">
-                <thead>
-                <tr>
-                    <th>Numéro</th>
-                    <th>Titre</th>
-                    <th>Date</th>
-                    <th>Durée</th>
-                    <th>Géré</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($evenement as $value):?>
-                    <tr>
-                    <td><?=$value['id_event']?></td>
-                    <td><?=$value['nom_event']?></td>
-                    <td><?=$value['date']?></td>
-                    <td><?=$value['duree']?></td>
-                    <td>
-                        <form action='../traitement/action_utilisateur/action_admin/gestion.php' method='post'>
-                            <div class="input-group mb-3">
-                                <select class="js-example-basic-single" name="salle" id="salle">
-                                    <option value="0">--Selectionez une salle--</option>
-                                    <?php foreach ($lessalle as $valeur): ?>
-                                        <option value="<?=$valeur['id_salle'].'_'.$valeur['nombre_place']?>"><?=$valeur['nom_salle']?></option>
-                                    <?php endforeach;?>
-                                </select>
-                                <button class="btn btn-outline-secondary" name="valider" type="submit" value="<?=$value['id_event']?>" id="button-addon2">Affecter</button>
-                                <button type='submit'  class='btn btn-outline-secondary' name='supprime' value=".$value['id_event']."_evenement"."><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
-                                    <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
-                                    <path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>
-                                </svg></button>
-                            </div>
-                        </form>
+    <?php if (isset($_POST['modif']) && $_POST['modif']!=null):?>
 
-                    </td>
-                    </tr><?php endforeach;?>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>Numéro</th>
-                    <th>nom</th>
-                    <th>Poste</th>
-                    <th>Email</th>
-                    <th>Géré</th>
-                </tr>
-                </tfoot>
-            </table>
+        <div class="container ">
+            <h4> Modification de Materiele </h4>
+            <form action="../traitement/action_utilisateur/action_admin/affecter.php" method="post">
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label">Nom</label>
+                    <input type="text" name="nom" class="form-control" value="<?=$lasalle['nom_salle']?>" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label">Nombre de place</label>
+                    <input type="number" name="nombre_place" class="form-control" value="<?=$lasalle['nombre_place']?>"id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label">Adresse</label>
+                    <input type="text" name="adresse" class="form-control" value="<?=$lasalle['adresse']?>" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label">Code postal</label>
+                    <input type="number" name="cp" class="form-control" value="<?=$lasalle['cp']?>" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label">Ville</label>
+                    <input type="text" name="ville" class="form-control" value="<?=$lasalle['ville']?>" id="exampleInputPassword1">
+                </div>
+                <button type="submit" name="modifier" value="<?=$lasalle['id_salle']?>">Modifier</button>
+            </form>
         </div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <?php else:?>
+        <div class="container ">
+            <h4> Affecté Materele </h4>
+            <form action="../traitement/action_utilisateur/action_admin/ajoutMateriele.php" method="post">
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label"></label>
+                    <input type="text" name="nom" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 col-3">
+                    <label for="exampleInputPassword1" class="form-label">Materiele</label>
+                    <select name="materiele" >
+                        <?php foreach ($materielevue as $value):?>
+                        <option value="<?=$value['id']?>"> <?=$value['nom']?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+
+                <input type="submit" name="valider" value="Valider">
+
+            </form>
+        </div>
+    <?php endif; ?>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>

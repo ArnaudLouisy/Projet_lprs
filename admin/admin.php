@@ -6,6 +6,7 @@ $bdd = new Bdd();
 $compt = new Utilisateur(array());
 $comptnonvalide = $compt->ComptNonValide($bdd);
 ?>
+<?php if (isset($_SESSION["role"])&&($_SESSION["role"]==='Admin')): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,9 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.salle.php">Salle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.materiele.php">Materiele</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
@@ -128,3 +132,6 @@ $comptnonvalide = $compt->ComptNonValide($bdd);
 <script src="../assets/js/js.data.js"></script>
 </body>
 </html>
+<?php else:?>
+
+<?php endif; ?>

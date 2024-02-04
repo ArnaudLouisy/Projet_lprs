@@ -6,6 +6,7 @@ $bdd = new Bdd();
 $logs = new Logs(array());
 $logsvue = $logs->VoireLoge($bdd);
 ?>
+<?php if (isset($_SESSION["role"])&&($_SESSION["role"]==='Admin')): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,9 @@ $logsvue = $logs->VoireLoge($bdd);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.salle.php">Salle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.materiele.php">Materiele</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="admin.evenement.php">Evenement</a>
@@ -108,3 +112,6 @@ $logsvue = $logs->VoireLoge($bdd);
 <script src="../assets/js/js.data.js"></script>
 </body>
 </html>
+<?php else:?>
+
+<?php endif; ?>

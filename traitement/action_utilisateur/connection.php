@@ -27,8 +27,8 @@ if (!empty($_POST['email']) && !empty($_POST['motdepasse'])){
         'adresseip'=>$_SERVER['REMOTE_ADDR']
     ));
     $loge->logs($bdd);
-}else{
-    header('Location: ../../form/dist/login.php');
+}elseif (!empty($_POST['email']) || !empty($_POST['motdepasse'])){
+    header('Location: ../../form/dist/login.php?alert=champ');
     $_SESSION['erreurconnexion'] = "Un champ est vide";
 }
 

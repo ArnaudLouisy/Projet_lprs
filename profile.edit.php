@@ -42,7 +42,6 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-//session eleve
 <?PHP if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Eleve"):?>
 <div class="container">
   <div class="main-body">
@@ -151,7 +150,7 @@ elseif (isset($_POST['modifierevent']) && $_POST['modifierevent'] != null){
   </div>
 </div>
 <?php endif;?>
-//session enterprise
+
 <?PHP if (isset($_SESSION['id_utilisateur']) && $_SESSION['role'] == "Entreprise" && !isset($_POST['modifieroffre'])  &&  !isset($_POST['modifierevent'])):?>
     <div class="container">
         <div class="main-body">

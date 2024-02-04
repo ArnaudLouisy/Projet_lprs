@@ -7,7 +7,7 @@ class Bdd{
 
     public function getBdd()
     {
-        return $this->bdd = new PDO('mysql:host=localhost:3306;dbname=projet_lprs;charset=utf8', 'projet_lprs', 'lprs');
+        return $this->bdd = new PDO('mysql:host=localhost:3306;dbname=projet_lprs;charset=utf8', 'root', '');
 
     }
 

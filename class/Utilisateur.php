@@ -107,7 +107,7 @@ class Utilisateur{
             }
     }
 
-    public function modifiProfile(Bdd $base): void
+    public function modifiProfile(Bdd $base)
     {
         $req = $base->getBdd()->prepare('UPDATE utilisateur SET nom = :nom, cp = :cp, ville = :ville, logo = :logo,adresse = :adresse, poste = :post, prenom = :prenom, email = :email WHERE id_utilisateur = :id');
 
